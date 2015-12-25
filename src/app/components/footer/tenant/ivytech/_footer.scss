@@ -1,0 +1,115 @@
+footer {
+  z-index: $zindex-header;
+  background-color: #202020;
+  color: #fff;
+  margin-top: 50px;
+  padding: 40px 4% 100px 4%;
+  font-family: $headings-font-family;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 387px;
+  width: 100%;
+}
+
+body {
+  margin-bottom: 437px; // To account for footer height + 50px padding
+}
+
+#footer-header {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 40px;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+#footer-logo {
+  background-image: url(components/footer/tenant/ivytech/ivy-tech-2015-logo_footer.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  float: left;
+  height: 47px;
+  width: 170px;
+}
+
+#footer-logo-slogan {
+  float: left;
+  font-size: 1.2em;
+  margin-left: 15px;
+}
+
+#footer ul {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.2em;
+  list-style-type: none;
+  margin-left: 0;
+  padding: 0;
+}
+
+#footer-social-media {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#footer-social-media li {
+  float: left;
+  height: 31px;
+  margin-right: 10px;
+  width: 32px;
+}
+
+#footer-social-media li a {
+  display: block;
+  height: 31px;
+  width: 32px;
+}
+
+#footer-social-media {
+  #icon-twitter {
+    background-image: url(components/footer/tenant/ivytech/icon_footer-twitter.png);
+  }
+  #icon-linkedin {
+    background-image: url(components/footer/tenant/ivytech/icon_footer-linkedin.png);
+  }
+  #icon-facebook {
+    background-image: url(components/footer/tenant/ivytech/icon_footer-facebook.png);
+  }
+  #icon-instagram {
+    background-image: url(components/footer/tenant/ivytech/icon_footer-instagram.png);
+  }
+  #icon-youtube {
+    background-image: url(components/footer/tenant/ivytech/icon_footer-youtube.png);
+  }
+}
+
+#footer-content {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding: 0 0 40px 0;
+}
+
+#footer-content > div {
+  display: inline-block;
+  float: left;
+  text-align: center;
+  width: 12.5%;
+}
+
+#footer-content h1 {
+  font-size: 1.7em;
+  margin: 0;
+}
+
+#footer-content a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#footer-footer {
+  font-size: 1.6em;
+  overflow: hidden;
+  text-align: center;
+}

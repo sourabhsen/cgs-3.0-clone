@@ -1,0 +1,110 @@
+<div aria-label="Saved Jobs" class="savedJobsWidget">
+  <div class="col">
+    <section class="">
+      <div class="">
+        <h4 ng-show=" savedJobsLayout === 'standAlone' " class="savedjob-title sectionclose">
+          <a ui-sref=" auth.tools({toolId: 'jobsearch', tab: 'saved' })" ng-click="setTab('saved')">
+            <span class="itemtitle">Saved Jobs</span>
+            <span class="itemcount" >( {{ vm.totalNumberOfResults }} )</span>
+            <span cg-busy="{promise: vm.savedJobsPromise, profile: 'inlineSmall'}"></span>
+          </a>
+          <span class="saved-jobs_drop-icon drop_icon"></span>
+        </h4>
+        <div ng-hide="vm.results.length" class="no-results">You have not saved any jobs.</div>
+
+        <!-- column headers -->
+        <div class="saved-jobs-table-layout" ng-show="vm.results.length">
+          <div class="job three-six no-padding clearfix" ng-show="savedJobsLayout === 'page'">
+
+            <div class="jobInfo clearfix row">
+              <div class="primary no-padding">
+                <p class="">Title</p>
+              </div>
+              <div class="secondary">
+                <p>Date Saved</p>
+              </div>
+              <div class="secondary">
+                <p></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="">
+          <div id="{{job.job.jobId}}" class="job three-six no-padding clearfix" ng-repeat="job in vm.results" ng-attr-id="{{job.job.jobId}}" ng-class="{'last':$last}">
+            <div class="row jobInfo">
+              <!-- title for page layout -->
+              <div class="primary no-padding" ng-show="savedJobsLayout === 'page'">
+
+                <!-- when the job is active -->
+                <div class="title" ng-if="(job.job.status | lowercase) === 'active' " ng-show="job.job.title">
+                  <a ng-click="vm.sendActivity($index)" ui-sref="auth.tools.view({toolId: 'jobsearch', viewId: 'details', id: job.job.jobId})">{{job.job.title}}</a>
+                </div>
+
+                <!-- when the job is expired -->
+                <div class="title" ng-if="(job.job.status | lowercase) === 'expired' " ng-show="job.job.title">
+                  <span class="expiredJobText">{{::job.job.title}} ({{::job.job.status}})</span>
+                </div>
+
+                <div class="company" ng-show="job.job.companyName || job.job.providerCompanyName">{{ job.job.companyName || job.job.providerCompanyName | lowercase }}</div>
+                <div class="location" ng-show="job.job.location">
+                  <span class="title-case">{{job.job.location.city | lowercase }}{{job.job.location.state ? ', ' : ''}}{{ (job.job.location.state.length > 2) ? (job.job.location.state | lowercase ) : job.job.location.state }}</span>
+                </div>
+                <small class="postedDate" ng-show="job.job.postingDate">Posted on: {{ job.job.postingDate | date : 'longDate' }}</small>
+
+              </div>
+
+              <!-- Saved Date -->
+              <div class="secondary" ng-show="savedJobsLayout === 'page'">
+                <div class="savedDate" ng-show="job.savedDate">{{ job.savedDate | date : 'longDate' }}</div>
+              </div>
+              <!-- title for 'widget' and 'standAlone' layouts (hidden in page layout) -->
+              <div class="" ng-hide="savedJobsLayout === 'page'">
+
+                <!-- when the job is active -->
+                <div class="title" ng-if="(job.job.status | lowercase) === 'active' " ng-show="job.job.title">
+                  <a ng-click="vm.sendActivity($index)" ui-sref="auth.tools.view({toolId: 'jobsearch', viewId: 'details', id: job.job.jobId})">{{job.job.title}}</a>
+                </div>
+
+                <!-- when the job is expired -->
+                <div class="title" ng-if="(job.job.status | lowercase) === 'expired' " ng-show="job.job.title">
+                  <span class="expiredJobText">{{::job.job.title}} ({{::job.job.status}})</span>
+                </div>
+                <div class="company" ng-show="job.job.companyName || job.job.providerCompanyName">{{ job.job.companyName || job.job.providerCompanyName | lowercase }} - <span class="title-case" ng-show="job.job.location">{{job.job.location.city | lowercase }}{{job.job.location.state ? ', ' : ''}}{{ (job.job.location.state.length > 2) ? (job.job.location.state | lowercase ) : job.job.location.state }}</span></div>
+              </div>
+              <div class="secondary">
+                <div class="pull-right">
+                  <!-- icons -->
+                  <div class="" ng-show="savedJobsLayout === 'page'">
+                    <div class="clearfix icons">
+                      <span class="col icon icon-tuition-assistance" ng-show="job.tuitionReimbursement"
+                            popover-template="'app/components/popovers/tuitionAssistance.html'" popover-trigger="mouseenter" popover-placement="left"></span>
+                      <span class="col icon icon-preferred-partner" ng-show="job.preferredPartner"
+                            popover-template="'app/components/popovers/preferredPartner.html'" popover-trigger="mouseenter" popover-placement="left"></span>
+                    </div>
+                    <div class="clearfix">
+                      <!-- <h4>vm.reloadSaved: |{{vm.reloadSaved}}|</h4> -->
+                      <job-playlist job="job" reload-saved-results="vm.reloadSaved"></job-playlist>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="see-all-link" ng-hide="savedJobsLayout==='page'">
+        <div class="col small-link-bold clearfix" ng-show="vm.totalNumberOfResults > 0">
+          <a ui-sref="auth.tools({toolId: 'jobsearch', tab: 'saved'})"  ng-click="setTab('saved')"
+             class="small-cta pull-left">See
+            All</a>
+        </div>
+      </div>
+      <div class="moreLink" ng-show="savedJobsLayout==='page'">
+        <a href="" role="button" class="col small-link-bold" ng-hide="vm.noMoreResults" ng-click="vm.pageChange()" aria-label="Jobs">
+          View More
+        </a>
+      </div>
+    </section>
+  </div>
+</div>

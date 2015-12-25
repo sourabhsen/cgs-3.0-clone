@@ -1,0 +1,71 @@
+
+/* Footer */
+footer {
+  z-index: $zindex-header;
+  background-color: black;
+  padding-top: 20px;
+  color: #e9e9e9;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 370px;
+  width: 100%;
+  font-weight: 200;
+}
+footer li {
+  list-style-type: none;
+}
+footer a {
+  color: #ccc;
+  outline: 0;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+  background: transparent;
+  border-bottom: 1px dotted #ccc;
+}
+footer a.name {
+  color: #FFFFFF;
+  font-weight: bold;
+  border: none;
+}
+footer ul.social-media {
+  display: table-footer-group;
+}
+footer ul.social-media li {
+  float: left;
+  border: none;
+}
+footer ul.social-media li a {
+  font-size: 40px;
+  margin-right: 10px;
+}
+.address ul {
+  margin: 0.25em 0 0 0;
+  padding: 0;
+}
+.address ul li {
+  list-style: none;
+  display: inline;
+}
+.asu-brand-footer {
+    background-color: #e5e5e5;
+    padding: 30px 12px;
+    .row {
+      padding-bottom: 0;
+    }
+}
+.asu-brand-footer ul {
+  list-style-type: none;
+  margin-left: -40px;
+}
+.asu-brand-footer ul li {
+  display: inline;
+  margin-right: 20px;
+}
+.asu-brand-footer a {
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: none;
+}

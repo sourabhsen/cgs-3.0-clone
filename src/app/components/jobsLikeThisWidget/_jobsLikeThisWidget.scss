@@ -1,0 +1,11 @@
+.jobsLikeThisWidget {
+  .city {
+    text-transform: capitalize;
+  }
+  .jobInfo {
+    margin-bottom: 10px;
+  }
+  .job:last-of-type {
+    // border: 0;
+  }
+}

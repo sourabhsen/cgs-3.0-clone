@@ -1,0 +1,9 @@
+.iconSvg {
+  height: 21px;
+  path, polygon, rect {
+    fill: $gray-darker;
+  }
+  circle {
+    fill: $white
+  }
+}

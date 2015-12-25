@@ -1,0 +1,203 @@
+<div class="one-col skill-builder">
+  <div class="row">
+    <div class="col">
+      <main aria-label="Main Content" role="main" ng-controller="SkillBuilderController as skillCtrl" cg-busy="{promise: skillCtrl.vm.waits.goals, profile: 'fixedCenter' }">
+
+        <div class="skill-builder-intro-container one-col" ng-if="skillCtrl.vm.goals.length === 0">
+          <div class="row sb-no-goals text-center animated fadeIn" cg-busy="{promise: skillCtrl.vm.waits.skills, profile: 'fixedCenter'}">
+            <div class="col">
+              <div class="skill-nogoals-desc">
+                <p class="nogoals-desc">
+                  It looks like you haven't set your goals yet. This is an important first step. Having a career goal will help you focus your energy and work in specific direction.
+                </p>
+                <p class="nogoals-sub-desc">
+                  Once you've set a career goal, we'll show you the skills you need, and we'll give you resources to help you build them
+                </p>
+              </div>
+              <a class="sb-button" ui-sref="auth.tools({toolId:'careerExploration'})">Set Career Goals</a>
+              <div class="sb-image">
+                <img class="sbGoalIll" src="assets/images/activities/skillbuilder-goal-illus.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p  ng-if="skillCtrl.vm.goals.length !== 0">
+          Below are relevant skills for your Career Goals. Remember that your current academic program might help build some of the skills below and that additional skills may be required. Rate your current skill level and we will provide suggestions on what to do next.
+        </p>
+
+        <div class="use-this-tool" ng-if="skillCtrl.vm.skills.length">
+          <dl ng-repeat="step in skillCtrl.coachMarks.walkthrough.steps" class="sr-only">
+            <dt ng-bind="step.heading"></dt>
+            <dd ng-bind-html="step.text"></dd>
+          </dl>
+        </div>
+
+        <div class="sb-edit-goals clearfix tool-previous-page" ng-if="skillCtrl.vm.goals.length !== 0">
+          <a ui-sref="auth.tools({toolId:'careerExploration'})" class="pull-left mini-header ng-scope" href>
+           <span aria-hidden="true" class="icon icon-previous">&nbsp;</span>EDIT CAREER GOALS
+         </a>
+
+          <a class="edit-career-goal-link pull-right" href ng-click="skillCtrl.startCoachmarks(true)"
+             tabindex="-1">How
+            do I use this tool?</a>
+        </div>
+
+        <coach-mark config="skillCtrl.coachMarks.walkthrough" on-skip="skillCtrl.onCoachmarkComplete('walkthrough')" on-finish="skillCtrl.onCoachmarkComplete('walkthrough')" skip-text="DON'T SHOW THIS TIP AGAIN" ng-if="skillCtrl.vm.skills.length"></coach-mark>
+        <div class="sb-coachmark title cm-plan"></div>
+        <div class="sb-skillListContainer one-col" id="sb-skillListContainer" ng-if="skillCtrl.vm.goals.length">
+          <div class="grey-bar row">
+            <!--red bar starts here-->
+            <div class="sb-search-holder col">
+              <div class="results-count">
+                <h5 class="result-label inline-block">Showing Top Skills for:</h5>
+                <ui-select ng-model="skillCtrl.vm.params.goalId" class="selectDropdown goal-drop-down" on-select="skillCtrl.vm.getSkills()">
+                  <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="goal.id as goal in skillCtrl.vm.goals | filter: $select.search">
+                    <div ng-bind-html="goal.name | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+          </div>
+          <div cg-busy="{promise: skillCtrl.vm.waits.skills, profile: 'fixedCenter'}">
+            <div role="group" class="skillbuilder-results row animated fadeIn" ng-repeat="skill in skillCtrl.vm.skills track by skill.skill.skillId" ng-attr-data-skill-id="{{skill.skill.skillId}}">
+              <div class="col">
+                <div class="sb-results-container five-seven">
+                  <div class="row flatten">
+                    <div class="secondary">
+
+                      <a class="sb-toggle-link" href ng-click="skill.expanded = !skill.expanded; skillCtrl.vm.expandContractSkill(skill.skill.skillId, skill.expanded);" aria-controls="skill{{skill.skill.skillId}}" role="link">
+                        <h4 class="sb-toggle-desc inline-block" ng-cloak>
+                          {{skill.skill.displayName}}
+                          <svg-wrap class="chevronCircle {{!skill.expanded ? 'skills-collapse' : 'skills-expanded'}}">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="25px" height="25px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                              <circle cx="10" cy="10" r="9.667"/>
+                              <polygon points="4.511,5.026 4.511,9.485 10,14.975 15.489,9.486 15.489,5.026 10,10.515 "/>
+                            </svg>
+                          </svg-wrap>
+                        </h4>
+                      </a>
+                    </div>
+                    <div class="right-section primary">
+                      <div class="sb-skill-level one-col">
+                        <div class="row clearfix">
+                          <form >
+                            <div class="set-skill col no-padding text-right">
+                              <div class="sb-coachmark cm-rate" ng-if="$first"></div>
+
+                              <div class="improveSkillBtn">
+                                <ap-career-skills-modal-link skill="skill.skill" add-classes="skills-modal-btn" link-text="Improve This Skill"></ap-career-skills-modal-link>
+                              </div>
+
+                              <div class="skillLevelBlock">
+
+                                <h4>What is your skill level?</h4>
+
+                                <div class="skillLevelSelection">
+
+                                  <input type="radio" selected="{{skill.userDeclaredLevel === 'Beginner'}}" tabindex="0" ng-model="skill.userDeclaredLevel" name="level" value="Beginner" ng-change="skillCtrl.vm.saveSkillLevel(skill); skill.change = false" id="radioSelectBasic{{skill.skill.skillId}}" />
+                                  <label for="radioSelectBasic{{skill.skill.skillId}}"><span><span></span></span><b>Basic</b></label>
+
+                                  <input type="radio" selected="{{skill.userDeclaredLevel === 'Intermediate'}}" tabindex="0" ng-model="skill.userDeclaredLevel" name="level" value="Intermediate" ng-change="skillCtrl.vm.saveSkillLevel(skill); skill.change = false" id="radioSelectIntermediate{{skill.skill.skillId}}" />
+                                  <label for="radioSelectIntermediate{{skill.skill.skillId}}"><span><span></span></span><b>Intermediate</b></label>
+
+                                  <input type="radio" selected="{{skill.userDeclaredLevel === 'Advanced'}}" tabindex="0" ng-model="skill.userDeclaredLevel" name="level" value="Advanced" ng-change="skillCtrl.vm.saveSkillLevel(skill); skill.change = false" id="radioSelectAdvanced{{skill.skill.skillId}}" />
+                                  <label for="radioSelectAdvanced{{skill.skill.skillId}}"><span><span></span></span><b>Advanced</b></label>
+
+                                </div>
+
+                                <div class="skillLevelAssessment takeAssessment">
+                                  <ap-skills-assessment-modal-link userdeclared-data="skill.userDeclaredLevel" assessment-data="skill.assessmentData" link-text="Take This Assessment" on-assessment-complete="skillCtrl.vm.getSkills();" hide-icon="true"></ap-skills-assessment-modal-link>
+                                </div>
+
+                              </div>
+
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sb-skilldesc-container" id="skill{{skill.skill.skillId}}" role="group" aria-expanded="{{!skill.expanded ? false : true}}" collapse="!skill.expanded">
+                  <div class="sb-skilldesc-wrapper">
+                    <div class="sb-ratings">
+                      <div class="importance pull-left" aria-label="Importance {{skillCtrl.Math.floor(skill.importance / 2,49) + '%'}}">IMPORTANCE</div>
+                      <div class="grey-rating">
+                        <span class="portion first-halve"></span>
+                        <span class="portion center-line"></span>
+                        <span class="portion second-halve" ng-style="{width: skillCtrl.Math.min(skill.importance / 2,49) + '%'}"></span>
+                      </div>
+                    </div>
+                    <div ng-switch="skill.userDeclaredLevel" class="skill-assess-info">
+                      <div ng-switch-when="Beginner">
+                        <div ng-switch="skill.assessmentData.scores[0].level">
+                          <p ng-switch-when="Basic" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Basic. We suggest that you work to&nbsp;<ap-career-skills-modal-link skill="skill.skill" link-text="Improve This Skill." hide-icon="true"></ap-career-skills-modal-link>&nbsp;As you further develop this skill, you can answer more questions to reassess your skill level.
+                          </p>
+                          <p ng-switch-when="Intermediate" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Intermediate. Good work, we suggest that you <a role="link" href class="setSkillLevel" ng-click="skill.userDeclaredLevel = 'Intermediate'">update this skill level to Intermediate</a> and continue to&nbsp;<ap-career-skills-modal-link skill="skill.skill" link-text="Improve This Skill." hide-icon="true"></ap-career-skills-modal-link>&nbsp;As you further develop this skill, you can answer more questions to reassess your skill level.
+                          </p>
+                          <p ng-switch-when="Advanced" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Advanced, that’s great! We suggest that you <a role="link" href class="setSkillLevel" ng-click="skill.userDeclaredLevel = 'Advanced'">update this skill level to Advanced</a> and focus on building other skills.
+                          </p>
+                        </div>
+                      </div>
+                      <div ng-switch-when="Intermediate">
+                        <div ng-switch="skill.assessmentData.scores[0].level">
+                          <p ng-switch-when="Basic" class="font-bold">
+                            According to this Smarterer assessment, your skill level is basic. We suggest that you <a role="link" href class="setSkillLevel" ng-click="skill.userDeclaredLevel = 'Beginner'">change your skill level to Basic</a> and then work to&nbsp;<ap-career-skills-modal-link skill="skill.skill" link-text="Improve This Skill." hide-icon="true"></ap-career-skills-modal-link>&nbsp;As you further develop this skill, you can answer more questions to reassess your skill level.
+                          </p>
+                          <p ng-switch-when="Intermediate" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Intermediate. Good work, we suggest that you continue to&nbsp;<ap-career-skills-modal-link skill="skill.skill" link-text="Improve This Skill." hide-icon="true"></ap-career-skills-modal-link>&nbsp;As you further develop this skill, you can answer more questions to reassess your skill level.
+                          </p>
+                          <p ng-switch-when="Advanced" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Advanced, that’s great! We suggest that you <a role="link" href class="setSkillLevel" ng-click="skill.userDeclaredLevel = 'Advanced'">update this skill level to Advanced</a> and focus on building other skills.
+                          </p>
+                        </div>
+                      </div>
+                      <div ng-switch-when="Advanced">
+                        <div ng-switch="skill.assessmentData.scores[0].level">
+                          <p ng-switch-when="Basic" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Basic. We suggest that you <a role="link" href class="setSkillLevel" ng-click="skill.userDeclaredLevel = 'Beginner'">change your skill level to Basic</a> and then work to&nbsp;<ap-career-skills-modal-link skill="skill.skill" link-text="Improve This Skill." hide-icon="true"></ap-career-skills-modal-link>&nbsp;As you further develop this skill, you can answer more questions to reassess your skill level.
+                          </p>
+                          <p ng-switch-when="Intermediate" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Intermediate. Good work, we suggest that you <a role="link" href class="setSkillLevel" ng-click="skill.userDeclaredLevel = 'Intermediate'">change this skill level to Intermediate</a> and continue to&nbsp;<ap-career-skills-modal-link skill="skill.skill" link-text="Improve This Skill." hide-icon="true"></ap-career-skills-modal-link>&nbsp;As you further develop this skill, you can answer more questions to reassess your skill level.
+                          </p>
+                          <p ng-switch-when="Advanced" class="font-bold">
+                            According to this Smarterer assessment, your skill level is Advanced, great work! We suggest that you focus on building other skills.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="skillparagraph" ng-cloak>
+                      {{skill.wikipediaUrl ? (skill.skill.description | characters:300) : skill.skill.description}}
+                      <a role="link" href ng-if="skill.wikipediaUrl" ng-href="{{skill.wikipediaUrl}}" target="_blank" aria-label="Click for more information from Wikipedia, on {{skill.skill.displayName}} skills">more information on this skill</a>
+                    </p>
+                    <p class="incorrect-desc-rightbottom">
+                      <a role="link" href class="incorrect-desc" ng-click="skillCtrl.vm.confirmInvalidSkillDescription(skill)"><span class="fa fa-flag"></span><em aria-label="Click if the description for the {{skill.skill.displayName}} skill doesn't look right">This description doesn't look right</em></a>
+                    </p>
+                    <div class="skill-relation-wrapper" ng-if="skill.userJobCodesThisSkillAppearsIn.length" tabindex="0">
+                      <div class="skill-relation-goal font-bold">This skill is also important for other career
+                        <ng-pluralize count="skill.userJobCodesThisSkillAppearsIn.length" when="{'one': 'goal','other': 'goals'}"></ng-pluralize>:</div>
+                      <div class="goal-items font-bold" ng-cloak>
+                        <span ng-repeat="relatedJob in skill.userJobCodesThisSkillAppearsIn">
+                          <a role="link" href ng-click="skillCtrl.vm.params.goalId = relatedJob.id; skillCtrl.vm.getSkills();">{{relatedJob.name}}</a>{{!$last ? ', ' : ''}}
+                      </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skillbuilder-nodata-results" ng-if="skillCtrl.vm.skills.length === 0" aria-error>
+            <p> Sorry, we don’t have any data on the skills required for <span class="job-name-selected" ng-bind="(skillCtrl.vm.goals | filter:skillCtrl.vm.params.goalId)[0].name"></span>. Select another Career Goal from the dropdown list above to see what skills are needed for that job. </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+{
+  "name": "angular-circles",
+  "main": "angular-circles.js",
+  "homepage": "https://github.com/ActivKonnect/angular-circles",
+  "authors": [
+    "BrunoCartier <bruno.cartier@activkonnect.com>"
+  ],
+  "description": "Simple wrapper to use the circles library in your AngularJS projects",
+  "keywords": [
+    "circles",
+    "circle",
+    "graph",
+    "svg",
+    "animation",
+    "responsive",
+    "js",
+    "javascript",
+    "angular",
+    "angularjs",
+    "directive"
+  ],
+  "license": "WTFPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "example"
+  ],
+  "dependencies": {
+    "circles": "lugolabs/circles#63b38de34d3e9b1fc5ee992f51f50976090cf019"
+  },
+  "_release": "46dadbf6b5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "46dadbf6b5d28e73f47615179d5a3f7c4e3c9eda"
+  },
+  "_source": "git://github.com/mmaday/angular-circles.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/mmaday/angular-circles"
+}

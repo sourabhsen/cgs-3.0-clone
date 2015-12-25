@@ -1,0 +1,12 @@
+<div ng-if="!inline">
+  <h2 style="margin-bottom:14px">Oops! We broke something.</h2>
+  <em ng-if="parsingProblems">{{ message ? message : "There was an error loading this page. Please try refreshing your browser." }}</em>
+  <em ng-if="!parsingProblems" ng-repeat="parsedError in parsedErrors">{{parsedError}}</em>
+  <div style="font-size: 12px;font-weight: bold;">
+    <a href="" role="button" ng-click="reload(toUrl)" class="text-transform: uppercase;">{{(action) ? action : "CLICK HERE TO REFRESH"}}</a>
+  </div>
+</div>
+<div class="error" ng-if="inline">
+  <em ng-if="parsingProblems">{{ message ? message : "Sorry, we're currently unable to load the information you're looking for." }}</em>
+  <em ng-if="!parsingProblems">Sorry, we're currently unable to load the information you're looking for <span ng-repeat="parsedError in parsedErrors">{{parsedError}}</span>.</em>
+</div>

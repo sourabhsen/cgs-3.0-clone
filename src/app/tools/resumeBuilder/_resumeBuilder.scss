@@ -1,0 +1,108 @@
+.resume-builder-container {
+  min-height:25vh;
+  .section-divider {
+    margin-top: 36px;
+    margin-bottom: 36px;
+
+    hr {
+      margin: $padding-large-vertical 0;
+    }
+  }
+
+  .nav-tabs {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .tab-content {
+    background-color: transparent;
+    padding: 0;
+
+    .paper {
+      border-top-width: 0;
+    }
+
+  }
+
+  .tab-pane {
+    background-color: transparent;
+    padding: 0 18px 0 15px;
+
+    .sample-resumes {
+      background-color: $white;
+      border: 1px solid $gray;
+      border-top-width: 0;
+      padding-right: 30px;
+      margin-right: -3px;
+
+      .cta {
+        border-color: $link-color;
+
+        &:hover {
+          border-color: $link-hover-color;
+        }
+      }
+    }
+  }
+
+  .tab-pane:first-child {
+    background-color: transparent;
+    border-width: 0;
+    padding: 0;
+  }
+
+  .list-view {
+    float: right;
+
+    a {
+      border-width: 0;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .button-col .cta:hover {
+    border-color: $btn-primary-border;
+  }
+  .button-col .cta{
+    margin: 10px 0;
+  }
+  .resume-list {
+    min-height:25vh;
+    .container-fluid {
+      @extend .border-box;
+      border-width: 0;
+    }
+
+    &.box-border .container-fluid {
+      border-width: 1px;
+    }
+  }
+
+  .rb-busy-inline {
+    @extend .apt-busy-inline-small;
+  }
+
+  .dropdown {
+    border: none;
+  }
+
+  .close-btn-container {
+
+  }
+
+  .tool-previous-page{
+    a{
+       color:$gray-dark;
+       font-size: 11px;
+       span{
+          margin: 0px 10px 0px 0;
+          top: 1px;
+          position: relative;
+       }
+    }
+  }
+
+}

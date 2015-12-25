@@ -1,0 +1,45 @@
+@font-face {
+  font-family: Raleway;
+  src: url(//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800);
+}
+
+body {
+  p {
+    font-weight: 200;
+  }
+  li {
+    font-size: 14px;
+  }
+}
+
+#milestone-description {
+  font-family: $font-family-sans-serif;
+}
+
+#rockit-header {
+  background-color: #FFFFFF;
+  padding: 15px 0;
+  border-bottom: 1px solid #EEEEEE;
+  #top_nav {
+    list-style: none;
+    padding: 0;
+    margin: 10px 15px 0 0;
+    font-size: 14px;
+    float: right;
+    line-height: 1.6;
+  }
+  &.navbar {
+    min-height: inherit;
+  }
+  .button-top {
+    @extend .btn;
+    @extend .btn-primary;
+    font-size: 14px;
+  }
+}
+
+#rockit-logo {
+  width: 120px;
+  height: 40px;
+  display: block;
+}

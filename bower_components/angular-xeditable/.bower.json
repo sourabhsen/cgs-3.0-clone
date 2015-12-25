@@ -1,0 +1,40 @@
+{
+  "name": "angular-xeditable",
+  "description": "Edit in place for AngularJS",
+  "author": "https://github.com/vitalets",
+  "license": "MIT",
+  "homepage": "http://vitalets.github.io/angular-xeditable",
+  "main": [
+    "dist/css/xeditable.css",
+    "dist/js/xeditable.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "playground",
+    "test",
+    "libs",
+    "docs",
+    "zip",
+    "src",
+    "starter",
+    "Gruntfile.js",
+    "index.html",
+    "jsdoc.conf.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular": "~1.x"
+  },
+  "devDependencies": {},
+  "_release": "f42e82b0d9",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f42e82b0d95bbb35d87932aa5301e49377aaa79c"
+  },
+  "_source": "git://github.com/yeshr/angular-xeditable.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/yeshr/angular-xeditable"
+}

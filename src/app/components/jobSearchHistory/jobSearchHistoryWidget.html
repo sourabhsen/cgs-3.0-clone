@@ -1,0 +1,31 @@
+<div class="jobSearchHisWidget">
+  <section class="">
+    <div class="">
+      <h4 role="dialog" aria-label="Recent Searches" class="recentseaches-title sectionclose" ng-show="jobSearchHistoryLayout === 'standAlone'">
+          <span class="itemtitle">Recent Searches</span>
+        <span class="applied-jobs_drop-icon drop_icon"></span>
+      </h4>
+
+      <div ng-show="(!vm || vm === 0)" class="no-results">You have not searched for any jobs.</div>
+
+      <div class="job two-five no-padding clearfix" ng-repeat="job in vm" ng-show="(vm && vm.length > 0)" ng-class="{'last':$last}">
+        <div class="clearfix row jobInfo">
+            <!-- when the job is active -->
+
+            <div class="title" ng-show="job[0].location || job[0]['keywords.title'] || job[0]['keywords.company'] || job[0]['keywords']">
+
+              <a ng-show="(job && job[0].keywords)" href ng-click="SearchQuery.submitSearchForm('{{job[0].location}}', '{{job[0].keywords}}')">{{job[0].keywords}}<span ng-show="job[0].location" class="title-case ng-binding" aria-hidden="false">, {{job[0].location}}</span></a>
+
+              <a ng-show="(job && job[0]['keywords.title'])" href ng-click="SearchQuery.submitSearchForm('{{job[0].location}}', {value: job[0]['keywords.title'], type: 'title'})">{{job[0]['keywords.title']}}<span ng-show="job[0].location" class="title-case ng-binding" aria-hidden="false">, {{job[0].location}}</span></a>
+
+              <a ng-show="(job && job[0]['keywords.company'])" href ng-click="SearchQuery.submitSearchForm('{{job[0].location}}', {value: job[0]['keywords.company'], type: 'company'})">{{job[0]['keywords.company']}}<span ng-show="job[0].location" class="title-case ng-binding" aria-hidden="false">, {{job[0].location}}</span></a>
+
+              <a ng-show="(job && !job[0]['keywords.company'] && !job[0]['keywords.title'] && !job[0].keywords)" href ng-click="SearchQuery.submitSearchForm('{{job[0].location}}')"><span ng-show="job[0].location" class="title-case ng-binding" aria-hidden="false">{{job[0].location}}</span></a>
+
+            </div>
+            <!-- if we need to put in last searched date: <div ng-show="job[1].searchTime" aria-hidden="false"><span aria-hidden="false" class="title-case ng-binding" aria-hidden="false">{{job[1].searchTime | date:'yyyy-MM-dd HH:mm:ss Z'}}</span></div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

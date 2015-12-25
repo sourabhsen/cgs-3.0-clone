@@ -1,0 +1,48 @@
+<div class="widget jobsLikeThisWidget" ng-show="vm.data.results">
+  <span cg-busy="{promise: jobsLikeThisPromise, profile: 'inlineReplaceSmall'}"></span>
+  <div class="col" cg-busy="{ promise: vm.jobsLikeThisPromise, profile: 'inline' }">
+    <section class="group">
+    <h3 class="four-col">Similar Jobs</h3>
+      <div class="four-col similar-job-details-wrapper" >
+
+        <div ng-if="vm.data.results" class="job ten-two clearfix similar-job-details" ng-repeat="result in vm.data.results" ng-attr-id="{{result.job.jobId}}" ng-class="{'last':$last}">
+          <div class="row jobInfo no-margin clearfix">
+            <div class="no-padding">
+              <a ng-click="vm.sendActivity($index)" ui-sref="auth.tools.view({viewId: 'details', id: result.job.jobId, leftCol: true})" ng-bind="result.job.title"></a>
+              <div>
+                <span ng-show="result.job.companyName || result.job.providerCompanyName" class="company">{{result.job.companyName || result.job.providerCompanyName}}</span>
+                <!-- <span ng-show="(result.job.companyName || result.job.providerCompanyName) && result.job.location.state"> - </span> -->
+                 <div ng-show="result.job.location" class="location">
+                    <span class="title-case">{{result.job.location.city | lowercase }}{{result.job.location.state ? ', ' : ''}}{{result.job.location.state | lowercase }}</span>
+                </div>
+                <!-- <span>{{job}}</span> -->
+                <div class="postedDate">
+                  <small ng-show="result.job.postingDate" class="postedDate">Posted on: {{ result.job.postingDate | date : 'longDate' }}</small>
+                </div>
+              </div>
+            </div>
+            <div class="jobIcons tertiary pull-right clearfix">
+              <!-- <job-playlist job="job" reload-saved-results="jobsDashboardModel.reloadSaved"></job-playlist> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- When the job details page has the expired job error message -->
+        <div ng-if="vm.noResults" class="">
+            <div class="three-nine">
+              <div class="row">
+                <div class="">
+                  <h4>Sorry, there are no results.</h4>
+                  <p>Please return to Job Search page and try your search again.</p>
+                </div>
+                <div class="btnContainer">
+                  <button ui-sref="auth.tools({toolId: 'jobsearch'})" class="button">Go to Job Search</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>

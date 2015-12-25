@@ -1,0 +1,22 @@
+<div class="invalid-desc">
+  <div class="one-col">
+    <div class="row">
+      <div class="col">
+        <a href="" class="modal-close-link" title="Close" role="button" ng-click="$dismiss()"><span class="icon"></span></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p id="dialog1Title{{skill.skill.skillId}}" aria-label="We are happy to take a closer look when something seems inaccurate.  Does this Wikipedia description for {{skill.skill.displayName}} look wrong to you?  Please provide your feedback by clicking one of the next two buttons to let us know if it's ok or wrong.">
+          We are happy to take a closer look when something seems inaccurate. <b>Does the Wikipedia description for "<span ng-bind="skill.skill.displayName"></span>" look wrong to you?</b>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button small-text pull-left" aria-label="Click this button if the wikipedia description for {{skill.skill.displayName}} is OK" type="button" ng-click="$dismiss()">No, it's ok</button>
+        <button class="button small-text pull-right" aria-label="Click this buttonif the wikipedia description for {{skill.skill.displayName}} is wrong" type="button" ng-click="yesWait = vm.reportInvalidSkillDescription(skill.skill.skillId, $close)" cg-busy="{promise: yesWait, profile: 'inlineReplaceSmall'}">Yes, it's wrong</button>
+      </div>
+    </div>
+  </div>
+</div>

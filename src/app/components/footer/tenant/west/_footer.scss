@@ -1,0 +1,4 @@
+// enabled for West's Header height (nav padding is set here as the styles are specific to tenant)
+.footer {
+  z-index: $zindex-header;
+}

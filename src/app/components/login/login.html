@@ -1,0 +1,146 @@
+<section class="login-modal text-center" ng-controller="LoginCtrl as login">
+  <!-- Header -->
+  <header class="one-col">
+    <div class="row">
+      <div class="col">
+        <h1 class="font-large">Sign in</h1>
+        <a ng-if="main && main.mode" href="" class="modal-close-link" ng-click="$dismiss()" title="Close dialog"
+           role="button"><span class="icon"></span></a>
+      </div>
+    </div>
+  </header>
+  <!-- Main -->
+  <div class="eight-off-two">
+    <div class="row">
+      <!-- Left Social Login -->
+      <!--       <section class="primary">
+        <div class="one-col">
+          <div class="row">
+            <header class="col">
+              <h5 class="registration-secondary-head text-center">Sign in faster with social</h5>
+            </header>
+          </div>
+        </div>
+        <div class="one-two-col">
+          <div class="row">
+            <div class="col">
+              <a class="social-login" ng-click="login.login('linkedin')">
+                <span class="fa fa-lg fa-linkedin-square"></span><span class="social-text">Sign in with LinkedIn</span>
+              </a>
+            </div>
+            <div class="col">
+              <a class="social-login" ng-click="login.login('facebook')">
+                <span class="fa fa-lg fa-facebook-official"></span><span class="social-text">Sign in with Facebook</span>
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="social-login" ng-click="login.login('google')">
+                <span class="fa fa-lg fa-google-plus-square"></span><span class="social-text">Sign in with Google+</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="one-col">
+          <div class="row">
+            <div class="col">
+              <span class="registration-info">We'll never post anything without your permission.</span>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- center Divider -->
+      <!--       <div class="secondary">
+        <div class="or-container">
+          <div class="vertical-line"></div>
+          <div class="or-label">or</div>
+          <div class="vertical-line"></div>
+        </div>
+      </div> -->
+      <!-- Right Native Login -->
+      <div class="center-block">
+        <div class="col">
+          <div class="one-col">
+            <div class="row">
+              <div class="col">
+                <alert type="info" ng-if="main.showAccessMessage">Sign in to access this functionality.</alert>
+                <!--<p class="text-center">Sign in with email</p>-->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <form id="loginForm" ng-submit="loginPromise = login.loginNative()" class="registration-form"
+                      name="login.loginForm" novalidate role="form">
+                  <alert type="danger" ng-if="login.server">Invalid Email or Password.</alert>
+                  <alert type="danger" ng-if="login.errorAuth">There was a problem authenticating your user. Please try
+                    again.
+                  </alert>
+                  <div class="form-group center-block"
+                       ng-class="{'has-error': (!login.loginForm.username.$pristine || login.loginForm.$submitted) &&
+                        login.loginForm.username.$invalid}">
+                    <label for="email" class="sr-only">Username (Email)</label>
+                    <input id="email" type="email" name="username"
+                           ng-model="login.formValues.username"
+                           ng-model-options="{ updateOn: 'blur', debounce: { 'blur': 0 } }"
+                           placeholder="youremail@example.com"
+                           class="form-control"
+                           ng-class="{'has-server-error': login.server}"
+                           required
+                           focus-if="true"
+                           focus-delay="500"
+                           autofocus>
+
+                    <div ng-messages="login.loginForm.username.$error"
+                         ng-if="login.loginForm.$submitted || login.loginForm.username.$dirty" class="help-block">
+                      <p ng-message="required">Your email is required.</p>
+
+                      <p ng-message="email">Must be a valid email address.</p>
+                    </div>
+                  </div>
+                  <div class="form-group center-block"
+                       ng-class="{'has-error': (!login.loginForm.password.$pristine || login.loginForm.$submitted) && login.loginForm.password.$invalid}">
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" type="password" name="password"
+                           ng-model="login.formValues.password"
+                           ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0 } }"
+                           placeholder="Password"
+                           class="form-control"
+                           ng-class="{'has-server-error': login.server}"
+                           required>
+
+                    <div ng-messages="login.loginForm.password.$error"
+                         ng-if="login.loginForm.$submitted || login.loginForm.password.$dirty" class="help-block">
+                      <p ng-message="required">Your password is required.</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button form="loginForm" type="submit" class="btn btn-large" id="submit"
+                            cg-busy="{promise: loginPromise, profile: 'inlineReplaceSmall'}"
+                            trigger-change="#email,#password">Sign in
+                    </button>
+                  </div>
+                  <div class="form-group">
+                    <p class="small">
+                      <a ui-sref="un-auth.forgot-password" role="button" tabindex="0"
+                         ng-click="main.go($event, 'password')">Forgot Password?</a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="one-col">
+    <div class="row">
+      <div class="col">
+        <p class="small">Need an account? <a ui-sref="un-auth.registration" role="button" tabindex="0"
+                                             ng-click="main.go($event, 'register')">Sign
+          up.</a></p>
+      </div>
+    </div>
+  </div>
+</section>

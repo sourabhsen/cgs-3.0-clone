@@ -1,0 +1,3 @@
+target/maven-archiver
+target/**/*classes
+target/*.war

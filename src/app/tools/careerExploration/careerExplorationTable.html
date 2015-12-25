@@ -1,0 +1,36 @@
+<section class="five-seven job-container-detail table-view dottedBorderBottom" ng-repeat="careerGoal in careerGoals" ng-attr-data-goal-id="{{careerGoal.rOnet}}">
+  <div class="row goal-item group noMarginBottom">
+    <div class="secondary goal-desc">
+      <div class="goal-title valign-mid"><a ui-sref="auth.tools.view({viewId: 'details', id: careerGoal.rOnet})" ng-bind="careerGoal.name" aria-label="Occupation Title"></a></div>
+    </div>
+    <div class="primary goal-desc">
+      <section class="three-four-five">
+        <div class="row flatten">
+          <div class="col tertiary goal-caption salary-range valign-mid" ng-show="(careerGoal.salaryTrendMin > 0 && careerGoal.salaryTrendMax > 0) && (careerGoal.salaryTrendMin || careerGoal.salaryTrendMax)">
+            <span class="salary-range-short" ng-cloak aria-label="Salary trend: {{careerGoal.salaryTrendMin | abbreviateUSD:K}} - {{careerGoal.salaryTrendMax | abbreviateUSD:K}}">{{careerGoal.salaryTrendMin | abbreviateUSD:K}} - {{careerGoal.salaryTrendMax | abbreviateUSD:K}}</span>
+          </div>
+          <div class="col tertiary goal-caption salary-range" ng-show="(careerGoal.salaryTrendMin <= 0 && careerGoal.salaryTrendMax <= 0) && (careerGoal.salaryTrendMin || careerGoal.salaryTrendMax)">
+            <span class="salary-range-short">&nbsp;</span>
+          </div>
+          <div class="col secondary demand valign-mid">
+            <div class="demand-bar valign-mid">
+              <div ng-class="'demand-' + careerGoal.hiringTrend.replace(' ','').toLowerCase()">
+                <span class="firstdemand"> &nbsp; </span>
+                <span class="spacer"></span>
+                <span class="seconddemand"> &nbsp; </span>
+                <span class="spacer"></span>
+                <span class="thirddemand"> &nbsp; </span>
+                <span class="spacer"></span>
+                <span class="lastdemand"> &nbsp; </span>
+              </div>
+              <label ng-bind="careerGoal.hiringTrend" aria-label="Historical Demand: {{careerGoal.hiringTrend}}"></label>
+            </div>
+          </div>
+          <div class="col primary goal-button">
+            <my-goal-button goal="careerGoal" table-size="true"></my-goal-button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

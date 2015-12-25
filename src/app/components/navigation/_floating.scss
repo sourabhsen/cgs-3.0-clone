@@ -1,0 +1,343 @@
+// ****************************
+// Navigation Left Slide BEGIN
+// ****************************
+#site-banner {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $zindex-header;
+}
+
+body[data-left-nav=true] {
+  @media all and (max-width: 1400px) and (min-width: 401px) {
+    #site-banner .brand-bar,
+    #site-banner .header-nav,
+    #main-content-container,
+    .footer .header-nav {
+      padding-left: 65px;
+    }
+  }
+}
+
+#main-content-container {
+  max-width: $screen-lg;
+  margin: auto;
+  transform: translateX(0px);
+  transition: transform .5s ease;
+}
+
+.nav-column {
+  transition: all .5s ease;
+  background-color: $white;
+  box-shadow: inset -5px 0 6px -3px #888;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  max-width: 65px; //UN-COMMENT TO RESUME NORMAL FUNCTION
+  // max-width: 250px;
+  opacity: .96;
+  position: fixed;
+  overflow: hidden;
+  z-index: $zindex-navbar;
+}
+
+.nav-spacer-bottom {
+  padding-bottom: $nav-bottom-space; // needed for proper scroll of left-nav
+}
+
+.group-title {
+  font-size: 10px;
+  line-height: 16px;
+  margin: 10px 0;
+  color: $gray-darker;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid $gray;
+  display: block;
+  transition: all .5s ease;
+  margin-left: 60px;
+}
+
+.item-title {
+  transition: all .5s;
+}
+
+.nav-wrapper {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100%;
+  height: 100%;
+  transition: all .5s ease;
+  width: auto;
+}
+
+.navbar {
+  margin: 0;
+}
+
+// ****************************
+// Navigation Left Slide END
+// ****************************
+#floating-nav {
+  position: relative;
+  z-index: $zindex-navbar;
+  div.svg-placement {
+    position: absolute;
+    top: 25%;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+  }
+  div.milestone-anchor {
+    position: absolute;
+    top: 25%;
+    left: 50px;
+    min-width: 220px;
+    height: 30px;
+  }
+  .svg-icon {
+    .outline {
+      display: inline;
+      fill: $gray-darker;
+    }
+    .filled {
+      display: none;
+    }
+  }
+  .icon-container {
+    width: 48px;
+  }
+  .icon {
+    display: block;
+    margin-right: 16px;
+    margin-bottom: -6px;
+  }
+  .navUl {
+    list-style: none;
+    padding-left: 5px;
+    margin-bottom: 0;
+  }
+  .navList {
+    position: relative;
+    width: 300px;
+    height: 35px;
+    a {
+      display: block;
+      padding-left: 20px;
+      overflow: hidden;
+      line-height: 35px;
+      font-size: 13px;
+      color: $gray-darker;
+      transform: translateY(-3px);
+    }
+  }
+  svg {
+    // vertical-align: middle;
+  }
+  .nav-dashboard-icon {
+    svg {
+      // margin-top: -10px;
+    }
+    .filled {
+      fill: $dashboard-nav-icon;
+    }
+  }
+  .goals-icon {
+    .filled {
+      fill: $goals-icon;
+    }
+  }
+  .skills-icon {
+    .filled {
+      fill: $skills-icon;
+    }
+  }
+  .resume-icon {
+    .filled {
+      fill: $resume-icon;
+    }
+  }
+  .image-icon {
+    .filled {
+      fill: $image-icon;
+    }
+  }
+  .network-icon {
+    .filled {
+      fill: $network-icon;
+    }
+  }
+  .letter-icon {
+    .filled {
+      fill: $letter-icon;
+    }
+  }
+  .interview-icon {
+    .filled {
+      fill: $interview-icon;
+    }
+  }
+  .strategies-icon {
+    .filled {
+      fill: $strategies-icon;
+    }
+  }
+  .apply-icon {
+    .filled {
+      fill: $apply-icon;
+    }
+  }
+  .career-management-icon {
+    .filled {
+      fill: $career-management-icon;
+    }
+  }
+  .goals-tool-icon {
+    .filled {
+      fill: $goals-icon;
+    }
+  }
+  .skills-tool-icon {
+    .filled {
+      fill: $skills-icon;
+    }
+  }
+  .resume-tool-icon {
+    .filled {
+      fill: $resume-icon;
+    }
+  }
+  .interview-tool-icon {
+    .filled {
+      fill: $interview-icon;
+    }
+  }
+  .search-tool-icon {
+    .filled {
+      fill: $apply-icon;
+    }
+  }
+  .military-icon {
+    .filled {
+      fill: $military-icon;
+    }
+  }
+}
+
+body[data-focus=true] {
+  .navList:focus a {
+    // sets the focus state outline to correctly cover the anchor
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+}
+
+#floating-nav .active {
+  .outline {
+    display: none;
+  }
+  .filled {
+    display: inline;
+  }
+}
+
+body[data-focus=true], body[data-hover=true] {
+  #floating-nav {
+    .navList:hover, .navList:focus {
+      outline: none;
+      a, a:focus, a:active {
+        cursor: pointer;
+        .item-title {
+          text-decoration: underline;
+        }
+      }
+      .outline {
+        display: none;
+      }
+      .filled {
+        display: inline;
+      }
+    }
+  }
+  .nav-column {
+    transition: all .5s ease;
+    max-width: 250px;
+    // on hover, show the titles
+    .group-title {
+      width: 96%;
+      transition: all .5s ease;
+      margin-left: 10px;
+    }
+    .item-title {
+      transition: all .5s ease;
+      height: auto;
+      padding-right: 14px;
+      width: auto;
+    }
+  }
+}
+
+@media all and (max-width: 1700px) and (min-width: 1650px) {
+  // Navigation slideout impacts main content.
+  body[data-focus=true], body[data-hover=true] {
+    #main-content-container {
+      transition: all .5s ease;
+      transform: translateX(40px);
+    }
+  }
+}
+
+@media all and (max-width: 1649px) and (min-width: 1550px) {
+  // Navigation slideout impacts main content.
+  body[data-focus=true], body[data-hover=true] {
+    #main-content-container {
+      transition: all .5s ease;
+      transform: translateX(80px);
+    }
+  }
+}
+
+@media all and (max-width: 1550px) and (min-width: 1400px) {
+  // Navigation slideout impacts main content.
+  body[data-focus=true], body[data-hover=true] {
+    #main-content-container {
+      transition: all .5s ease;
+      transform: translateX(150px);
+    }
+  }
+}
+
+@media all and (max-width: 1399px) and (min-width: 1251px) {
+  body[data-focus=true], body[data-hover=true] {
+    #main-content-container {
+      transition: all .5s ease;
+      transform: translateX(165px);
+    }
+  }
+}
+
+@media all and (max-width: 1250px) and (min-width: 401px) {
+  body[data-focus=true], body[data-hover=true] {
+    #main-content-container {
+      transition: all .5s ease;
+      transform: translateX(185px);
+    }
+  }
+}
+
+@media all and (max-width: 400px) {
+  #main-content-container {
+    //padding-left: 10px;
+    //padding-right: 10px;
+    transition: all .5s ease;
+  }
+}
+
+// Mobile
+@media (max-width: $break-small) {
+  #floating-nav {
+    display: none;
+  }
+}

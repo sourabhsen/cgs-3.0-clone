@@ -1,0 +1,239 @@
+@import url('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,500,700');
+@import url('//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+
+body {
+  &.with-header-default {
+    margin-top: 90px; // To account for header height;
+  }
+}
+
+.nav-wrapper { // custom header/footer padding for proper vertical nav scrolling
+  padding: 240px 0 210px 0;
+}
+
+
+#page-header {
+  margin-top: 50px;
+  background-color: #fff;
+  display: inline-flex;
+  width: 100%;
+}
+
+#main-content {
+  margin-bottom: 50px;
+  background-color: #fff;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+#Dashboard-Container .milestone .milestone-title h5, #Dashboard-Container .dashboard-tool h4, #Dashboard-Container .widget h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#site-banner {
+  position: relative;
+}
+
+header {
+  font-weight: 100;
+  font-family: $headings-font-family;
+  background-color: #fff;
+  .section-breadcrumbs a {
+    text-decoration: underline;
+  }
+}
+
+.dashboard-intro-container {
+  // Hiding H1 on dashboard
+  display: none;
+}
+
+#ivy-header {
+  background-color: #fff;
+  height: 90px;
+  padding-top: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+p, ol, ul, blockquote {
+  font-family: $font-family-sans-serif;
+}
+
+.ivy-logo {
+  background-image: url(components/header/tenant/ivytech/ivy-tech-2015-logo_header.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 42px;
+  margin-left: 40px;
+  max-width: 171px;
+  width: 100%;
+}
+
+#header-search-box, #page-search-box {
+  background-image: url(components/header/tenant/ivytech/icon_search.png);
+  background-repeat: no-repeat;
+  background-position: center right;
+  border: 2px solid #999;
+  font-size: 1.6em;
+  height: 40px;
+  margin-top: -4px;
+  padding: 6px 10px;
+  width: 100%;
+}
+
+#sub-search-links {
+  background-color: #666;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 auto;
+  padding-bottom: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 220px;
+}
+
+#search-button {
+  background: transparent;
+  border: none;
+  height: 30px;
+  width: 30px;
+  display: block;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+#sub-search-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#super-nav {
+    font-size: 1.2em;
+    margin-top: 12px;
+}
+
+#super-nav a {
+  color: #000;
+  text-decoration: none;
+  font-family: $headings-font-family;
+}
+
+#super-nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+#super-nav ul li {
+  display: inline-block;
+  margin-right: 2%;
+  vertical-align: middle;
+}
+
+#super-nav a#home-link {
+  background-image: url(components/header/tenant/ivytech/icon_home-super-nav.png);
+  background-size: 100%;
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+#super-nav a#whitepages-link {
+  background-image: url(components/header/tenant/ivytech/icon_whitepages-super-nav.png);
+  background-size: 100%;
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+#main-menu-button-container {
+  height: 90px;
+  margin-top: -15px;
+}
+
+#main-menu-button {
+  background-image: url(components/header/tenant/ivytech/btn_main-menu.png);
+  cursor: pointer;
+  height: 37px;
+  margin: 20px auto 0 auto;
+  width: 27px;
+}
+
+.submenu-container {
+  background-color: #fff;
+  position: relative;
+}
+
+.home-section-headline {
+  height: auto;
+  margin: 0 auto;
+  min-height: 85px;
+  text-align: center;
+}
+
+.home-section-headline h1 {
+  color: #086c54;
+  display: block;
+  font-size: 4.2em;
+  margin: 0;
+  padding: 16px 0 10px 0;
+  vertical-align: top;
+  width: 100%;
+}
+
+.section-breadcrumbs {
+  /* bottom: 0; */
+  font-size: 1.4em;
+  /* right: 0; */
+  height: 40px;
+  padding-right: 2%;
+  /* position: absolute; */
+  text-align: right;
+  width: auto;
+  display: inline-block;
+  float: right;
+}
+
+.section-submenu {
+  background-color: #8ec63f;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  height: 40px;
+  overflow: hidden;
+  padding-right: 20px;
+  position: absolute;
+}
+
+.section-submenu-arrow {
+  background-image: url(components/header/tenant/ivytech/icon_submenu-arrow.png);
+  background-size: 100%;
+  float: left;
+  height: 10px;
+  margin: 15px 12px 0 12px;
+  width: 12px;
+}
+
+.section-submenu-caption {
+  color: #fff;
+  float: left;
+  font-size: 1.6em;
+  margin-top: 2px;
+}

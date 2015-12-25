@@ -1,0 +1,29 @@
+<div class="goal-item group">
+  <!-- job item starts here-->
+  <div class="goal-desc">
+    <h4 class="goal-title"><div class="valign-mid"><a ui-sref="auth.tools.view({viewId: 'details', id: careerGoal.rOnet})" ng-bind="careerGoal.name | characters:60" title="{{careerGoal.name}}"></a></div></h4>
+    <p class="goal-details" ng-bind="careerGoal.description | characters:80"></p>
+    <p class="more-info">
+      <a ui-sref="auth.tools.view({viewId: 'details', id: careerGoal.rOnet})" class="clearfix moreDetails pull-left"><span class="more-details-icon"></span>More Details</a>
+      <!-- <a href="#" class="infoIcon pull-right" > &nbsp; </a> -->
+    </p>
+    <div class="demand-bar">
+      <div ng-class="'demand-' + careerGoal.hiringTrend.replace(' ','').toLowerCase()">
+        <span class="firstdemand"> &nbsp; </span>
+        <span class="spacer"></span>
+        <span class="seconddemand"> &nbsp; </span>
+        <span class="spacer"></span>
+        <span class="thirddemand"> &nbsp; </span>
+        <span class="spacer"></span>
+        <span class="lastdemand"> &nbsp; </span>
+      </div>
+      <label ng-bind="'HISTORICAL DEMAND - ' + careerGoal.hiringTrend"></label>
+    </div>
+    <div class="goal-caption" ng-show="(careerGoal.salaryTrendMin > 0 && careerGoal.salaryTrendMax > 0) && (careerGoal.salaryTrendMin || careerGoal.salaryTrendMax)">
+      <span class="salary-range-long" ng-cloak>{{careerGoal.salaryTrendMin | currency:undefined:0}} - {{careerGoal.salaryTrendMax | currency:undefined:0}}</span>
+      <p><span class="mini-header text-upper">Annual salary range</span></p>
+    </div>
+  </div>
+  <my-goal-button goal="careerGoal"></my-goal-button>
+</div>
+<!-- job item ends here-->

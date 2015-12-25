@@ -1,0 +1,43 @@
+<div class="navbar navbar-fixed-top" ng-controller="HeaderDefaultCtrl as controller">
+  <div class="header">
+    <div class="brand-top">
+      <div class="brand-bar">
+        <div class="one-col">
+          <div class="col">
+            <a ng-href="/#/"><img src="../../assets/images/u-logo.png" alt="My University" class="universityLogo" />
+              <span aria-hidden="true">University</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-bottom">
+      <div class="header-nav">
+        <div class="one-col">
+          <div class="col">
+            <!-- Need to either use or delete /app/navbar component.  The below is based on navbar -->
+            <ul>
+              <li><a ui-sref="auth.dashboard" ui-sref-active="active"><span class="fa fa-home"></span> Careers</a></li>
+              <li><a ui-sref="auth.tools({toolId: 'jobsearch'})" ui-sref-active="active"><span class="fa fa-search"></span> Search Jobs</a></li>
+              <li class="pull-right" ng-show="user.auth.loginStatus === 'KNOWN'">
+                <button class="not-user-link btn-link" ng-click="logoutWait = controller.logout()" cg-busy="{promise: logoutWait, profile: 'inlineReplaceSmall'}">Not {{user.profile.firstName}}?</button>
+              </li>
+              <li class="pull-right" ng-hide="user.auth.authenticated || user.auth.loginStatus === 'KNOWN'">
+                <a ng-click="controller.login()" href="" ng-show="!user.auth.authenticated" role="button"><span
+                  class="fa fa-sign-in"></span> Sign in</a>
+              </li>
+              <li class="pull-right" ng-show="user.auth.authenticated">
+                <button class="btn-link" ng-click="logoutWait = controller.logout()"
+                        cg-busy="{promise: logoutWait, profile: 'inlineReplaceSmall'}"><span
+                  class="fa fa-sign-out"></span> Sign out</button>
+              </li>
+              <li class="pull-right first-name" ng-show="user.profile.firstName">
+                Hello {{user.profile.firstName}}!
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

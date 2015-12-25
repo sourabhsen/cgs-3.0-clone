@@ -1,0 +1,115 @@
+<section class="one-col interview-prep" ng-controller="InterviewPrepController as iPrep" ng-init="iPrep.init()">
+  <div class="row no-margin">
+    <div class="col">
+      <div class="slide-animate-container">
+        <div class="slide-animate training">
+
+          <!-- section description with Search Box-->
+          <div class="row flatten">
+            <p>The best way to ace any test is to get a sense of the questions in advance. So we've gathered some of the
+              most commonly asked questions to practice on, along with coaching tips to help you with your answers.</p>
+          </div>
+          <div class="row flatten">
+            <form ng-submit="error = iPrep.goToSearch(iPrep.query)" class="search form-inline text-right" role="search">
+
+              <div class="form-group search-input">
+                <label for="interview-search" class="sr-only">Search for more interview questions</label>
+                <input id="interview-search" class="form-control input-lg" type="search"
+                       placeholder="Search for more interview questions" ng-model="iPrep.query"
+                       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
+              </div>
+              <div class="form-group">
+                <button id="desktop-submit" tabindex="0" type="submit" title="Search">
+                  <span class="svg-wrap">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                       viewBox="0 0 231.884 228.942" enable-background="new 0 0 231.884 228.942"
+                       xml:space="preserve">
+                      <path d="M224.639,186.837l-48.573-45.244c7.819-13.53,12.297-29.234,12.297-45.985c0-50.827-41.202-92.029-92.029-92.029
+                        c-50.826,0-92.028,41.202-92.028,92.029c0,50.826,41.202,92.029,92.028,92.029c17.01,0,32.938-4.62,46.609-12.666l49.661,46.257
+                        c2.021,1.882,5.186,1.77,7.067-0.251l25.219-27.074C226.771,191.882,226.659,188.719,224.639,186.837z M37.638,95.609
+                        c0-32.417,26.279-58.696,58.695-58.696c32.418,0,58.696,26.279,58.696,58.696s-26.278,58.696-58.696,58.696
+                        C63.917,154.305,37.638,128.026,37.638,95.609z"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <div ng-if="error" class="has-error text-center" aria-live="assertive">
+                <p class="help-block">Enter a term to search</p>
+              </div>
+            </form>
+          </div>
+          <!-- </section> -->
+
+          <!-- new section main-->
+          <div class="row">
+            <div class="three-nine">
+              <div class="row">
+
+                <!-- section list of questions main-->
+                <div class="secondary no-padding">
+                  <div class="one-col questions-list">
+                    <div class="row">
+                      <div class="col">
+                        <h4>Most Common Interview Questions</h4>
+                      </div>
+                    </div>
+
+                    <div class="row timeline">
+                      <div ng-repeat="question in iPrep.questions track by $index" class="col">
+                        <div class="question" ng-class="{'active': question.active}"
+                             ng-click="iPrep.selectQuestion(question)">
+                          <div class="one-ten">
+                            <div class="row flatten">
+                              <div class="secondary no-padding">
+                                <p class="question-meta-info">
+                                  {{ $index < 9 ? '0' + ($index + 1) : $index + 1 }}
+                                </p>
+                              </div>
+                              <div class="primary no-padding">
+                                <p class="question-text">{{question.questionsText}}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col info-text">
+                        <a target="_blank" href="../../assets/pdfs/InterviewPrep_QA_01.pdf"><i
+                          class="fa fa-file-pdf-o"></i>
+                          Export all questions and answers</a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- section carousel main-->
+                <div class="primary no-padding">
+                  <section class="section-main">
+                    <uib-carousel interval="-1" disable-ng-animate on-carousel-change="iPrep.onSlideChanged(curIndex)"
+                                  template-url="app/tools/interviewPreparation/templates/carousel.html">
+                      <uib-slide ng-repeat="question in iPrep.questions track by $index" active="question.active">
+                        <div class="one-col text-left">
+                          <div class="row">
+                            <div class="col">
+                              <training-video question="question" show-tip="iPrep.tip"></training-video>
+                            </div>
+                          </div>
+                        </div>
+                      </uib-slide>
+                    </uib-carousel>
+                  </section>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<nav role="navigation" class="header-tool-nav three-col">
+  <div class="row" ng-controller="HeaderToolCtrl as headerTool">
+    <div class="col logo">
+      <a href="/" title="Home" rel="home" class="header__logo" id="logo"><img src="app/components/header/tenant/uo/logo.png" alt="Home" class="header__logo-image"></a>
+    </div>
+    <div class="col tool-title-col">
+      <h2 class="tool-title header-bold text-center" ng-cloak><span ncy-breadcrumb-last></span></h2>
+    </div>
+    <div class="col close-col">
+      <a class="close-link pull-right" ui-sref="auth.milestones({milestoneId: headerTool.fromMilestoneSeq, '#': headerTool.fromMilestoneAnchor})" title="Close and return to Milestone {{headerTool.fromMilestoneSeq}}" ng-cloak>
+        <span class="fa fa-times"></span>
+      </a>
+    </div>
+  </div>
+</nav>

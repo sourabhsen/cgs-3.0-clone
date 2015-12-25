@@ -1,0 +1,37 @@
+<form name="jobSearch" class="form-inline search clearfix" ng-submit="searchQuery.submitSearchForm(searchQuery.query.location, searchQuery.keywords)">
+    <div id="searchField" class="two-col">
+
+      <div class="row">
+
+        <div class="col">
+          <careers-jobsearch-autocomplete class="autocomplete"></careers-jobsearch-autocomplete>
+        </div>
+
+        <div class="col">
+          <div class="one-ten">
+            <div class="row">
+              <div class="primary">
+                <careers-location-autocomplete class="autocomplete"></careers-location-autocomplete>
+              </div>
+              <div class="secondary">
+                <button id="desktop-submit" tabindex="0" type="submit" ng-disabled="!(searchQuery.keywords || searchQuery.query.location)" class="form-group">
+                  <span class="svg-wrap">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                       viewBox="0 0 231.884 228.942" enable-background="new 0 0 231.884 228.942"
+                       xml:space="preserve">
+                      <path d="M224.639,186.837l-48.573-45.244c7.819-13.53,12.297-29.234,12.297-45.985c0-50.827-41.202-92.029-92.029-92.029
+                        c-50.826,0-92.028,41.202-92.028,92.029c0,50.826,41.202,92.029,92.028,92.029c17.01,0,32.938-4.62,46.609-12.666l49.661,46.257
+                        c2.021,1.882,5.186,1.77,7.067-0.251l25.219-27.074C226.771,191.882,226.659,188.719,224.639,186.837z M37.638,95.609
+                        c0-32.417,26.279-58.696,58.695-58.696c32.418,0,58.696,26.279,58.696,58.696s-26.278,58.696-58.696,58.696
+                        C63.917,154.305,37.638,128.026,37.638,95.609z"/>
+                    </svg>
+                  </span> Search
+                </button>
+                <button id="mobile-submit" tabindex="0" class="mobile-submit" type="submit" ng-disabled="!(searchQuery.keywords || searchQuery.query.location)">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>

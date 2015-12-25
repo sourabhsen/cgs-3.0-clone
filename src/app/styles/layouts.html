@@ -1,0 +1,249 @@
+<style>
+strong,
+h2,
+h3,
+p {
+  margin-left: 14px;
+}
+
+section {
+  border: solid 1px #000;
+  margin: 10px 0 40px;
+}
+
+div.col,
+div.primary,
+div.secondary,
+div.tertiary {
+  background: #ddd;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+</style>
+
+<h2>Even Column Layouts</h2>
+<h3>Use layout classes below on parent elements, followed by a .row wrapper element, followed by the class .col content elements.</h3>
+
+<strong>one-col</strong>
+<section class="one-col">
+  <div class="row">
+    <div class="col">
+      col
+    </div>
+  </div>
+</section>
+
+<strong>two-col</strong>
+<section class="two-col">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+</section>
+
+<strong>one-two-col</strong>
+<p>Will collapse into 2 columns in -sm- size and expand into one column on -md- and -xs- <em>(used on social buttons on login)</em></p>
+<section class="one-two-col">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+</section>
+
+<strong>three-col</strong>
+<section class="three-col">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+</section>
+
+<strong>four-col</strong>
+<section class="four-col">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+</section>
+
+<strong>six-col</strong>
+<section class="six-col">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+</section>
+
+<hr>
+
+<h2>Uneven Column Layouts</h2>
+<h3>These layouts define larger and smaller columns that can be arranged in any order to equal 12.</h3>
+<h3>Use layout classes on parent elements, followed by a .row wrapper element, followed by the class .primary or .secondary on content elements.</h3>
+
+<strong>two-five</strong>
+<p>Used on login.html and registration.html</p>
+<section class="two-five">
+  <div class="row">
+    <div class="primary">primary</div>
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+  </div>
+</section>
+
+<strong>three-four-five</strong>
+<p>Used on table view of Career Exploration</p>
+<section class="three-four-five">
+  <div class="row">
+    <div class="tertiary">tertiary</div>
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+  </div>
+</section>
+
+<strong>two-three-seven</strong>
+<section class="two-three-seven">
+  <div class="row">
+    <div class="tertiary">tertiary</div>
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+  </div>
+</section>
+
+<strong>five-seven</strong>
+<p></p>
+<section class="five-seven">
+  <div class="row">
+    <div class="tertiary">tertiary</div>
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+  </div>
+</section>
+
+<strong>one-five-six</strong>
+<p>Used on dashboard milestones</p>
+<section class="one-five-six">
+  <div class="row">
+    <div class="tertiary">tertiary</div>
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+  </div>
+</section>
+
+<strong>five-seven</strong>
+<p>Used on dashboard progress</p>
+<section class="one-four-seven">
+  <div class="row">
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+  </div>
+</section>
+
+<strong>three-six</strong>
+<section class="three-six">
+  <div class="row">
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+    <div class="secondary">secondary</div>
+  </div>
+</section>
+
+<strong>one-ten</strong>
+<section class="one-ten">
+  <div class="row">
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+    <div class="secondary">secondary</div>
+  </div>
+</section>
+
+<strong>one-eleven</strong>
+<section class="one-eleven">
+  <div class="row">
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+  </div>
+</section>
+
+<strong>two-eight</strong>
+<section class="two-eight">
+  <div class="row">
+    <div class="secondary">secondary</div>
+    <div class="primary">primary</div>
+    <div class="secondary">secondary</div>
+  </div>
+</section>
+
+<strong>four-eight</strong>
+<section class="four-eight">
+  <div class="row">
+    <div class="primary">primary</div>
+    <div class="secondary">secondary</div>
+  </div>
+</section>
+
+<strong>three-nine</strong>
+<section class="three-nine">
+  <div class="row">
+    <div class="primary">primary</div>
+    <div class="secondary">secondary</div>
+  </div>
+</section>
+
+<hr>
+<h2>Offset Layouts</h2>
+<h3>These layouts are offsets for centering content.</h3>
+<h3>Use layout classes below on parent elements, followed by a .row wrapper element, followed by the class .col content elements.</h3>
+
+<strong>six-off-three</strong>
+<section class="six-off-three">
+  <div class="row">
+    <div class="col">col</div>
+  </div>
+</section>
+
+<strong>eight-off-two</strong>
+<section class="eight-off-two">
+  <div class="row">
+    <div class="col">col</div>
+  </div>
+</section>
+
+<strong>ten-off-one</strong>
+<section class="ten-off-one">
+  <div class="row">
+    <div class="col">col</div>
+  </div>
+</section>
+
+<hr>
+
+<h2>Nested Layouts</h2>
+<h3>Layouts can be nested to the extent of the page size, collapsing will occur if there is not enough room.</h3>
+
+<strong>two-col with a six-off-three on left and two-col on right</strong>
+<section class="two-col">
+  <div class="row">
+    <div class="col">
+      <div class="six-off-three">
+        <div class="row">
+          <div class="col">col</div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="two-col">
+        <div class="row">
+          <div class="col">col</div>
+          <div class="col">col</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<div class="inner-fa left-fa">
+  <span ng-show="!loadingJobKeywords" class="fa fa-search"></span>
+  <span ng-class="{visible: loadingJobKeywords, invisible: !loadingJobKeywords}" class="fa fa-spinner fa-spin"></span>
+
+  <input  autocomplete="off"
+          placeholder="{{(placeholder) ? placeholder : 'Job Title, Keywords, or Company Name'}}"
+          id="searchWords"
+          type="text"
+          uib-typeahead="item as item.value for item in getJobKeywords($viewValue)"
+          uib-typeahead-loading="loadingJobKeywords"
+          ng-model="searchQuery.keywords"
+          typeahead-template-url="app/components/autocomplete/keywordSearch.html"
+          typeahead-wait-ms="300"
+          class="form-control input-lg"
+          aria-label="Search Jobs By Job Title, Keywords, or Company Name"
+          typeahead-foucs-on-exact="false"
+          typeahead-focus-first="false"
+  />
+</div>

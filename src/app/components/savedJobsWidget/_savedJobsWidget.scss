@@ -1,0 +1,17 @@
+.saved-jobs-results-widget {
+  padding: 10px 15px;
+}
+.savedJobsWidget {
+  background-color: $white;
+  div.table-heading {
+    font-weight: 700;
+    border-bottom: solid 1px $black;
+    margin-bottom: 10px;
+  }
+  @media (max-width: $screen-sm-max) {
+    div.saved-jobs-table-layout,
+    div.tertiary {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+.cg-busy-animation.ng-hide-remove {}
+
+.cg-busy-animation.ng-hide-remove.ng-hide-remove-active {
+  @extend .animated;
+  @extend .fadeIn;
+}
+
+.cg-busy-animation.ng-hide-add {
+  @extend .animated;
+  @extend .fadeOut;
+}
+
+@keyframes ball-scale-pulse {
+  0%, 100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+// Base styles
+.apt-busy {
+  width: 100%;
+  z-index: 1051;
+  opacity: 1;
+  .apt-busy-wrapper {
+    &:before, &:after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-color: $brand-info;
+      border: 0 solid $brand-info;
+      opacity: 0.6;
+      position: absolute;
+      top: 1%;
+      left: 48%;
+      animation: ball-scale-pulse 2s infinite ease-in-out;
+    }
+    &:after {
+      animation-delay: -1.0s;
+    }
+  }
+}
+
+// Fixed center of view busy
+.apt-busy-fixed-center {
+  @extend .apt-busy;
+  .apt-busy-wrapper {
+    &:before, &:after {
+      width: 40px;
+      height: 40px;
+      position: fixed;
+      top: 50vh;
+      left: 50%;
+    }
+  }
+}
+
+.apt-busy-fixed-center-small {
+  @extend .apt-busy-fixed-center;
+  .apt-busy-wrapper {
+    &:before, &:after {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Inline busy (buttons)
+.apt-busy-inline {
+  @extend .apt-busy;
+  .apt-busy-wrapper {
+    &:before, &:after {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+}
+
+.apt-busy-inline-small {
+  @extend .apt-busy-inline;
+  .apt-busy-wrapper {
+    &:before, &:after {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Inline replace busy
+.apt-busy-inline-replace {
+  @extend .apt-busy;
+  .apt-busy-wrapper {
+    &:before, &:after {
+      background-color: currentColor;
+      border: 0 solid currentColor;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+}
+
+.apt-busy-inline-replace-small {
+  @extend .apt-busy-inline-replace;
+  .apt-busy-wrapper {
+    &:before, &:after {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.cg-busy-error {
+  .error {
+    em {
+      font-size: $font-size-smallest;
+    }
+  }
+}
+
+.cg-busy-backdrop.site-curtain {
+  opacity: 0.8;
+}

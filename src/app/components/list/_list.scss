@@ -1,0 +1,27 @@
+.userWidget {
+  margin-bottom: 10px;
+  border-radius: 0;
+  background-color: transparent;
+  .dropdown-menu {
+    // border-radius: 0;
+    border-radius: solid 3px $white;
+    border: 0;
+    width: 100%;
+
+    a, {
+      background-color: transparent;
+      border: 0;
+      color: $navbar-default-link-color
+    }
+
+    a:focus, a:hover {
+      background-color: $gray-lighter;
+      color: $black;
+      font-weight: 400;
+    }
+  }
+}
+
+.userWidget:hover {
+    background-color: $gray-lightest;
+}

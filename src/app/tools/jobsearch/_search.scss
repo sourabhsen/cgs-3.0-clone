@@ -1,0 +1,161 @@
+.search {
+  // Changed from margin to padding b/c of background color issues (AA)
+  padding: 10px 0 20px;
+  #searchField {
+    .col, .primary:first-child {
+      @media (max-width: 991px) {
+        padding-right: 15px;
+        margin-bottom: 5px;
+      }
+    }
+    .one-ten {
+      @media (max-width: 991px) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .row {
+      margin-bottom: 0;
+    }
+    #mobile-submit {
+      @extend .visible-xs-inline-block;
+      float: right;
+      width: 100%;
+      margin: 5px 0 5px 0;
+    }
+  }
+  .dropdown, .ui-select-bootstrap .ui-select-toggle {
+    height: 26px;
+    width: 126px;
+    .form-inline .form-control {
+      height: 26px;
+      width: 126px;
+    }
+  }
+  .autocomplete {
+    input {
+      width: 100%;
+    }
+    .fa {
+      font-size: 18px;
+      padding: 15px 10px;
+    }
+  }
+  #desktop-submit {
+    max-height: 50px;
+    padding: 0;
+    font-size: 0;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    width: 50px;
+    .svg-wrap {
+      fill: $blue;
+      svg {
+        width: 50px;
+        max-height: 50px;
+      }
+    }
+    &:focus {
+      svg {
+        fill: $black;
+      }
+    }
+    @extend .hidden-xs;
+  }
+  .col-md-6 {
+    /* first input field */
+    padding-right: 0;
+  }
+}
+
+.tabdesc {
+  padding: 10px 0;
+  border-bottom: 1px dotted;
+  font-size: 13px;
+}
+
+.resultsContent {
+  .resultsHeader {
+    background-color: $red;
+    color: $white;
+    padding: 15px 0 15px 30px;
+  }
+}
+
+.searchResults .resultsContainer {
+  padding: 15px 30px 0 30px;
+}
+
+.jump-link {
+  padding: 0 20px;
+}
+
+#filter-jump-link {
+  opacity: 0;
+  text-decoration: none;
+  &:focus {
+    color: $white;
+    opacity: 1;
+  }
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
+.page .resultsContainer {
+  background-color: $white;
+  padding: 20px;
+}
+
+.sort-by {
+  width: 115px;
+  position: absolute;
+  right: 23px;
+  top: 8px;
+}
+
+.filter-radius {
+  width: auto;
+}
+
+.ui-select-toggle {
+  box-shadow: none;
+  border: 1px solid $gray;
+}
+
+.applied-link {
+  cursor: pointer;
+}
+
+.refineSearch {
+  .facets {
+    margin-top: -30px;
+  }
+
+  .facetContainer {
+    max-height: 300px;
+    overflow: scroll;
+  }
+  .value {
+    line-height: 20px;
+  }
+}
+.jobsearch-company {
+  text-transform: capitalize;
+}
+.jobsLikeThisWidget .btnContainer{
+    margin-top: $line-height-computed;
+    margin-bottom: ($line-height-computed / 2);
+}
+.tool-previous-page{
+    margin-bottom: ($line-height-computed / 2);
+}
+.similar-job-details-wrapper .similar-job-details{
+    border-top: 1px dotted;
+    padding: 10px 0 0 0;
+}
+.similar-job-details-wrapper .similar-job-details:first-child{
+    border-top: 0;
+}

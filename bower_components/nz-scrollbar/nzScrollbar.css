@@ -1,0 +1,47 @@
+.nzScrollbar .nzScrollbar-outer {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    padding-right: 5px;
+}
+/* Indicator */
+
+.nzScrollbar .nzScrollbar-indicator-wrap {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 100%;
+    opacity: .05;
+    pointer-events: none;
+    transition: width .3s ease, height .3s ease, opacity .3s ease, background-color .3s ease, border-radius .3s ease;
+}
+.nzScrollbar:hover .nzScrollbar-indicator-wrap {
+    pointer-events: all;
+    opacity: .4;
+}
+.nzScrollbar .nzScrollbar-indicator-wrap:hover {
+    background-color: rgba(0, 0, 0, .2);
+}
+.nzScrollbar.dragging .nzScrollbar-indicator-wrap {
+    background-color: rgba(0, 0, 0, .2);
+}
+.nzScrollbar .nzScrollbar-indicator {
+    position: absolute;
+    z-index: 99;
+    top: 0px;
+    right: 0px;
+    width: 4px;
+    background-color: black;
+    border: none;
+    min-height: 20px;
+    -webkit-transition: width .3s ease, height .3s ease, opacity .3s ease, background-color .3s ease, border-radius .3s ease;
+    transition: width .3s ease, height .3s ease, opacity .3s ease, background-color .3s ease, border-radius .3s ease;
+}
+.nzScrollbar .nzScrollbar-indicator-wrap:hover .nzScrollbar-indicator {
+    width: 12px;
+}
+.nzScrollbar.dragging .nzScrollbar-indicator {
+    width: 12px;
+}

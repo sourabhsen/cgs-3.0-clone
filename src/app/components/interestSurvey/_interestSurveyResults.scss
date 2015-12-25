@@ -1,0 +1,50 @@
+/** Segmentation Interest Details styles**/
+
+.interest-chart {
+  background: linear-gradient( to bottom, $gray, $gray 2px, transparent 2px, transparent);
+  background-size: 100% 50px;
+  height: 200px;
+  position: relative;
+  h4 {
+    position: absolute;
+    margin: 10px 40%;
+  }
+  .interest-block {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+.interest-chart-1 {
+  background-color: #478B42;
+}
+
+.interest-chart-2 {
+  background-color: #2E8DAA;
+}
+
+.interest-chart-3 {
+  background-color: #065C95;
+}
+
+.interest-chart-4 {
+  background-color: #741372;
+}
+
+.interest-chart-5 {
+  background-color: #F04F22;
+}
+
+.interest-chart-6 {
+  background-color: #E3882E;
+}
+
+.interest-survey-disclaimer {
+  color: $gray-darker;
+}
+
+.interest-descriptions {
+  min-height: 100px;
+}

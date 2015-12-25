@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Logback configuration -->
+<configuration>
+    <contextName>guidance-ui</contextName>
+    <jmxConfigurator/>
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+        <!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy -->
+        <!--for further documentation -->
+        <File>${catalina.base}/logs/guidance-ui.log</File>
+        <encoder>
+            <pattern>%d -%contextName %p %c [%thread] [%X{UNIQUE_MDC_ID}] - %msg %n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <if condition='property("env").contains("devint")||property("env").contains("qa")'>
+            <then>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>${catalina.base}/logs/archive/guidance-ui.%d{yyyy-MM-dd}.log
+                    </fileNamePattern>
+                    <maxHistory>10</maxHistory>
+                </rollingPolicy>
+            </then>
+            <else>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>${catalina.base}/logs/archive/guidance-ui.%d{yyyy-MM-dd}.log
+                    </fileNamePattern>
+                    <maxHistory>90</maxHistory>
+                </rollingPolicy>
+            </else>
+        </if>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d -%contextName %p %c [%thread] [%X{UNIQUE_MDC_ID}] - %msg %n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <!-- No layout specified for appender named [console] of class [org.apache.log4j.ConsoleAppender] -->
+    </appender>
+    <logger name="org.apache.ws" level="${org.apache.ws.logger.level:-ERROR}" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="org.springframework" level="${org.springframework.beans.logger.level:-debug}" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="com.aptimus" level="${com.aptimus.apticore.logger.level:-INFO}" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="org.apache.http" level="${org.apache.http.logger.level:-ERROR}" additivity="false">
+        <appender-ref ref="file"/>
+        <appender-ref ref="console"/>
+    </logger>
+
+    <!-- everything else -->
+  <if condition='property("env").contains("prod")|| property("env").contains("production")'>
+    <then>
+      <root level="info">
+        <appender-ref ref="email" />
+        <appender-ref ref="file" />
+      </root>
+    </then>
+    <else>
+      <root level="debug">
+        <appender-ref ref="email" />
+        <appender-ref ref="file" />
+      </root>
+    </else>
+  </if>
+
+</configuration>

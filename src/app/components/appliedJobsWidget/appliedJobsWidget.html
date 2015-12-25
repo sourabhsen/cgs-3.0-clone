@@ -1,0 +1,126 @@
+<div class="appliedJobsWidget">
+  <span cg-busy="{promise: vm.savedJobsPromise, profile: 'inlineSmall'}"></span>
+  <section class="">
+    <div class="">
+      <h4 role="dialog" aria-label="Applied Jobs Content" class="appliedjob-title sectionclose" ng-show="appliedJobsLayout === 'standAlone'">
+        <a ui-sref="auth.tools({toolId: 'jobsearch', tab: 'applied'})" ng-click="setTab('applied')">
+          <span class="itemtitle">Applied Jobs</span>
+          <span class="itemcount" >( {{vm.totalNumberOfResults}} )</span>
+        </a>
+        <span class="applied-jobs_drop-icon drop_icon"></span>
+      </h4>
+
+      <div ng-hide="vm.results.length" class="no-results">You have not applied to any jobs.</div>
+
+      <!-- column headers -->
+      <div ng-show="vm.results.length">
+        <div class="applied-jobs-table-layout no-padding clearfix table-heading" ng-show="appliedJobsLayout === 'page'">
+          <div class="job two-five appliedJob no-padding clearfix" ng-show="vm.results.length">
+            <div class="jobInfo clearfix row">
+              <div class="primary no-padding  pull-left">
+                <p>Title</p>
+              </div>
+              <div class="primary no-padding  pull-left">
+                <p>Application Status</p>
+              </div>
+              <div class="secondary no-padding pull-left">
+                <p class="pull-right">Last Updated Date</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- list -->
+      <div class="job two-five appliedJob no-padding clearfix" id="{{::job.jobId}}" ng-repeat="job in vm.results | limitTo: vm.limit" ng-show="vm.results.length" ng-attr-id="{{job.jobId}}" ng-class="{'last':$last}">
+        <div class="jobInfo clearfix row">
+          <!-- title for page layout -->
+          <div class="primary no-padding pull-left" ng-if="appliedJobsLayout === 'page'">
+            <!-- when the job is active -->
+            <div class="title" ng-if="(job.jobStatus | lowercase) === 'active' " ng-show="::job.jobTitle">
+              <a ng-click="vm.sendActivity($index)" ui-sref="auth.tools.view({toolId: 'jobsearch', viewId: 'details', id: job.jobId})">{{::job.jobTitle}}</a>
+            </div>
+
+            <!-- when the job is expired -->
+            <div class="title" ng-if="(job.jobStatus | lowercase) === 'expired' " ng-show="::job.jobTitle">
+              <span class="expiredJobText">{{::job.jobTitle}} ({{::job.jobStatus}})</span>
+            </div>
+
+            <div ng-show="job.company" class="company">{{::job.company | lowercase}}</div>
+            <div class="location" ng-show="::job.location">
+              <span class="title-case">{{ ::job.location }}</span>
+            </div>
+            <small class="appliedDate" ng-show="::job.appliedDate">Applied on: {{ ::job.appliedDate | date : 'longDate' }}</small>
+          </div>
+
+          <!-- title for 'widget' and 'standAlone' layouts (hidden in page layout) -->
+          <div class="col pull-left" ng-if="appliedJobsLayout !== 'page'">
+
+            <!-- when the job is active -->
+            <div class="title" ng-if="(job.jobStatus | lowercase) === 'active' " ng-show="::job.jobTitle">
+              <a ui-sref="auth.tools.view({toolId: 'jobsearch', viewId: 'details', id: job.jobId})" ng-click="vm.sendActivity($index)">{{::job.jobTitle}}</a>
+            </div>
+
+            <!-- when the job is expired -->
+            <div class="title" ng-if="(job.jobStatus | lowercase) === 'expired' " ng-show="::job.jobTitle" >
+              <span class="expiredJobText">{{::job.jobTitle}} ({{::job.jobStatus}})</span>
+            </div>
+
+            <div ng-show="::job.company" class="company">{{::job.company | lowercase }}</div>
+            <div class="location" ng-show="::job.location">
+              <span class="title-case">{{ ::job.location }}</span>
+            </div>
+            <small class="appliedDate" ng-show="::job.appliedDate">Applied on: {{ ::job.appliedDate | date : 'longDate' }}</small>
+          </div>
+
+          <!-- application status dropdown -->
+          <div class="primary no-padding pull-left" ng-show="(appliedJobsLayout === 'page') && (job.trackingType === 'MANUAL')">
+            <ui-select ng-model="job.applyStatus" class="manual-status" search-enabled="true" on-select="vm.appliedJobsVM.changeStatus($item, job)">
+              <ui-select-match>{{$select.selected}}</ui-select-match>
+              <ui-select-choices repeat="status in vm.manualStatuses | filter: $select.search">{{status}}</ui-select-choices>
+            </ui-select>
+            <p>
+              <a href="" role="button" ng-show="job.atsTracked && job.trackingType === 'MANUAL' && !job.connectionStatus" ng-click="vm.jobApply(job.id, job.jobId, job.companyId, job.connectionStatus)">Log in to get your automated application status.</a>
+            </p>
+
+            <div ng-show="(job.jobStatus | lowercase) === 'expired' ">
+              <span class="expiredJob">  {{ ::job.jobStatus | uppercase }} </span>
+            </div>
+
+          </div>
+
+          <div class="primary no-padding pull-left" ng-show="(appliedJobsLayout === 'page') && (job.trackingType === 'AUTO')">
+            <p>
+              <span class="auto-tracked pull-left">Auto track:</span><span class="pull-left apply-status">&nbsp;{{job.applyStatus}}</span><br/>
+              <a href="" ng-show="job.connectionStatus === 'INVALID_CREDENTIALS'" ng-click="vm.jobApply(job.id, job.jobId, job.companyId, job.connectionStatus)" role="button">Log in to get your automated application status.</a>
+            </p>
+          </div>
+          <!-- needs to be seen conditionally based on if users auth is expired or not -->
+          <div class="secondary no-padding" ng-show="appliedJobsLayout === 'page'">
+            <div class="row no-margin clearfix">
+              <span ng-show="job.atsTracked && job.trackingType === 'MANUAL' && job.connectionStatus"
+                    class="icon alert-icon pull-right"
+                    popover-template="'app/components/appliedJobsWidget/expiredAlertPopover.html'"
+                    popover-trigger="mouseenter" popover-placement="left" aria-hidden="false"></span>
+            </div>
+            <!-- last updated date -->
+            <div class="row no-margin clearfix">
+              <div class="appliedDate pull-right" ng-show="job.appliedDate">{{ job.lastUpdatedDate | date : 'longDate' }}</div>
+            </div>
+
+            <button class="appliedJobRemove" ng-click="vm.removeAppliedJob(job.id)" id="{{job.id}}">Delete</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="widgetFooterCTA" ng-hide="appliedJobsLayout === 'page'">
+      <div ng-show="vm.totalNumberOfResults > 0" class="col small-link-bold widget-bottom clearfix">
+        <a ui-sref="auth.tools({toolId: 'jobsearch', tab: 'applied'})" ng-click="setTab('applied')" class="small-cta pull-left">See All</a>
+      </div>
+    </div>
+    <div class="moreLink" ng-show="appliedJobsLayout==='page' && vm.results.length">
+      <a href="" role="button" ng-show="vm.isNextPage" class="col small-link-bold" ng-click="vm.pageChange()" aria-label="Jobs">View More</a>
+    </div>
+  </section>
+</div>

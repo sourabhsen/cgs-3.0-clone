@@ -1,0 +1,29 @@
+{
+  "name": "angular-apollo-search-services",
+  "version": "0.0.2",
+  "authors": [
+    "Veronica Canterbury veronica.canterbury@apollo.edu"
+  ],
+  "keywords": [
+    "gulp",
+    "angular",
+    "init",
+    "component"
+  ],
+  "repository": "https://git.corp.aptimus.net/git/eng/angular-apollo-search-services",
+  "main": [
+    "dist/angular-apollo-search-services.js"
+  ],
+  "ignore": [
+    "src",
+    "test",
+    "coverage",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "devDependencies": {
+    "angularjs": "~1.4.0",
+    "angular-mocks": "~1.3.15"
+  }
+}

@@ -1,0 +1,59 @@
+.footer {
+  // height --- Please do not add here .. see _default.scss
+  // do not set position here it will break the Sticky Footer
+  z-index: $zindex-header;
+  border-bottom: 1px solid $gray;
+  font-size: $font-size-smallest;
+  .footer-content {
+    padding: 20px;
+    text-align: center;
+    @extend .container;
+    color: $gray-darker;
+  }
+
+  .ironyardLogo {
+    .bgFill {
+      fill: $logoBgFill;
+    }
+    .textFill {
+      fill: $logoTextFill;
+    }
+  }
+
+  a {
+    color: $footer-text;
+    font-size: 14px;
+    font-weight: bold;
+    &:hover {
+      color: $footer-text;
+      border-bottom: 3px solid rgba(255, 255, 255, .5);
+      text-decoration: none;
+    }
+    &:visited {
+      color: $footer-text;
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    display: block;
+    color: $footer-text;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .privacy-policy, .terms {
+    text-align: center;
+    display: inline-block;
+    padding-right: 7px;
+    a {
+      font-size: 12px;
+      color: $footer-text;
+    }
+  }
+
+  .terms {
+    border-left: 1px solid $footer-text;
+    padding-left: 8px;
+  }
+}

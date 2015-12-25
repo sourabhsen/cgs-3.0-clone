@@ -1,0 +1,72 @@
+$bar-unselected-background: $white;
+$bar-selected-background: $gray;
+$pointer-background: $blue;
+@import 'bower_components/angular-apollo-interest-survey/dist/interestSurvey';
+.interest-survey {
+
+  .header-desc {
+    max-width: 60em;
+  }
+
+  .survey {
+    position: relative;
+    max-width: 60em;
+    padding-left: 8px;
+
+    .text-center {
+      padding-left: 8px;
+    }
+
+    .font-heading {
+      font-weight: bold;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .questions {
+      padding-left: 16px;
+      padding-top: 15px;
+
+      .question-text {
+        text-align: left;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+
+  button {
+    background-color: transparent;
+    &.survey-btn-prev {
+      span {
+        @extend .icon-previous-question;
+        display: block;
+        &.fa-arrow-left:before {
+          content: '';
+        }
+      }
+    }
+    &.survey-btn-next {
+      span {
+        @extend .icon-next-question;
+        display: block;
+        &.fa-arrow-right:before {
+          content: '';
+        }
+      }
+    }
+  }
+  .slider span.steps .marker span {
+    margin-bottom: 7px;
+  }
+  .survey-slider {
+    .rz-pointer:focus, .rz-pointer.rz-active {
+      @include tab-focus();
+    }
+
+    .rz-ticks {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

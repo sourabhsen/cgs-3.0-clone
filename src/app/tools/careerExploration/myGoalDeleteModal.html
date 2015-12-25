@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="one-col text-center">
+    <div class="row">
+      <div class="col">
+        <p>Are you sure you want to remove the goal <strong>{{myGoalDel.goal.$details.name}}</strong> from your list?</p>
+        <div class="row">
+          <div class="col">
+            <button ng-click="deleteWait = myGoalDel.deleteGoal()" cg-busy="{promise: deleteWait, profile: 'inlineReplaceSmall'}">Delete</button>
+            <button class="btn-default" ng-click="$dismiss(false)">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

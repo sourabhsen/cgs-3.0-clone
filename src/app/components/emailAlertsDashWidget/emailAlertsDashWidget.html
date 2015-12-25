@@ -1,0 +1,65 @@
+<section class="email-alerts-container widget one-col padding-small-horizontal" ng-init="alertsLoadWait = alertsCtrl.getAlerts()"
+         cg-busy="{promise: alertsLoadWait, backdrop: false, profile: 'inlineSmall'}">
+
+  <div class="widget-content row">
+    <div class="col">
+      <h3>
+          My Alerts
+      </h3>
+    </div>
+    <div class="col-md-12" ng-if="alertsCtrl.userAuthenticated === 'true'">
+      <div ng-hide=" alertsCtrl.model.alerts.length" class="no-results">You have no job alerts set.</div>
+      <div  data-user-notification-id="{{alert.userNotificationId}}"
+            id="{{alert.userNotificationId}}"
+            ng-show="alertsCtrl.model.alerts.length"
+            ng-repeat="alert in alertsCtrl.model.alerts | limitTo: (alertsCtrl.limit || alertsCtrl.model.alerts.length)"
+            class="job"
+            ng-class="{'last':$last}">
+
+        <div class="row" cg-busy="{promise: alertEditWait, profile: 'inlineSmall'}">
+          <div class="col-xs-10">
+            <div class="alert-title">
+              <a class="alertTitle" ng-href="{{::alertsCtrl.getSearchNotificationUri(alert)}}" >{{::alert.userNotificationTitle}}</a>
+            </div>
+            <!-- actions -->
+            <div class="alert-actions row" >
+              <div class="col-xs-2">
+                <a href="" role="button" ng-click="alertEditWait = alertsCtrl.editAlert(alert); false">
+                  <small>Edit</small>
+                </a>
+              </div>
+              <div class="col-xs-3">
+                <div ng-switch="alert.status">
+                  <!-- Inner scoped promise -->
+                  <a href="" role="button" ng-switch-when="Enabled" ng-click="alertEditWait = alertsCtrl.pauseAlert(alert); false">
+                    <small>Pause</small>
+                  </a>
+                  <a href="" role="button" ng-switch-when="Paused" ng-click="alertEditWait = alertsCtrl.restartAlert(alert); false">
+                    <small>Restart</small>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xs-3">
+                <a href="" role="button" ng-click="alertEditWait = alertsCtrl.deleteAlert(alert); false">
+                  <small>Delete</small>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <i class="fa fa-bell" ng-show="'Enabled' === alert.status"
+               ng-click="alertEditWait = alertsCtrl.pauseAlert(alert)"></i>
+            <i class="fa fa-bell-slash" ng-show="'Paused' === alert.status"
+               ng-click="alertEditWait = alertsCtrl.restartAlert(alert)"></i>
+          </div>
+        </div>
+      </div>
+      <div class="widget-bottom"></div>
+      <div ng-show="alertsCtrl.limit && alertsCtrl.model.alerts.length > 0" class="clearfix">
+        <a ui-sref="auth.tools({toolId: 'jobsearch', tab: 'emailAlerts'})" ng-click="alertsCtrl.setTab('emailAlerts')" class="small-cta pull-left">See
+          All</a>
+      </div>
+    </div>
+    <div class="col-md-12" ng-if="alertsCtrl.userAuthenticated !== 'true'" >Sign in to see your email alerts.</div>
+  </div>
+</section>

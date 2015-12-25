@@ -1,0 +1,84 @@
+<section arial-label="Leave Feedback" role="dialog" class="feedback-form text-center" ng-controller="FeedbackCtrl as fbModalCtrl">
+  <!-- Header -->
+  <header class="one-col">
+    <div class="row">
+      <div class="col">
+        <h1 class="font-large">Share Your Feedback</h1>
+        <a href role="button" class="modal-close-link" ng-click="$dismiss(); fbModalCtrl.vm.btnDisabled = false" title="Close" ><span class="icon"></span></a>
+      </div>
+    </div>
+  </header>
+  <main class="eight-off-two">
+    <div class="row">
+      <section class="col">
+        <div class="one-col">
+          <section class="row">
+            <div class="col">
+              <form id="frmAptiNet" ng-submit="fbModalCtrl.vm.submitFeedback()">
+                <input type="hidden" name="url" id="aptLinkURL" value="{{fbModalCtrl.vm.locationPath}}">
+                <input type="hidden" name="hpid" id="aptHpid" value="{{fbModalCtrl.vm.user.auth.profileId}}">
+                <input type="hidden" name="email_hidden" id="aptEmailHiddenAddress" value="{{user.profile.emailAddress}}">
+                <input type="hidden" name="irn" id="aptIrn" value="{{user.profile.irn}}">
+                <input type="hidden" name="browser" id="aptBrowser" value="{{fbModalCtrl.vm.browser.name}}">
+                <input type="hidden" name="version" id="aptVersion" value="{{fbModalCtrl.vm.browser.version}}">
+                <input type="hidden" name="authstatus" id="authStatus" value="{{fbModalCtrl.vm.user.auth.loginStatus}}">
+                <input type="hidden" name="hidden2" id="aptIPAddress" value="{{fbModalCtrl.vm.ipAddr}}" >
+                <input type="hidden" name="sessionid" id="sessionId" value="{{fbModalCtrl.vm.user.auth.sessionId}}">
+                <input type="hidden" name="tenantid" id="tenantId" value="{{fbModalCtrl.vm.tenantId}}">
+                <input type="hidden" name="email_address" id="aptEmailAddress" value="{{user.profile.emailAddress}}">
+                <input type="hidden" name="poid" value="{{fbModalCtrl.vm.poid}}">
+                <input type="hidden" name="mode" value="{{fbModalCtrl.vm.mode}}">
+                <input type="hidden" name="page" value="ordernodeconfirm">
+                <input type="hidden" name="output" value="text/xml">
+                <p title="Please select one of the following options.">What type of feedback is this?</p>
+                <div class="inputSet" id="aptFeedbackType">
+
+                  <input autofocus ng-focus="true" aria-labelledby="Feedback Problem" type="radio" name="feedback_type" id="aptFeedbackTypeProblem" value="Problem">
+                  <label aria-describedby="aptFeedbackTypeProblem" for="aptFeedbackTypeProblem">Problem</label>
+
+                  <input aria-labelledby="Feedback Problem" type="radio" name="feedback_type" id="aptFeedbackTypeCompliment" value="Compliment">
+                  <label aria-describedby="aptFeedbackTypeCompliment" for="aptFeedbackTypeCompliment">Compliment</label>
+
+                  <input aria-labelledby="Feedback Problem" type="radio" name="feedback_type" id="aptFeedbackTypeSuggestion" value="Suggestion" checked>
+                  <label aria-describedby="aptFeedbackTypeSuggestion" for="aptFeedbackTypeSuggestion">Suggestion</label>
+                </div>
+                <div class="comments">
+                  <label aria-hidden="true" id="feedback-commentary" for="aptAddComment">
+                    Please add your comments here:
+                  </label>
+                  <textarea cols="30" rows="5" wrap="virtual"
+                            aria-labeledby="feedback-commentary feedback-char-hint"
+                            aria-required="true"
+                            name="comments"
+                            id="aptAddComment"
+                            ng-trim="false"
+                            ng-model="fbModalCtrl.vm.comment"
+                            maxlength="{{fbModalCtrl.vm.maxCommentLength}}"></textarea>
+                  <div id="feedback-char-hint" aria-hidden="true" class="hint">{{fbModalCtrl.vm.maxCommentLength - fbModalCtrl.vm.comment.length}} remaining characters</div>
+                </div>
+                <button ng-hide="fbModalCtrl.vm.formSuccess || fbModalCtrl.vm.formError" class="button" type="submit" id="submitButton">Submit Feedback</button>
+              </form>
+            </div>
+          </section>
+
+          <!-- <div role="alertdialog" title="feedback-post-submission" class=""> -->
+            <section class="row" ng-show="fbModalCtrl.vm.formSuccess" ng-app="string">
+              <div class="col">
+                <h5 class="success">Thank you for taking the time to provide feedback.</h5>
+                <p class="success">We appreciate your support.</p>
+              </div>
+            </section>
+            <section class="row" ng-show="fbModalCtrl.vm.formError" >
+              <div class="col">
+                <h5 class="error">We're sorry, there was an error submitting your feedback.  Please try again later.</h5>
+              </div>
+            </section>
+            <button autofocus ng-focus="true" class="button" ng-if="fbModalCtrl.vm.formSuccess || fbModalCtrl.vm.formError" ng-click="$dismiss(); fbModalCtrl.vm.btnDisabled = false" tabindex="1">Close</button>
+
+          <!-- </div> -->
+
+        </div>
+      </section>
+    </div>
+  </main>
+</section>

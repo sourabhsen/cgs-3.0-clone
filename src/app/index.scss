@@ -1,0 +1,23 @@
+// manually import non-underscore (_) prefixed files to control ordering
+
+/* bootstrap overrides - will be included from tenant/[uiTenant]/ directory */
+@import 'bootstrap-variables';
+// glyphicons not in use, overriding anyway
+$icon-font-path: '../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/';
+$fa-font-path: '/fonts';
+// font-awesome will be imported via bower dependencies
+@import 'styles/bootstrap-custom';
+@import 'styles/app-shared';
+
+/* @media breakpoints */ 
+$break-xsmall: 320px;  
+$break-small: 400px;
+$break-sm-medium: 480px;
+$break-medium: 768px;
+$break-large: 992px;
+$break-xlarge: 1300px;
+
+
+// automatically inject .scss files
+// injector
+// endinjector

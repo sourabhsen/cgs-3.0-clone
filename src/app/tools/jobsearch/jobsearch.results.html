@@ -1,0 +1,159 @@
+<!-- consider renaming jobsModel to jobSearch, so variables down the line will be jobSearch.model -->
+<div ng-controller="JobSearchCtrl as jobsModel" class="page searchResults clearfix" cg-busy="{promise: jobsModel.model.searchQuery.results, profile: 'fixedCenter'}">
+  <div class="clearfix tool-previous-page one-col">
+    <a class="pull-left mini-header text-uppercase " href ng-click="back()">
+      <span class="icon icon-previous" aria-hidden="true">&nbsp;</span>Back to previous page
+    </a>
+  </div>
+  <job-search-form></job-search-form>
+  <div ng-show="jobsModel.model.data">
+
+    <div ui-view="leftColumn" class="col-md-3 leftColumn">
+      <div class="group refineSearch widget border-box" ng-show="jobsModel.model.data.totalNumberOfResults > 0">
+        <div class="facets">
+          <h3 tabindex="0" id="refine-title">Refine this search</h3>
+
+          <div ng-show="jobsModel.model.modifiedFacets.length" class="panel-heading">
+            <h5 ng-repeat="modifiedFacet in jobsModel.model.modifiedFacets" class="noExpand">
+              <input type="checkbox"
+                     ng-model="jobsModel.model.searchQuery.query[jobsModel.model.searchQuery.filterMap[modifiedFacet.name].name]"
+                     ng-change="jobsModel.model.setModifiedFilter(jobsModel.model.searchQuery.filterMap[modifiedFacet.name].name, jobsModel.model.searchQuery.query[jobsModel.model.searchQuery.filterMap[modifiedFacet.name].name])"
+                     ng-checked="jobsModel.model.searchQuery.modifiedFilterChecked(jobsModel.model.searchQuery.filterMap[modifiedFacet.name].name, jobsModel.model.searchQuery.query[jobsModel.model.searchQuery.filterMap[modifiedFacet.name].name])"
+                     />
+              <span class="">{{modifiedFacet.name}}</span> <span class="count">({{modifiedFacet.values[0].count}})</span>
+            </h5>
+          </div>
+          <uib-accordion id="filter-Distance" close-others="oneAtATime" ng-show="jobsModel.model.data.radiusUsed">
+            <uib-accordion-group ng-click="jobsModel.model.toggleDropdown('Distance', jobsModel.model.searchQuery.filterMap['Distance'].isOpen)" is-open="jobsModel.model.searchQuery.filterMap['Distance'].isOpen">
+              <uib-accordion-heading><span ng-class="{'open': jobsModel.model.searchQuery.filterMap['Distance'].isOpen, 'closed': !jobsModel.model.searchQuery.filterMap['Distance'].isOpen}" class="expandicon"></span>Distance
+              </uib-accordion-heading>
+              <ui-select ng-model="jobsModel.model.radius" class="filter-radius" on-select="jobsModel.model.radiusChanged($item, $model)">
+                <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="radius.value as radius in jobsModel.model.radiusOptions | filter: $select.search">
+                  {{radius.name}}
+                </ui-select-choices>
+              </ui-select>
+            </uib-accordion-group>
+          </uib-accordion>
+          <uib-accordion id="filter-{{facet.name}}" close-others="oneAtATime" ng-repeat="facet in jobsModel.model.facetFields">
+            <uib-accordion-group ng-show="facet.name" ng-click="jobsModel.model.toggleDropdown(facet.name, jobsModel.model.searchQuery.filterMap[facet.name].isOpen)" is-open="jobsModel.model.searchQuery.filterMap[facet.name].isOpen">
+              <uib-accordion-heading><span aria-expanded="!!jobsModel.model.searchQuery.filterMap[facet.name].isOpen" ng-class="{'open': jobsModel.model.searchQuery.filterMap[facet.name].isOpen, 'closed': !jobsModel.model.searchQuery.filterMap[facet.name].isOpen}" class="expandicon"></span>{{facet.name}}</uib-accordion-heading>
+              <div class="facetContainer">
+                <div nz-scrollbar=" " use-css-translate="false" class="scrollContainer">
+                  <h6 ng-repeat="value in facet.values" for="{{facet.name + $index}}" class="checkbox">
+                    <label class="value">
+                      <input title="{{value.name}}" tabindex="0" role="checkbox" type="checkbox"
+                             id="{{facet.name + $index}}" name="{{value.name}}"
+                             ng-checked="jobsModel.model.searchQuery.filterChecked(facet.name, value.name)"
+                             ng-click="jobsModel.model.filteredResults(facet.name, value.name)"/>
+                      <span aria-groupedBy="{{facet.name + $index}}" class="name">{{value.name}}</span>
+                      <span aria-groupedBy="{{facet.name + $index}}" class="count">({{value.count}})</span>
+                    </label>
+                  </h6>
+                </div>
+              </div>
+            </uib-accordion-group>
+          </uib-accordion>
+          <uib-accordion id="filter-{{range.name}}" close-others="oneAtATime" ng-repeat="range in jobsModel.model.facetRanges">
+            <uib-accordion-group ng-click="jobsModel.model.toggleDropdown(range.name, jobsModel.model.searchQuery.filterMap[range.name].isOpen)" is-open="jobsModel.model.searchQuery.filterMap[range.name].isOpen">
+              <uib-accordion-heading><span ng-class="{'open': jobsModel.model.searchQuery.filterMap[range.name].isOpen, 'closed': !jobsModel.model.searchQuery.filterMap[range.name].isOpen}" class="expandicon"></span>{{range.name}}</uib-accordion-heading>
+              <div class="facetContainer">
+                <div class="scrollContainer" nz-scrollbar=" " use-css-translate="false">
+                  <h6 ng-repeat="count in range.counts" for="{{range.name + $index}}" class="checkbox">
+                    <label class="value" for="{{range.name + $index}}">
+                      <input type="checkbox" id="{{range.name + $index}}" name="{{count.value}}"
+                             ng-checked="jobsModel.model.searchQuery.filterChecked(range.name, count.value)"
+                             ng-click="jobsModel.model.filteredResults(range.name, count.value)" />
+                      <span class="name">{{count.value}}</span>
+                      <span ng-show="range.name === &quot;Experience Level&quot;">years</span>
+                      <span class="count">({{count.count}})</span>
+                    </label>
+                  </h6>
+                </div>
+              </div>
+            </uib-accordion-group>
+          </uib-accordion>
+        </div>
+        <h6><a href="" role="button" ng-click="jobsModel.model.clearFilters()" class="clear-filters">Clear</a></h6>
+      </div>
+
+      <!-- Job Alert Component -->
+      <div class="email-alert-trigger">
+        <email-alert-trigger profile-id="{{user.profileId}}" email-address="{{user.profile.emailAddress}}" is-auth="user.isAuthenticated()" authenticate="user.launchLoginModal(callback)" max-alerts="8"></email-alert-trigger>
+      </div>
+      <div class="email-alert-widget border-box" ng-if="user.isAuthenticated()">
+        <email-alerts-widget limit="3" profile-id="{{user.profileId}}" on-search="jobsModel.savedSearch(params)"></email-alerts-widget>
+      </div>
+
+      <!-- Applied Jobs Component -->
+      <div class="applied-jobs-results-widget border-box">
+        <applied-jobs-widget limit="3" applied-jobs-layout="standAlone" profile-id="{{user.profileId}}"></applied-jobs-widget>
+      </div>
+
+      <!-- Saved Jobs Component -->
+      <div class="saved-jobs-results-widget border-box">
+        <saved-jobs-widget saved-jobs-layout="standAlone" profile-id="{{user.profileId}}" reload-saved-results="jobsModel.model.reloadSaved"></saved-jobs-widget>
+      </div>
+
+      <!-- Job Search History Component -->
+      <div class="job-search-history-widget border-box">
+        <job-search-history-widget limit="3" job-search-history-layout="standAlone" profile-id="{{user.profileId}}"></job-search-history-widget>
+      </div>
+    </div>
+
+
+    <div ui-view="content" class="col-md-9 jobContent">
+      <div class="resultsContent border-box">
+        <div ng-show="jobsModel" class="resultsHeader clearfix">
+          <ng-pluralize count="jobsModel.model.totalNumberOfResults" when="{'0': 'No results ','1': '{} result ', '-1': 'Searching...', 'other': '{{jobsModel.model.totalNumberOfResults | number}} results '}"></ng-pluralize>
+          <span ng-show="(jobsModel.model.totalNumberOfResults >= 0) && (jobsModel.model.searchQuery.query['keywords.title'] || jobsModel.model.searchQuery.query['keywords.company'] || jobsModel.model.searchQuery.query.keywords)">
+            for {{jobsModel.model.searchQuery.query.keywords || jobsModel.model.searchQuery.query["keywords.title"] || jobsModel.model.searchQuery.query["keywords.company"] }}
+          </span>
+          <span class="title-case" ng-show="(jobsModel.model.totalNumberOfResults >= 0) && jobsModel.model.shownLocation">in {{::jobsModel.model.searchQuery.query.location | lowercase}}</span>
+          <span class="jump-link">
+            <button ng-click="jobsModel.focusFilter()" id="filter-jump-link" class="btn-link">skip to refine results
+            </button>
+          </span>
+          <ui-select ng-model="jobsModel.model.sortBy" class="sort-by pull-right" on-select="jobsModel.model.sortChanged($item, $model)">
+            <ui-select-match>{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="sort.value as sort in jobsModel.model.sortCriterias | filter: $select.search">
+              {{sort.name}}
+            </ui-select-choices>
+          </ui-select>
+        </div>
+
+        <div class="resultsContainer clearfix">
+          <div ng-repeat="job in jobsModel.model.data" id="{{job.job.jobId}}" class="job clearfix">
+            <div class="jobInfo pull-left">
+              <div ng-show="job.job.title" class="title"><a ng-click="jobsModel.model.sendActivity($index)" ui-sref="auth.tools.view({viewId: 'details', id: job.job.jobId, leftCol: true})">{{ job.job.title }}</a>
+              </div>
+              <div ng-show="job.job.companyName || job.job.providerCompanyName" class="jobsearch-company">
+                {{::job.job.companyName || job.job.providerCompanyName | lowercase }}
+              </div>
+              <div ng-show="job.job.location" class="title-case location"><span>{{job.job.location.city | lowercase}}{{job.job.location.state ? ', ' : ''}}{{job.job.location.state | lowercase}}</span>
+              </div>
+              <small ng-show="job.job.postingDate" class="postedDate">Posted on: {{ job.job.postingDate | date
+                :'longDate' }}
+              </small>
+            </div>
+            <div class="jobIcons pull-right clearfix">
+              <div class="icons">
+                <span ng-show="job.tuitionReimbursement" class="icon icon-tuition-assistance" popover-template="'app/components/popovers/tuitionAssistance.html'" popover-trigger="mouseenter" popover-placement="left"></span>
+                <span ng-show="job.preferredPartner" class="icon icon-preferred-partner" popover-template="'app/components/popovers/preferredPartner.html'" popover-trigger="mouseenter" popover-placement="left"></span>
+              </div>
+              <a ui-sref="auth.tools({toolId: 'jobsearch', tab: 'applied'})" ng-click="jobsModel.setTab('applied')"
+                 class="applied-link" ng-show="job.applied">View
+                My Application Status</a>
+              <job-playlist job="job" reload-saved-results="jobsModel.model.reloadSaved" ng-hide="job.applied"></job-playlist>
+            </div>
+          </div>
+          <div ng-show="jobsModel.model.showPagination">
+            <uib-pagination total-items="jobsModel.model.data.totalNumberOfResults" ng-model="jobsModel.model.currentPageNumber" boundary-links="true" max-size="5" rotate="false" ng-change="jobsModel.model.pageChanged(jobsModel.model.currentPageNumber)"></uib-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="group recent-searches widget border-box">
+  <div class="col">
+    <section class="">
+      <div class="">
+        <h3 class="sectionclose"><span>Recent Searches</span></h3>
+        <span cg-busy="{promise: vm.recentSearchesPromise, profile: 'inlineReplaceSmall'}"></span>
+        <div ng-hide="vm.data" class="no-results">You have not saved any jobs.</div>
+        <div ng-repeat="job in vm.data" ng-attr-id="{{job.job.jobId}}" class="job clearfix" ng-class="{'last':$last}">
+          <div class="jobInfo pull-left">
+            <div ng-show="job.job.title" class="title"><a ui-sref="auth.tools.view({toolId: 'jobsearch', viewId: 'details', id: job.job.jobId})">{{job.job.title}}</a></div>
+            <div ng-show="job.job.providerCompanyName" class="company">{{job.job.providerCompanyName}}</div>
+            <div ng-show="job.job.location" class="location">
+              <span>{{job.job.location.city}}{{job.job.location.state ? ', ' : ''}}{{job.job.location.state}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

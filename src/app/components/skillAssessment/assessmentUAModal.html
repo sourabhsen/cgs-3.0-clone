@@ -1,0 +1,24 @@
+<div class="smarterer-ua-modal">
+  <div class="one-col">
+    <div class="row">
+      <div class="col">
+        <div class="smartererUAContent" ng-bind-html="suam.userAgreementHtml"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="smarterer_agree" type="button" ng-click="agreeWait = suam.agree()" cg-busy="{promise: agreeWait, profile: 'inlineReplaceSmall'}">I agree</button>
+        <button class="smarterer_cancel" type="button" ng-click="$dismiss()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="subcontainer">
+  <div class="smartererUAContent" ng-bind-html="suam.userAgreementHtml"></div>
+  <div class="smartererUAButton">
+    <button class="smarterer_agree" type="button" ng-click="suam.agree()">I agree</button>
+    <button class="smarterer_cancel" type="button" ng-click="$dismiss()">Cancel</button>
+  </div>
+</div>
+ -->

@@ -1,0 +1,34 @@
+
+<nav ng-controller="Navigation as nav" id="floating-nav" ng-class="{ focused : nav.focus }" role="navigation" aria-label="Left Navigation">
+  <p class="sr-only" role="heading">Use the following links to navigate to specific portions of the Career Guidance System.</p>
+  <div  class="nav-column"
+        data-hover="false"
+        data-focus="false"
+        ng-mouseenter="nav.setHoverState(true)"
+        ng-mouseleave="nav.setHoverState(false)">
+    <div class="nav-wrapper">
+      <div class="navUl" ng-repeat="lists in nav.navigation">
+        <span class="group-title" ng-show="lists.title != 'Home'"><span ng-bind="lists.title"></span></span>
+        <div tabindex="0"  class="navList pointer"
+              ng-repeat="list in lists"
+              ng-focus="nav.setFocusState(true)"
+              ng-blur="nav.setFocusState(false)"
+              ng-class="list.identifier.split('.')[1]"
+              ui-sref="{{list.appUrl}}"
+              ui-sref-active="active"
+              ui-sref-opts="{inherit: false}"
+              >
+          <div class="svg-placement">
+            <apollo-svg-icon class="apollo-svg-icon" svg-icon="list.icon" file-type="svg"></apollo-svg-icon>
+          </div>
+          <div class="milestone-anchor">
+            <a tabindex="-1">
+              <span class="item-title" ng-cloak>{{list.title === 'Career Guidance' ? 'Career Dashboard' : list.title}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-spacer-bottom"></div>
+    </div>
+  </div>
+</nav>

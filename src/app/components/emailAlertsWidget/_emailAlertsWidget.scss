@@ -1,0 +1,75 @@
+.email-alert-trigger .col-md-12 {
+  padding: 0;
+  button {
+    width: 100%;
+  }
+}
+.email-alert-widget {
+  padding: 10px 15px;
+}
+
+.email-alerts-widget {
+  .alert-actions {
+    margin-bottom: 0;
+  }
+  .alertTitle {
+    word-wrap: break-word;
+  }
+  .widget-content {
+    margin-bottom: 0;
+  }
+}
+.alert-item {
+  border-bottom: 1px dotted;
+}
+
+.email-alert-modal-close {
+  padding-top: 10px;
+}
+
+.email-alert-modals.buffer {
+  padding: 40px 40px 40px 40px;
+}
+.email-alert-modals {
+  .button-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+  .close-button {
+    fill: $btn-primary-bg;
+    opacity: $button-mouse-leave;
+    &:hover {
+      opacity: $button-mouse-enter;
+    }
+  }
+  #edit-radios {
+    .radio-spacing {
+      padding: 5px 0;
+    }
+    input[type='radio'] {
+      opacity: 0;
+      float: left;
+      width: 18px;
+    }
+    input[type='radio'] ~ label {
+      cursor: pointer;
+    }
+    input[type='radio'] ~ .edit-radio {
+      display: inline-block;
+      background-color: $white;
+      border: solid 2px $btn-primary-bg;
+      border-radius: 100%;
+      width: 20px;
+      height: 20px;
+      vertical-align: text-top;
+      margin-right: 5px;
+    }
+    input[type='radio']:checked ~ .edit-radio {
+      background-color: $btn-primary-bg;
+    }
+    label {
+      padding-left: 0;
+    }
+  }
+}

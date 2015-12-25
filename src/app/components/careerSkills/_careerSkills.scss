@@ -1,0 +1,92 @@
+// .learn-it-link {
+// @extend .btn-xs;
+// width: 100%;
+// margin: .5em 0;
+// }
+.skill-courses {
+  .skill-course-count-header {
+    margin: 24px 0 24px 24px;
+    font-size: 20px;
+    text-transform: none;
+  }
+  .skill-courses-close-row {
+    padding: 12px;
+  }
+  .skill-course-listing {
+    &>.row {
+      border-bottom: 1px solid $gray;
+    }
+  }
+  .course-filters {
+    margin-top: 24px;
+    // font-family: $font-family-sans-serif;
+    margin-left: 24px;
+    margin-right: 24px;
+    .icon {
+      position: relative;
+      top: 4px;
+    }
+    &:hover {
+      .icon-collapse-tip {
+        @extend .icon-collapse-tip-active;
+      }
+      .icon-expand-tip {
+        @extend .icon-expand-tip-active;
+      }
+    }
+  }
+  .filter-list-wrapper {
+    // center horizontally
+    display: table;
+    margin: 0 auto;
+  }
+  .filter-list {
+    @extend .list-unstyled;
+  }
+  .course-icon {
+    margin: 24px;
+  }
+  .course-info {
+    margin: 0 12px;
+    h3 {
+      margin: 24px 0 0;
+    }
+    h2 {
+      margin: 12px 0 0;
+    }
+  }
+  .course-link {
+    margin-top: 67px;
+    font-size: 15px;
+  }
+  .course-price {
+    margin-top: 12px;
+  }
+  .pagination-container {
+    margin-top: 56px;
+  }
+}
+
+%skill-course-icon {
+  background-image: url(/assets/images/sb_courselist_sprite.svg);
+  background-size: 30px 90px;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  top: 8px;
+}
+
+.skill-course-icon-time {
+  @extend %skill-course-icon;
+  background-position: top -30px left 0px;
+}
+
+.skill-course-icon-trainer {
+  @extend %skill-course-icon;
+  background-position: top 0px left 0px;
+}
+
+.skill-course-icon-feature {
+  @extend %skill-course-icon;
+  background-position: top -60px left 0px;
+}

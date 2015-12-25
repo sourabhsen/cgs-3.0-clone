@@ -1,0 +1,13 @@
+<div class="save-job" cg-busy="{promise: jobPlaylistPromise, profile: 'backdropOnly'}">
+  <a  href
+      tabindex="0"
+      item-id="{{job.jobId || job.job.jobId}}"
+      list-id="{{job.listId}}"
+      list-itemId="{{job.listItemId}}"
+      ng-class="{'savejob': !job.isSaved, 'unsavejob': job.isSaved}"
+      ng-click="jobPlaylistPromise = toggleSave(job.isSaved)"
+      role="button">
+    <span class="icon" ng-class="{'icon-save': !job.isSaved, 'icon-saved': job.isSaved}"></span>
+    {{job.isSaved ? 'Unsave' : 'Save this job'}}
+  </a>
+</div>

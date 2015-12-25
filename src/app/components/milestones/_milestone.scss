@@ -1,0 +1,371 @@
+.milestone-activity > .row {
+  background: $white;
+  padding: $padding-large-vertical * 2;
+  border-top: 1px solid $gray-light;
+  border-right: 1px solid $gray-light;
+  border-left: 1px solid $gray-light;
+}
+
+// #Dashboard-Container .widget .nav > li > a {
+//   font-size: 10px;
+// }
+
+.milestone-activity .last {
+  border-bottom: 1px solid $gray-light;
+}
+
+.milestone-activity > .row, .milestone-status {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.milestone-sequence {
+  h2 {
+    margin: 0 10px 0 0;
+  }
+}
+
+.congrats-ribbon svg {
+  margin-top: 15px;
+  float: right;
+}
+
+.goalsICON {
+  .congrats-ribbon svg {
+    fill: $goals-icon !important;
+  }
+}
+
+.skillsICON {
+  .congrats-ribbon svg {
+    fill: $skills-icon !important;
+  }
+}
+
+.resumeICON {
+  .congrats-ribbon svg {
+    fill: $resume-icon !important;
+  }
+}
+
+.imageICON {
+  .congrats-ribbon svg {
+    fill: $image-icon !important;
+  }
+}
+
+.networkICON {
+  .congrats-ribbon svg {
+    fill: $network-icon !important;
+  }
+}
+
+.letterICON {
+  .congrats-ribbon svg {
+    fill: $letter-icon !important;
+  }
+}
+
+.interviewICON {
+  .congrats-ribbon svg {
+    fill: $interview-icon !important;
+  }
+}
+
+.strategiesICON {
+  .congrats-ribbon svg {
+    fill: $strategies-icon !important;
+  }
+}
+
+.applyICON {
+  .congrats-ribbon svg {
+    fill: $apply-icon !important;
+  }
+}
+
+.career-managementICON {
+  .congrats-ribbon svg {
+    fill: $career-management-icon !important;
+  }
+}
+
+.militaryICON {
+  .congrats-ribbon svg {
+    fill: $military-icon !important;
+  }
+}
+
+// tools
+.careerExplorationICON {
+  .congrats-ribbon svg {
+    fill: $goals-icon;
+  }
+}
+
+.skillBuilderICON {
+  .congrats-ribbon svg {
+    fill: $skills-icon;
+  }
+}
+
+.resumeBuilderICON {
+  .congrats-ribbon svg {
+    fill: $resume-icon;
+  }
+}
+
+.jobsearchICON {
+  .congrats-ribbon svg {
+    fill: $apply-icon;
+  }
+}
+
+.interviewPreparationICON {
+  .congrats-ribbon svg {
+    fill: $interview-icon;
+  }
+}
+
+//////
+.milestone-activity-title {
+  h2 {
+    // padding-top: 4px;
+  }
+  p {
+    padding-top: 5px;
+    color: $gray-darker;
+  }
+}
+
+.activity-checkbox div {
+  @media (max-width: 900px) {
+    z-index: 10400;
+  }
+}
+
+.activity-checkbox .error {
+
+  div {
+    display: none;
+  }
+  h2, em {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 12px;
+    color: $brand-danger;
+    font-style: normal;
+    min-width: 100px;
+    padding-left: 20px;
+    margin-bottom: 0 !important;
+  }
+}
+
+.milestone-info div {
+  margin: 6px;
+  font-size: $font-size-smallest;
+
+  &.icon-symbol-time{
+     margin-right: 0px;
+  }
+
+  &.last{
+     margin-left: 0;
+     margin-right:13px;
+     border: 0px;
+  }
+}
+
+.milestone-content-details {
+  border-top: 1px dotted #111c24;
+  padding-top: $padding-large-vertical * 2;
+  margin-top: $padding-large-vertical * 2;
+  -webkit-transition: opacity 0.2s cubic-bezier(0.52, 0, 0.48, 1), height 0.2s ease;
+  transition: opacity 0.2s cubic-bezier(0.52, 0, 0.48, 1), height 0.2s ease;
+  video-player, .video-container {
+    height: 360px;
+    display: block;
+    margin-bottom: $padding-large-vertical * 2;
+  }
+  &.ng-hide {
+    opacity: 0;
+  }
+  article > h3:first-of-type {
+    // Necessary to have consistant top margins, as all activities do not have a h3 header; most start with a p tag.
+    margin-top: 0;
+  }
+}
+
+.milestone-nav {
+  height: 55px;
+}
+
+.milestone-nav a {
+  padding: 20px 5px;
+  color: $gray-dark;
+  span {
+    margin: 0 $padding-large-vertical;
+  }
+}
+
+.milestone-status {
+  margin-top: $padding-large-vertical;
+  background: #e9eae8; // Color is in the PNG
+  .icon-milestone-status {
+    background-color: $orange;
+  }
+}
+
+.milestone-test-result {
+  position: relative;
+  .icon {
+    position: absolute;
+  }
+  h4 {
+    font-size: $font-size-h2;
+    font-weight: bold;
+    margin-top: 18px;
+    display: inline-block;
+    padding-left: 70px;
+  }
+}
+
+.milestone-complete-footer {
+  background: $gray-light;
+  margin-top: $padding-large-vertical * 4;
+  padding: $padding-large-vertical * 2;
+  clear: both;
+}
+
+.next-milestone-btn {
+  margin-top: $padding-large-vertical * 3;
+}
+
+#cvr-ltr-close {
+  top: 5px;
+  right: 5px;
+}
+
+
+/**********Mobile CSS*******/
+#Milestone-Container{
+        h1{
+           @extend %h;
+        }
+        h2{
+          @extend %sh;
+        } 
+        h3{
+          @extend %sph;
+        }
+        p, span {
+          @extend %p; 
+        }
+ }
+#Milestone-Container{
+  article{
+    li{ 
+      @extend %p;
+    }
+  } 
+ .milestone-sequence{
+    h2{
+    @extend %sph; 
+  } 
+ }
+ .milestone-nav{
+    span{
+     @media(max-width:$screen-sm-max){
+        font-size: 11px;
+     }
+   }
+ }
+ .milestone-activity{
+    @media(max-width:$screen-xs-max){
+      padding-left:10px;
+      padding-right:10px;
+    }
+  span{
+     @media(max-width:$screen-xs-max){
+        font-size: 11px;
+     }
+   }
+   .row{
+       @media(max-width:$screen-xs-max){
+          padding: 20px 8px;
+       }
+      .secondary{
+        @media(max-width:$screen-xs-max){
+           padding:0;
+           width:18%;
+           float:left;
+        }
+        @media(max-width:$screen-xs-min){
+           width: 30%;
+        }
+      }
+      .milestone-activity-title{
+       p{
+          @media(max-width:$screen-xs-max){
+             padding-left: 18%;
+             width:100%;
+          }
+           @media(max-width:$screen-xs-min){
+             padding-left: 30%;
+          }
+       }
+      }
+       .milestone-sequence{
+      h2{
+        @media(max-width:$screen-sm-max){
+           margin-top: 3px;
+        }
+    } 
+   }
+      .milestone-info{
+          @media(max-width:$screen-sm-max){
+            float:right;
+            width:100%;
+          }
+      }
+   }
+   .activity-checkbox{
+     @media(max-width:$screen-xs-max){
+         width:auto;
+     }
+     span{
+      @media(max-width:$screen-xs-max){
+         font-size: 11px;
+      }
+     }
+   }
+   .milestone-info.milestone-info{
+     @media(max-width:$screen-sm-max){
+       display:none;
+     }
+   }
+   .milestone-info.mobile-info{
+        display:none;
+      @media(max-width:$screen-sm-max){
+           display:block;
+      }
+   }
+   .milestone-content-details{
+      @media(max-width:$screen-sm-max){
+         margin-top:35px;
+      }
+   }
+ } 
+ .milestone-nav {
+  .mini-header{
+    @media(max-width:$screen-xs-min){
+      font-size:10px;
+    }
+   span{
+     @media(max-width:$screen-xs-min){
+        margin: 0 2px;
+     }
+   }
+   }
+ }
+}

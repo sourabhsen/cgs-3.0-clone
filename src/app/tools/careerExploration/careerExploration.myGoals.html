@@ -1,0 +1,152 @@
+<section ng-controller="CareerExplorationMyGoalsCtrl as myGoals" class="one-col my-goal-list-container" cg-busy="{promise: myGoals.initWait, profile: 'fixedCenter'}">
+  <!--
+  <div class="row" ng-show="myGoals.vm.playlist.listItems.length">
+    <div class="col text-right">
+      <a class="button" ui-sref="auth.tools({toolId: 'careerExploration'})">Update My Goals <span class="icon icon-arrow-button" ng-hide="hideIcon"></span></a>
+    </div>
+  </div> -->
+  <div class="row" ng-if="myGoals.vm.playlist.listItems.length">
+    <div class="col">
+      <section class="one-col">
+        <div class="row">
+          <div>
+            <p>
+              Below are the possible career goals you have selected so far. You may select up to ten goals, and you can update the list at any time. Drag your first-choice career goal to the top of the list to help you focus and prioritize your activities.
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="tool-previous-page clearfix">
+        <a class="pull-left mini-header text-uppercase " href ng-click="back()">
+          <span class="icon icon-previous" aria-hidden="true">&nbsp;</span>Back to previous page
+        </a>
+      </div>
+      <section class="one-col">
+        <div class="row" ui-tree="myGoals.treeOptions">
+          <div class="col no-padding">
+            <section>
+              <div class="my-goal-title clearfix">
+                <span class="left"></span>
+                <span class="title font-bold">My Primary Career Goal</span>
+                <span class="right"></span>
+              </div>
+            </section>
+
+            <section class="one-eleven no-padding my-goal-wrapper" ui-tree-nodes ng-model="myGoals.vm.playlist.listItems">
+              <div class="row goal-item" data-ronet="{{firstGoal.itemIdentifier}}" ng-repeat="firstGoal in myGoals.vm.playlist.listItems | limitTo: 1" ui-tree-node>
+                <div class="col secondary priority" ui-tree-handle>
+                  <div class="goal-rank">
+                    <div class="sno font-bold">{{$index + 1 | leadingZero:2}}</div>
+                    <div class="rank pri font-bold">RANK</div>
+                  </div>
+                </div>
+                <div class="col primary goal-desc" ui-tree-handle>
+                  <h4 class="goal-title">
+                    <a ui-sref="auth.tools.view({viewId: 'details', id: firstGoal.itemIdentifier})">{{firstGoal.$$details.name}}</a>
+                    <span class="fa fa-grip fa-rotate-90 pull-right" title="Click and drag to reorder"></span>
+                    <a href="" role="button" class="pull-right icon-delete" ng-click="myGoals.vm.openDeleteModal(firstGoal)" title="Delete Goal"></a>
+                  </h4>
+                  <section class="six-three goal-caption">
+                    <div class="row">
+                      <div class="col primary">
+                        <p class="paragraph-char-limit">{{firstGoal.$$details.description | characters:195}}</p>
+                      </div>
+                      <div class="col secondary">
+                        <div class="demand-bar">
+                          <div ng-class="'demand-' + firstGoal.$$details.hiringTrend.replace(' ','').toLowerCase()">
+                            <span class="firstdemand"> &nbsp; </span>
+                            <span class="spacer"></span>
+                            <span class="seconddemand"> &nbsp; </span>
+                            <span class="spacer"></span>
+                            <span class="thirddemand"> &nbsp; </span>
+                            <span class="spacer"></span>
+                            <span class="lastdemand"> &nbsp; </span>
+                          </div>
+                          <label>HISTORICAL DEMAND - {{firstGoal.$$details.hiringTrend}}</label>
+                        </div>
+                      </div>
+                      <div class="col secondary">
+                        <div class="salary-range-short" ng-show="(firstGoal.$$details.salaryTrendMin > 0 && firstGoal.$$details.salaryTrendMax > 0) && (firstGoal.$$details.salaryTrendMin || firstGoal.$$details.salaryTrendMax)">
+                          <span class="" ng-show="firstGoal.$$details.salaryTrendMin || firstGoal.$$details.salaryTrendMax">{{firstGoal.$$details.salaryTrendMin | currency:undefined:0}} - {{firstGoal.$$details.salaryTrendMax | currency:undefined:0}}</span>
+                          <label class="mini-header text-upper">Annual salary range</label>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </section>
+
+            <section ng-show="myGoals.vm.playlist.listItems.length > 1">
+              <div class="my-goal-title clearfix">
+                <span class="left"></span>
+                <span class="title font-bold">My Other Possible Career Goals</span>
+                <span class="right"></span>
+              </div>
+            </section>
+
+            <section ui-tree="myGoals.treeOptions">
+              <div class="one-eleven no-padding my-goal-wrapper" ui-tree-nodes ng-model="myGoals.vm.playlist.listItems">
+                <div class="row goal-item" data-ronet="{{goal.itemIdentifier}}" ng-repeat="goal in myGoals.vm.playlist.listItems" ui-tree-node>
+                  <div class="col secondary" ng-if="$index > 0" ui-tree-handle>
+                    <div class="goal-rank">
+                      <div class="sno font-bold">{{$index + 1 | leadingZero:2}}</div>
+                      <div class="rank font-bold">RANK</div>
+                    </div>
+                  </div>
+                  <div class="col primary goal-desc" ng-if="$index > 0" ui-tree-handle>
+                    <h4 class="goal-title">
+                      <a ui-sref="auth.tools.view({viewId: 'details', id: goal.itemIdentifier})">{{goal.$$details.name}}</a>
+                      <span class="fa fa-grip fa-rotate-90 pull-right" title="Click and drag to reorder"></span>
+                      <a href="" role="button" class="pull-right icon-delete" ng-click="myGoals.vm.openDeleteModal(goal)" title="Delete Goal"></a>
+                    </h4>
+                    <section class="six-three goal-caption">
+                      <div class="row">
+                        <div class="col primary">
+                          <p class="paragraph-char-limit">{{goal.$$details.description | characters:195}}</p>
+                        </div>
+                        <div class="col secondary">
+                          <div class="demand-bar">
+                            <div ng-class="'demand-' + goal.$$details.hiringTrend.replace(' ','').toLowerCase()">
+                              <span class="firstdemand"> &nbsp; </span>
+                              <span class="spacer"></span>
+                              <span class="seconddemand"> &nbsp; </span>
+                              <span class="spacer"></span>
+                              <span class="thirddemand"> &nbsp; </span>
+                              <span class="spacer"></span>
+                              <span class="lastdemand"> &nbsp; </span>
+                            </div>
+                            <label>HISTORICAL DEMAND - {{goal.$$details.hiringTrend}}</label>
+                          </div>
+                        </div>
+                        <div class="col secondary">
+                          <div class="salary-range-short" ng-show="(goal.$$details.salaryTrendMin > 0 && goal.$$details.salaryTrendMax > 0) && (goal.$$details.salaryTrendMin || goal.$$details.salaryTrendMax)">
+                            <span class="">{{goal.$$details.salaryTrendMin | currency:undefined:0}} - {{goal.$$details.salaryTrendMax | currency:undefined:0}}</span>
+                            <label class="mini-header text-upper">Annual salary range</label>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="row" ng-if="myGoals.vm.playlist.listItems.length === 0">
+    <div class="col text-right">
+      <p>You have no saved goals.</p>
+      <p>
+        <button class="button" ui-sref="auth.tools({toolId: 'careerExploration'})">
+          Update My Goals &nbsp;&nbsp;<span class="icon icon-arrow-button" id="count-arrow" ng-hide="hideIcon"></span>
+        </button>
+      </p>
+    </div>
+  </div>
+
+</section>

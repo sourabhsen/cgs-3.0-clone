@@ -1,0 +1,543 @@
+$sb-font-size-small: ceil(($font-size-base * 0.75)) !default; // 13px
+$sb-font-size-large: $font-size-h4 !default; // 18px
+%sb-font-size-sm {
+  font-size: $sb-font-size-small;
+}
+
+%sb-font-size-lg {
+  font-size: $sb-font-size-large;
+}
+
+svg-wrap {
+  zoom: 1;
+  filter: alpha(opacity=85);
+  opacity: 0.85;
+  &:hover {
+    filter: alpha(opacity=100);
+    opacity: 1;
+  }
+  &.skillLevels {
+    path {
+      fill: $blue;
+    }
+  }
+}
+
+.skill-builder-intro-container {
+  background: $white;
+  padding-bottom: 15px;
+}
+
+.sb-no-goals {
+  padding: 0;
+  min-height: 550px;
+  .skill-nogoals-desc {
+    text-align: center;
+    // padding: 0 35px;
+    p {
+      @extend %sb-font-size-lg;
+      max-width: 550px;
+      margin: 20px auto;
+      line-height: 26px;
+      text-align: center;
+    }
+  }
+  a.sb-button {
+    margin-top: 40px;
+    padding: 5px 8px;
+    background: $btn-primary-border;
+    opacity: .85;
+    text-decoration: none;
+    color: $white;
+    font-weight: 700;
+    font-style: normal;
+    @extend %sb-font-size-lg;
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+  .sb-image {
+    margin-top: 40px;
+  }
+}
+
+.sb-edit-goals {
+  margin-bottom: 15px;
+  a{
+    margin-bottom: 2px;
+  }
+   .edit-career-goal-link {
+    line-height:1;
+  }
+}
+
+.sb-saved-goals {
+  padding: 0;
+  .skill-savedgoals-desc {
+    padding: 0 35px;
+    margin-top: 15px;
+    p {
+      padding: 10px 54px;
+      @extend %sb-font-size-lg;
+      line-height: 1.444;
+    }
+  }
+  .use-this-tool {
+    padding: 6px 20px 15px 0;
+    .use-this-tool-link {
+      font-weight: 400;
+      font-style: normal;
+      @extend %sb-font-size-sm;
+      &:hover {
+        color: $gray-dark;
+      }
+    }
+  }
+}
+
+.sb-skillListContainer {
+  .grey-bar {
+    background: $gray-dark;
+    padding: 0 5px;
+    margin-bottom: 20px;
+    .sb-search-holder {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .result-label {
+      color: $white;
+    }
+    .goal-drop-down {
+      display: inline-block;
+      min-width: 393px;
+      margin-left: 10px;
+    }
+  }
+  %skillbuilder-result-area {
+    padding: 0 0 0 15px;
+    margin-bottom: 20px;
+    background: $white;
+    border: 1px solid $gray-lightest;
+    animation-fill-mode: none;
+    -webkit-animation-fill-mode:none;
+  }
+  .skillbuilder-nodata-results {
+    @extend %skillbuilder-result-area;
+    p {
+      margin: 20px;
+      // color: $gray-dark;
+      @extend %sb-font-size-lg;
+      // line-height: 120%;
+    }
+  }
+  .skillbuilder-results {
+    @extend %skillbuilder-result-area;
+    .sb-toggle-link {
+      .sb-toggle-desc {
+        font-weight: bold;
+        font-size: $font-size-large; //20px
+        margin-top: 44px;
+      }
+      .icon {
+        position: relative;
+        top: 5px;
+        left: 2px;
+      }
+
+      svg {
+        vertical-align: text-bottom;
+      }
+
+      .skills-expanded svg {
+        -ms-transform: rotate(180deg) !important; /* IE 9 */
+        -webkit-transform: rotate(180deg) !important; /* Chrome, Safari, Opera */
+        transform: rotate(180deg) !important;
+        background-image: none;
+        //@extend .icon-skills-expand-active;
+      }
+      .skills-collapse,
+      .skills-expanded {
+        padding-left: 10px;
+        background-image: none;
+        //@extend .icon-skills-collapse-active;
+      }
+
+      // NOTE: Don't think the below styles are required because they are
+      // already being applied by .skills-expanded svg rule above.
+
+      //&:hover {
+      //  .skills-expanded svg {
+      //    -ms-transform: rotate(180deg) !important; /* IE 9 */
+      //    -webkit-transform: rotate(180deg) !important; /* Chrome, Safari, Opera */
+      //    transform: rotate(180deg) !important;
+      //    background-image: none;
+      //    //@extend .icon-skills-expand-active;
+      //  }
+      //  .skills-collapse {
+      //    background-image: none;
+      //    //@extend .icon-skills-collapse-active;
+      //  }
+      //}
+    }
+    .sb-results-container {
+      padding-right: 0;
+    }
+    .sb-ratings {
+      .importance {
+        font-size: 10px;
+        margin-right: 7px;
+      }
+      .grey-rating {
+        width: 23%;
+        height: 5px;
+        background: $gray;
+        display: inline-block;
+        // padding: 0;
+        margin: 7px 0;
+        @media (max-width: 594px) {
+          width: 53%;
+        }
+        .portion {
+          float: left;
+          height: 5px;
+          margin: 0;
+        }
+        .first-halve {
+          width: 50%;
+          background: $gray-dark;
+        }
+        .second-halve {
+          width: 15%;
+          background: $gray-dark;
+        }
+        .center-line {
+          width: 1px;
+          height: 12px;
+          margin-top: -4px;
+          border-left: 1px solid $gray-dark;
+          border-right: 1px solid $gray;
+        }
+      }
+    }
+    .sb-skilldesc-container {
+      margin-top: 2px;
+      .sb-skilldesc-wrapper {
+        padding: 15px 15px 15px 0;
+        margin-left: 15px;
+        margin-right: 2px;
+        border-top: 1px dotted $black;
+      }
+      p {
+        font-size: 15px;
+      }
+      .incorrect-desc {
+        color: $gray-darker;
+        @extend %sb-font-size-sm;
+        .fa {
+          color: $gray-dark;
+        }
+        &:hover {
+          color: darken($gray-darker, 15%);
+          .fa {
+            color: $red;
+          }
+        }
+      }
+      .skill-relation-goal {
+        @extend %sb-font-size-sm;
+        color: $gray-darker;
+      }
+      .goal-items {
+        @extend %sb-font-size-sm;
+        color: $gray-darker;
+      }
+      .customized-rec {
+        margin: 15px 0 15px 30px;
+        font-size: 16px;
+      }
+    }
+    .skills-modal-btn {
+      @extend .btn-sm;
+      @extend .button;
+      font-size: 15px;
+      padding: 5px 10px;
+    }
+    .skillparagraph {
+      float: left;
+    }
+    .skill-relation-wrapper {
+      clear: both;
+    }
+    .right-section {
+      padding-left: 0;
+      .sb-skill-level {
+        height: 109px;
+
+        .assess-skill {
+          margin: 28px 7px 0 0;
+          @extend %sb-font-size-sm;
+        }
+        .skill-score {
+          @extend %sb-font-size-sm;
+          margin-top: 15px;
+          .fa {
+            color: $red;
+            font-size: 16px;
+          }
+        }
+      }
+      // .skilllevelfilter {
+      //   width: 80%;
+      // }
+      .skill-label {
+        margin-top: 61px;
+        margin-right: 16px;
+        font-size: 15px;
+        color: $red;
+        display: inline-block;
+        // show label on top for xs and sm devices since it wraps buttons
+        @media (max-width: $screen-sm-max) {
+          display: block;
+        }
+      }
+
+      .improveSkillBtn {
+        vertical-align: middle;
+        margin-top: 45px;
+        position: relative;
+        display: inline-block;
+        right: 30px;
+      }
+
+      .skillLevelSelection {
+        input[type=radio   ]:not(old){
+          width     : 2em;
+          margin    : 0 0 0 -15px;
+          padding   : 0;
+          font-size : 14px;
+          opacity   : 0;
+        }
+
+        input[type=radio   ]:not(old) + label{
+          display      : inline-block;
+          margin-left  : -20px;
+          margin-right: 10px;
+          padding-left: 0;
+          line-height  : 20px;
+          vertical-align: middle;
+        }
+
+        input[type=radio   ]:not(old) + label > span{
+          display          : inline-block;
+          width            : 16px;
+          height           : 16px;
+          margin           : 4px 4px 4px 4px;
+          border           : 2px solid $brand-primary;
+          border-radius    : 8px;
+          background       : $white;
+          vertical-align   : middle;
+        }
+
+        input[type=radio   ]:not(old) + label > b{
+          vertical-align: -2px;
+          font-weight: normal;
+        }
+
+        input[type=radio]:not(old):checked + label > span > span{
+          display          : block;
+          width            : 10px;
+          height           : 10px;
+          margin           : 1px;
+          border-radius    : 5px;
+          background       : $brand-primary;
+        }
+
+      }
+
+      .assess-skill-link {
+        svg-wrap {
+          padding-top: 3px;
+          display: inline-block;
+          svg {
+            vertical-align: middle;
+            fill: $brand-primary;
+          }
+          &:hover, &:focus {
+            svg {
+              fill: $gray-darker;
+            }
+            .assessmentText {
+              text-decoration: underline;
+            }
+          }
+          .assessmentText {
+            font-size: 14px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .left-brdr {
+      border-left: 1px solid $white;
+    }
+    .right-brdr {
+      border-right: 1px solid $gray-darker;
+    }
+    .skill-option {
+      height: 109px;
+      background: $gray;
+      margin-bottom: 0;
+      // .option-lbl {}
+      .option-icon {
+        margin: 18px 22px 4px 22px;
+      }
+      .option-lbl {
+        padding-left: 3px;
+        padding-right: 3px;
+      }
+      .option-title {
+        @extend %sb-font-size-sm;
+        line-height: 15px;
+        font-weight: normal;
+        margin-bottom: 8px;
+      }
+      .selected-change {
+        color: $btn-primary-bg;
+        font-size: 10px;
+        line-height: 12px;
+        zoom: 1;
+        filter: alpha(opacity=85);
+        opacity: 0.85;
+      }
+
+      svg-wrap {
+        display: inline;
+        fill: $btn-primary-bg;
+      }
+
+      &:hover {
+        .selected-change {
+          filter: alpha(opacity=100);
+          opacity: 1;
+        }
+        // .icon-basic {
+        //   @extend .icon-basic-active;
+        // }
+        // .icon-intermediate {
+        //   @extend .icon-intermediate-active;
+        // }
+        // .icon-advanced {
+        //   @extend .icon-advanced-active;
+        // }
+      }
+    }
+    .set-skill {
+      &.ng-hide-remove-active {
+        animation: fadeInRight 0.5s;
+      }
+      .skillLevelBlock {
+        background-color: $gray-light;
+        float: right;
+        display: inline-block;
+        height: 109px;
+        padding: 5px 15px;
+        h4 {
+          margin-top: 5px;
+          font-size: 15px;
+          font-weight: bold;
+          color: $black;
+          text-align: center;
+          padding-top: none;
+        }
+        label {
+          font-size: 12px;
+          font-weight: normal;
+        }
+
+        .skillLevelSelection {
+          border-bottom: solid $gray 1px;
+        }
+
+        .skillLevelAssessment {
+          text-align: center;
+        }
+      }
+    }
+    .change-skill {
+      &.ng-hide-remove-active {
+        animation: fadeInLeft 0.5s;
+      }
+      .skill-option {
+        margin-left: 20px;
+      }
+    }
+    .change-skill-action {
+      margin-top: 0;
+      a {
+        top: 15px;
+      }
+    }
+  }
+}
+
+.skill-builder {
+  .chevronCircle {
+    polygon {
+      fill: $white;
+    }
+    circle {
+      fill: $btn-primary-bg;
+    }
+  }
+
+  .coach-mark.popover {
+    width: 400px;
+    max-width: 400px;
+    line-height: 1.6em;
+
+    .popover-title{
+      color: #111C24;
+    }
+
+    .btn-xs {
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+
+  .invalid-desc {
+    @extend %sb-font-size-sm;
+    padding-top: 10px;
+    .modal-close-link {
+      top: 3px;
+      right: 3px;
+    }
+    .invalid-desc-actions {
+      @extend .btn-group-xs;
+      .btn {
+        @extend .button;
+        .apt-busy-inline-small {
+          &:before {
+            top: 10%;
+            left: 38%;
+          }
+        }
+      }
+    }
+  }
+
+  .sb-coachmark {
+    width: 100%;
+
+    &.title {
+      display: inline;
+      margin-left: 50%;
+      left: -200px;
+    }
+
+    .coach-mark.popover {
+      min-width: 100%;
+    }
+  }
+}

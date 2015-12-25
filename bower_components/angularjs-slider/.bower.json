@@ -1,0 +1,38 @@
+{
+  "name": "angularjs-slider",
+  "homepage": "https://github.com/rzajac/angularjs-slider",
+  "authors": [
+    "Rafal Zajac <rzajac@gmail.com>",
+    "Valentin Hervieu <valentin@hervieu.me>",
+    "Jussi Saarivirta <jusasi@gmail.com>"
+  ],
+  "description": "AngularJS slider directive with no external dependencies. Mobile friendly!",
+  "main": [
+    "dist/rzslider.js",
+    "dist/rzslider.css"
+  ],
+  "keywords": [
+    "angularjs",
+    "slider"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.0"
+  },
+  "_release": "bcb069a179",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "bcb069a179769a9b40ceb29d0701859888b5d913"
+  },
+  "_source": "git://github.com/mmaday/angularjs-slider.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/mmaday/angularjs-slider"
+}

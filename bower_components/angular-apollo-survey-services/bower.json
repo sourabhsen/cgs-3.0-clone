@@ -1,0 +1,28 @@
+{
+  "name": "angular-apollo-survey-services",
+  "version": "0.1.1",
+  "authors": [
+    {
+      "name": "mmaday",
+      "email": "mark.maday@apollo.edu"
+    }
+  ],
+  "main": [
+    "dist/angular-apollo-survey-services.js"
+  ],
+  "ignore": [
+    "src",
+    "test",
+    "coverage",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular-mocks": ">=1.2.0",
+    "angular-scenario": ">=1.2.0",
+    "angular": ">=1.2.0"
+  },
+  "repository": "https://git.corp.aptimus.net/git/eng/angular-apollo-survey-services"
+}

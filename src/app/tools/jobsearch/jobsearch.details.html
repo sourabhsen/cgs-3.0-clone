@@ -1,0 +1,114 @@
+<section ng-controller="JobSearchCtrl as jobsModel" class="page jobsearch-details">
+<div class="clearfix tool-previous-page one-col">
+  <a class="pull-left mini-header text-uppercase " href ng-click="back()">
+      <span class="icon icon-previous" aria-hidden="true">&nbsp;</span>Back to previous page
+    </a>
+</div>
+
+      <div class="col-md-3">
+        <jobs-like-this-widget job="jobsModel.model.details"></jobs-like-this-widget>
+      </div>
+
+      <div class="col-md-9 leftColumn"><!-- wraps all job detail content in busy (including expired result) -->
+            <div cg-busy="{promise: jobsModel.initWait, profile: 'inline' }" class="group resultsContainer">
+              <!-- job detail content -->
+              <div ng-if="jobsModel.model.details.status === 'ACTIVE' " class="one-col">
+                <div class="row" ng-show="::jobsModel.model.details">
+                  <div class="col no-padding">
+                    <p class="error" ng-show="::jobsModel.model.detailsError">No job details are available</p>
+                    <div class="companydetails three-nine no-padding" ng-hide="::jobsModel.model.detailsError">
+                      <div class="row no-margin">
+                        <div class="primary no-padding">
+                          <div class="company-logo"></div>
+                          <div class="job-title">
+                            <h2 ng-bind="::jobsModel.model.details.title"></h2>
+                          </div>
+                          <div class="company-title">
+                            <h4 class="no-margin companyName" ng-bind="::jobsModel.model.details.companyName || jobsModel.model.details.providerCompanyName | lowercase"></h4>
+                            <h4 class="no-margin location" ng-show="jobsModel.model.details.location" ng-cloak>{{::jobsModel.model.details.location.city | lowercase}}{{jobsModel.model.details.location.state ? ', ' : ''}}{{jobsModel.model.details.location.state | lowercase}}</h4>
+                            <h4 class="no-margin" ng-cloak>Posted on: {{::jobsModel.model.details.postingDate | date : 'MM/dd/yyyy'}}</h4>
+                            <h4 class="no-margin" ng-show="::jobsModel.model.details.jobId">Job ID: <span ng-bind="::jobsModel.model.details.jobId"></span></h4>
+                            <h4 class="no-margin" ng-show="::jobsModel.model.details.segments">Job Category: <span ng-repeat="segment in jobsModel.model.details.segments">{{segment.name}}{{$last ? '' : ', '}}</span></h4>
+                            <h4 class="no-margin" ng-show="::jobsModel.model.details.jobType">Employment Type: <span ng-bind="::jobsModel.model.details.jobType"></span></h4>
+                          </div>
+                        </div>
+                        <div class="secondary no-padding" ng-show="jobsModel.model.appliedName">
+                          <div ng-hide="!jobsModel.model.isFocusTalent" cg-busy="{promise: jobsModel.model.focusTalentApplicationPromise, profile: 'inlineSmall'}">
+                            <div ng-hide="!jobsModel.model.selectedResume">
+                              <!-- <label>
+                              Please select a resume
+                              <ui-select ng-model="jobsModel.model.selectedResume" search-enabled="false" on-select="jobsModel.model.resumeSelected($item, job)">
+                                <ui-select-match placeholder="Please select a resume">{{$select.selected.label}}<span ng-show='$select.selected.privacySetting === "PUBLIC"'> (PUBLIC)</span></ui-select-match>
+                                <ui-select-choices repeat="resume in jobsModel.model.userResumes | filter: $select.search">{{resume.label}}<span ng-show='resume.privacySetting === "PUBLIC"'> (PUBLIC)</span></ui-select-choices>
+                              </ui-select>
+                            </label> -->
+                              <p>We'll deliver your public resume,
+                                <a ui-sref="auth.tools({toolId: 'resumeBuilder' })" ng-bind="::jobsModel.model.selectedResume.label"></a>, to this employer, or create a new resume using the <a ui-sref="auth.tools({toolId: 'resumeBuilder' })">Resume Builder</a> tool.</p>
+                            </div>
+                            <div ng-show="!jobsModel.model.userResumes.length">
+                              We'll deliver your resume to this employer. Upload an existing resume or create a new one using our <a ui-sref="auth.tools({toolId: 'resumeBuilder' })">Resume Builder</a>
+                            </div>
+                            <alert ng-repeat="alert in jobsModel.model.focusTalentAlerts" type="{{alert.type}}" dismiss-on-timeout="2000">{{alert.msg}}</alert>
+                            <button class="button" ng-bind="jobsModel.model.appliedName" ng-click="jobsModel.model.submitFocusTalentApplication()" ng-disabled="!jobsModel.model.selectedResume"></button>
+                          </div>
+                          <div class="stack clearfix">
+                            <div class="apply-btn" ng-hide="jobsModel.model.isFocusTalent">
+                              <button class="button" ng-click="jobsModel.model.sendActivityApplyCliked(); jobsModel.model.jobApply(jobsModel.model.details.applyUrl)" ng-bind="jobsModel.model.appliedName"></button>
+                            </div>
+                          </div>
+                          <div class="stack clearfix">
+                            <job-playlist job="jobsModel.model.details" reload-saved-results="'false'" ng-hide="jobsModel.model.detailsApplied"></job-playlist>
+                            <a class="save-job" ui-sref="auth.tools({toolId: 'jobsearch', tab: 'applied'})" ng-click="jobsModel.setTab('applied')"
+                               ng-show="jobsModel.model.detailsApplied">View My Application Status</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col no-padding">
+                    <div class="job-details">
+                      <div ng-show="::jobsModel.model.details.description" class="job-description">
+                        <h3>Details:</h3>
+                        <p class="jobsearch-details-content" ng-bind-html="::jobsModel.model.details.description"></p>
+                      </div>
+                      <div ng-show="::jobsModel.model.details.salary" class="salary">
+                        <h4>Salary:</h4>
+                        <p ng-cloak>{{::jobsModel.model.details.salary.minimum | currency}}{{::jobsModel.model.details.salary.maximum ? ' - ' : ''}}{{::jobsModel.model.details.salary.maximum}} {{::jobsModel.model.details.salary.frequency}}</p>
+                      </div>
+                      <div ng-show="::jobsModel.model.details.qualifications" class="qualifications">
+                        <h4>Requirements/Qualifications:</h4>
+                        <div ng-repeat="qualification in jobsModel.model.details.qualifications">
+                          <p ng-bind="qualification.type"></p>
+                          <p ng-bind="qualification.name"></p>
+                          <p ng-bind="qualification.requiredType"></p>
+                        </div>
+                      </div>
+                      <div ng-show="::jobsModel.model.details.military" class="military">
+                        <h4>Military:</h4>
+                        <p ng-bind="::jobsModel.model.details.military"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- expired job content -->
+              <div class="one-col" ng-if="jobsModel.model.details.status === 'EXPIRED' ">
+                <div class="row" ng-show="::jobsModel.model.details">
+                  <div class="col">
+                    <div class="three-nine">
+                      <div class="row">
+                        <div class="primary">
+                          <h3>Sorry, this job has expired.</h3>
+                          <p>Feel free to return back to the Job Search Home Page to conduct a similar search.</p>
+                        </div>
+                        <div class="secondary">
+                          <button ui-sref="auth.tools({toolId: 'jobsearch'})" class="button">Go to Job Search</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+</section>

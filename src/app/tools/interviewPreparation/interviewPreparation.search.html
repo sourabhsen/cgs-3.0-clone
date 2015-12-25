@@ -1,0 +1,134 @@
+<div class="one-col interview-prep" ng-controller="InterviewPrepSearchController as iPrep" ng-init="iPrep.init()" cg-busy="{promise: iPrep.isLoading, message:'', backdrop: true, profile: 'fixedCenter'}">
+  <div class="col">
+    <div class="slide-animate-container">
+      <div class="slide-animate search">
+        <!-- Search for more questions -->
+        <section class="row">
+          <div class="col">
+            <div class="two-col">
+              <div class="row">
+                <div class="col tool-previous-page">
+                     <a ng-click="iPrep.goToFaq($event);" class="pull-left mini-header ng-scope" href="">
+                        <span aria-hidden="true" class="icon icon-previous">&nbsp;</span>BACK TO FREQUENTLY ASKED QUESTIONS
+                    </a>
+
+                </div>
+                <div class="col">
+                  <form ng-submit="iPrep.isLoading = (error = !iPrep.getQuestions(iPrep.query))" class="search-page" role="search">
+                    <div class="one-ten">
+                      <div class="row flatten">
+                        <div class="primary">
+                          <label for="interview-search" class="sr-only">Search for more interview questions</label>
+                          <input id="interview-search" class="form-control input-lg" type="search" placeholder="Search for more interview questions" ng-model="iPrep.query" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
+                          <div ng-if="error" class="has-error text-center" aria-live="assertive">
+                            <p class="help-block">Enter a term to search for.</p>
+                          </div>
+                        </div>
+                        <div class="secondary">
+                          <button id="desktop-submit" tabindex="0" type="submit" class="form-group" title="Search">
+                            <span class="svg-wrap">
+                              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 231.884 228.942" enable-background="new 0 0 231.884 228.942"
+                                 xml:space="preserve">
+                                <path d="M224.639,186.837l-48.573-45.244c7.819-13.53,12.297-29.234,12.297-45.985c0-50.827-41.202-92.029-92.029-92.029
+                                  c-50.826,0-92.028,41.202-92.028,92.029c0,50.826,41.202,92.029,92.028,92.029c17.01,0,32.938-4.62,46.609-12.666l49.661,46.257
+                                  c2.021,1.882,5.186,1.77,7.067-0.251l25.219-27.074C226.771,191.882,226.659,188.719,224.639,186.837z M37.638,95.609
+                                  c0-32.417,26.279-58.696,58.695-58.696c32.418,0,58.696,26.279,58.696,58.696s-26.278,58.696-58.696,58.696
+                                  C63.917,154.305,37.638,128.026,37.638,95.609z"/>
+                              </svg>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search description-->
+        <section class="row no-margin">
+          <div class="col">
+            <div class="one-col">
+              <header class="row section-description">
+                <div class="col">
+                  <h4>We have found {{iPrep.searchQuestions.totalItems}} results that contain the term
+                    '{{iPrep.searchTerm}}'.</h4>
+                </div>
+              </header>
+
+              <!-- Search results -->
+              <div class="row section-main">
+                <div class="col">
+                  <div class="one-col">
+                    <div class="row search-results">
+                      <div class="col">
+                        <ul class="accordion-group">
+                          <accordion close-others="true" class="one-col">
+                            <!-- Question -->
+                            <accordion-group ng-repeat="question in iPrep.searchQuestions track by $index" is-open="question.active" class="row">
+                              <div class="col">
+                                <accordion-heading>
+
+                                  <li class="fa" role="button">
+                                    <span>{{question.questionsText}}</span>
+                                  </li>
+                                  <svg-wrapper ng-switch on="question.active">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="14px" height="14px" viewBox="0 0 14 14" enable-background="new 0 0 14 14" xml:space="preserve">
+                                      <path ng-switch-default d="M0,0v14h14V0H0z M11,8H8v3H6V8H3V6h3V3h2v3h3V8z" />
+                                      <path ng-switch-when="true" d="M0,0v14h14V0H0z M11,8H3V6h8V8z" />
+                                    </svg>
+                                  </svg-wrapper>
+                                  <!-- <i class="fa" ng-class="{'fa-plus-square': !question.active, 'fa-minus-square': question.active}"></i> {{question.questionsText}} -->
+                                </accordion-heading>
+                                <div class="five-seven coaches-tip">
+                                  <div class="row">
+                                  <div class="secondary">
+                                    <div class="video-container">
+                                      <!-- ng-if="question.active"-->
+                                      <iframe class="video-frame" ng-attr-src="{{question.coachingVideo}}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ng-if="question.active"></iframe>
+                                    </div>
+                                  </div>
+
+                                  <div class="primary">
+                                      <a href="" role="button" ng-click="showTip = !showTip" class="coaches-link" aria-label="Transcript">
+                                        <svg-wrapper ng-switch on="showTip">
+                                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="14px" height="14px" viewBox="0 0 14 14" enable-background="new 0 0 14 14" xml:space="preserve">
+                                            <path ng-switch-default d="M0,0v14h14V0H0z M11,8H8v3H6V8H3V6h3V3h2v3h3V8z" />
+                                            <path ng-switch-when="true" d="M0,0v14h14V0H0z M11,8H3V6h8V8z" />
+                                          </svg>
+                                        </svg-wrapper>
+                                        Transcript
+                                      </a>
+                                      <div uib-collapse="!showTip">
+                                        <hr/>
+                                        <p>{{question.coachsTip}}</p>
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+                              </div>
+                            </accordion-group>
+                          </accordion>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <!-- Show pagination only when there is more than one page of items -->
+                    <div class="row search-pagination" ng-if="iPrep.searchQuestions.totalItems > iPrep.searchQuestions.length">
+                      <div class="col">
+                        <pagination total-items="iPrep.searchQuestions.totalItems" ng-model="iPrep.currentPage" ng-change="iPrep.isLoading = iPrep.getQuestions(iPrep.searchTerm, iPrep.currentPage)" max-size="iPrep.paginationSize" items-per-page="iPrep.itemsPerPage" class="pagination-sm" boundary-links="true" rotate="false"></pagination>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

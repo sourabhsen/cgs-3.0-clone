@@ -1,0 +1,1369 @@
+html {
+  position: relative;
+  height: 100%; // NEEDED FOR STICKY FOOTER
+}
+
+body {
+  height: 100%; // NEEDED FOR STICKY FOOTER
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.wrapper {
+  @include transition(all .5s);
+  transition: all .5s ease;
+  height: 100%; // NEEDED FOR STICKY FOOTER
+}
+
+#main-content-wrapper {
+  padding-top: $header-height;
+}
+
+.content-wrap {
+  min-height: 100%; // NEEDED FOR STICKY FOOTER
+  margin-bottom: $footer-margin; // NEEDED FOR STICKY FOOTER
+  &:after {
+    // NEEDED FOR STICKY FOOTER
+    content: ""; // NEEDED FOR STICKY FOOTER
+    display: block; // NEEDED FOR STICKY FOOTER
+  }
+}
+
+.tool-wrapper {
+  #main-content-wrapper {
+    padding-top: 0;  // resets header when Tool is in use
+  }
+}
+
+.footer {
+  overflow: hidden;
+}
+
+.footer, .content-wrap:after {
+  height: $footer-height; // NEEDED FOR STICKY FOOTER
+}
+
+
+main.container.ng-enter {
+  @extend .fadeInLeft;
+}
+
+main.container.ng-leave {
+  opacity: 0;
+}
+
+.btn-link {
+  @extend button.btn-link;
+  @extend .btn-link;
+  color: $brand-primary;
+  background: transparent;
+  border: 0 solid none;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  &:hover, &:focus {
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent;
+    text-decoration: underline;
+    color: $gray-darker;
+  }
+}
+
+.button-anchor {
+  @extend button.btn-link;
+}
+
+.border-box {
+  background: #FFFFFF;
+  border: 1px solid #e6e6e4;
+  margin-bottom: 10px;
+}
+
+.leftColumn.ng-enter {
+  @extend .fadeInLeft;
+}
+
+.rightColumn.ng-enter {
+  @extend .fadeInRight;
+}
+
+.leftColumn.ng-leave, .rightColumn.ng-leave {
+  opacity: 0;
+}
+
+.jobContent.ng-enter {
+  @extend .fadeInLeft;
+}
+
+.jobContent.ng-leave {
+  opacity: 0;
+}
+
+body.scroll-no-select {
+  user-select: none;
+}
+
+div, p, span, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  &.error {
+    color: $red;
+  }
+  &.success {
+    color: $green;
+  }
+}
+
+[ng-click], [data-ng-click], [x-ng-click] {
+  cursor: pointer;
+}
+
+h1 {
+  font-weight: lighter;
+}
+
+.title-case {
+  text-transform: capitalize;
+}
+
+.widget tag-heading {
+  // font-size: 12px;
+}
+
+tab-heading {
+  font-weight: 700;
+}
+
+.paragraph-char-limit {
+  max-width: 550px;
+  text-align: left;
+}
+
+.header-char-limit {
+  max-width: 625px;
+  text-align: left;
+}
+
+.expiredJob {
+  background-color: $gray-dark;
+  color: $white;
+  padding: 2px 60px;
+  width: auto;
+  font-size: 20px;
+}
+
+.expiredJobText {
+  color: $gray-dark;
+}
+
+
+/*
+  Allow angular.js to be loaded in body, hiding cloaked elements until
+  templates compile.  The !important is important given that there may be
+  other selectors that are more specific or come later and might alter display.
+ */
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.nav-tabs {
+  li {
+    a {
+      color: $link-color;
+    }
+    &.active {
+      a, a:focus, a:hover {
+        color: $link-hover-color;
+        background-color: $white;
+      }
+    }
+  }
+}
+
+.tab-content {
+  // border-left: 1px solid #ddd;
+  // border-right: 1px solid #ddd;
+  // border-bottom: 1px solid #ddd;
+  background-color: $white;
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.group {
+  background-color: white;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  &.flatbottom {
+    margin-bottom: 0;
+  }
+}
+
+.col {
+  &.no-padding {
+    padding: 0;
+  }
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.topBar {
+  height: 14px;
+  background-color: $gold;
+}
+
+.popover {
+  &.top {
+    margin-top: -10px;
+  }
+  border-radius: 0;
+  border: 5px solid $gray-lighter;
+  width: 240px;
+  box-shadow: none;
+  font-size: 12px;
+  line-height: 15px;
+  .popover-title {
+    padding-bottom: 0;
+    border-bottom: 0;
+    font-weight: 500;
+    background-color: $white
+  }
+  .arrow {
+    display: none;
+  }
+}
+
+.tool-close {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  outline: none;
+  vertical-align: middle;
+  background-color: #007eca;
+  border: 1px solid #007eca;
+  color: $white;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1;
+  span.x {
+    font-size: XX-large;
+    position: absolute;
+    color: $white;
+    top: -3px;
+    left: 11px;
+  }
+  span {
+    font-size: 11px;
+    position: relative;
+    left: -12px;
+    top: 28px;
+    color: #666;
+  }
+}
+
+.contentBlock {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: white;
+  opacity: .6;
+  z-index: 1000;
+}
+
+input {
+  // display: inline;
+  // padding: 20px;
+  // height: 35px;
+  // color: $gray-dark;
+  // font-size: 20px;
+  //border: 4px solid $gray-lighter;
+  border-radius: $border-radius-base;
+  // font-weight: bold;
+  &:focus {
+    outline: none;
+  }
+}
+
+.styled-select {
+  display: inline;
+  float: left;
+  position: relative;
+  margin-right: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+  width: 405px;
+  height: 50px;
+  border: 2px solid $gray-lighter;
+  border-radius: 5px;
+  span.icon {
+    display: inline;
+    float: right;
+    position: relative;
+    top: -32px;
+    @extend .icon-dropdown-lg;
+  }
+  select {
+    display: inline;
+    float: left;
+    position: relative;
+    background: transparent;
+    background-color: $white;
+    color: $gray-dark;
+    width: 400px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+    height: 45px;
+    appearance: none;
+  }
+}
+
+.modal-backdrop.in {
+  background-color: $black;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Adding back to previous page link styling */
+
+
+/* CGS- 481 Back is missing/styling is inconsistent*/
+
+.tool-previous-page {
+  a {
+    padding: 0px 0px;
+    color: #a3a3a1
+  }
+  span {
+    margin: 0 10px 10px 0;
+  }
+}
+
+
+/* Adding ToolOverlay related CSS*/
+
+
+/* CGS-396 - open all the tool in modal */
+
+.tool-overlay {
+  position: fixed;
+  background: #000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
+  z-index: 10000;
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+
+.tool-wrapper {
+  position: absolute;
+  left: 40px;
+  width: 98vw;
+  opacity: 1;
+  z-index: 10000;
+  height: auto;
+  margin-bottom: 10px;
+  top: 40px;
+  #main-content-wrapper {
+    max-width: inherit;
+    background: #f2f2f2;
+    border-radius: 6px;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+    width: 93vw;
+    min-height: 700px;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+  #main-content-container {
+    max-width: inherit;
+    overflow: auto;
+    height: 100%;
+    min-height: 90vh;
+  }
+  .modal-close-link {
+    top: 15px;
+    right: 18px;
+  }
+}
+
+.no-tool {
+  .modal-close-link {
+    display: none;
+  }
+}
+
+.modal-backdrop.in {
+  z-index: 10400 !important;
+}
+
+.modal-open .modal {
+  z-index: 10500 !important;
+}
+
+
+/****End Here ***********/
+
+// center all modals vertically (from http://stackoverflow.com/questions/18422223/bootstrap-3-modal-vertical-position-center)
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: $screen-sm-min) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+@-webkit-keyframes careersLoader {
+  0%, 100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes careersLoader {
+  0%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+.expandicon {
+  margin-right: 10px;
+  cursor: pointer;
+  margin-top: 4px;
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  &.open {
+    @extend .icon-minus;
+  }
+  &.closed {
+    @extend .icon-plus;
+  }
+}
+
+.panel {
+  margin-bottom: 0;
+  background-color: $white;
+  border: 0;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+.panel-body {
+  padding: 5px;
+  padding-right: 5px;
+  padding-top: 0;
+}
+
+.panel-body:before, .panel-body:after {
+  content: " ";
+  display: table;
+}
+
+.panel-body:after {
+  clear: both;
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom: solid 1px $black;
+  border-top: solid 1px $black;
+}
+
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 21px;
+  color: inherit;
+}
+
+.panel-footer {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-top: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.panel-group {
+  margin-bottom: 0;
+  border-bottom: 1px dotted $blue-darkest;
+}
+
+.panel-default > .panel-heading {
+  color: $black;
+  background-color: $white;
+  border-color: transparent;
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: transparent;
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: 0;
+}
+
+
+/* .text-caret-right
+ * Example: <span class="text-caret-right">TEXT</span>
+ */
+
+.text-caret-right {
+  background: $red;
+  width: 42px;
+  height: 24px;
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 4px 0 4px 4px;
+  display: block;
+  position: relative;
+  &.inactive {
+    background: $gray;
+  }
+}
+
+.text-caret-right:after {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-left: 10px solid $red;
+  border-bottom: 12px solid transparent;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 42px;
+}
+
+.text-caret-right.inactive:after {
+  border-left: 10px solid $gray;
+}
+
+.job.last {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+
+/* Use this for every job listing
+  in all components that list jobs. */
+
+.widget {
+  .job {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-bottom: 0px;
+  }
+}
+
+.job {
+  position: relative;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-bottom: 1px dotted;
+  .icons {
+    position: relative;
+    text-align: right;
+  }
+  .icon {
+    display: inline-block;
+  }
+  .jobInfo {
+    margin: 0;
+    padding-bottom: 10px;
+  }
+}
+
+.pagination {
+  border-radius: 0;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+  border-radius: 0;
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+  border-radius: 0;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: $btn-primary-bg;
+  color: $white;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.styled-radio {
+  label {}
+  input[type="radio"] {
+    @extend .sr-only;
+  }
+  input[type="radio"] + span:before {
+    content: '';
+    border: 1px solid $blue;
+    border-radius: 11px;
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: inline-block;
+  }
+  input[type="radio"]:focus + span:before {
+    @include tab-focus();
+  }
+  input[type="radio"]:checked + span:before {
+    background-color: $blue;
+  }
+}
+
+.selected-radio {
+  background-color: $blue;
+}
+
+figure {
+  position: relative;
+  text-align: center;
+  figcaption {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  img {
+    border: 2px solid $gray;
+    max-width: 100%;
+  }
+  .icon {
+    position: absolute;
+    top: 40%;
+    left: 46%;
+  }
+}
+
+.link, .editable-click, a.editable-click {
+  color: $link-color;
+  border-bottom: none;
+  &:hover, &:focus {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+button, .button {
+  // outline: none;
+  border: 0px;
+  zoom: 1;
+  filter: alpha(opacity=85);
+  opacity: 0.85;
+  font-size: $font-size-h4;
+  font-weight: 700;
+  background-color: $btn-primary-bg;
+  border-radius: 2px;
+  padding: 10px 13px 10px 15px;
+  line-height: 1.1;
+  color: $white;
+  display: inline-block;
+  a, h6 {
+    color: $white;
+    zoom: 1;
+    &:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+  &:hover {
+    color: $white;
+    zoom: 1;
+    filter: alpha(opacity=100);
+    opacity: 100;
+    text-decoration: none;
+  }
+  &[disabled] {
+    zoom: 1;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &.small-text {
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  &.add {
+    text-align: left;
+    .icon {
+      margin-left: 10px;
+      @extend .icon-add-sm;
+    }
+  }
+  &.remove {
+    text-align: left;
+    background-color: $gray-darker;
+    .icon {
+      margin-left: 10px;
+      @extend .icon-remove-sm;
+    }
+  }
+  &.btn-success {
+    background-color: $green;
+  }
+  &.btn-info {
+    background-color: $gray-lightest;
+  }
+  &.btn-warning {
+    background-color: $gold;
+  }
+  &.btn-danger {
+    background-color: $red;
+  }
+  &.full-width {
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+  }
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.mini-header {
+  font-size: $font-size-smallest;
+  font-weight: bold;
+  color: #666;
+}
+
+header {
+  h1, ol.breadcrumb li span {
+    margin-top: 10px;
+  }
+  .brand-title {
+    color: $gray-dark;
+  }
+  .brand-text {
+    color: $orange;
+    font-weight: bold;
+  }
+}
+
+#main-content {
+  padding-bottom: 20px;
+}
+
+#main-content-heading {
+  margin-top: 25px;
+}
+
+.goalsICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $goals-icon !important;
+  }
+}
+
+.skillsICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $skills-icon !important;
+  }
+}
+
+.resumeICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $resume-icon !important;
+  }
+}
+
+.imageICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $image-icon !important;
+  }
+}
+
+.networkICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $network-icon !important;
+  }
+}
+
+.letterICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $letter-icon !important;
+  }
+}
+
+.interviewICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $interview-icon !important;
+  }
+}
+
+.strategiesICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $strategies-icon !important;
+  }
+}
+
+.applyICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $apply-icon !important;
+  }
+}
+
+.career-managementICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $career-management-icon !important;
+  }
+}
+
+.militaryICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $military-icon !important;
+  }
+}
+
+// tools
+.careerExplorationICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $goals-icon;
+  }
+}
+
+.skillBuilderICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $skills-icon;
+  }
+}
+
+.resumeBuilderICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $resume-icon;
+  }
+}
+
+.jobsearchICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $apply-icon;
+  }
+}
+
+.interviewPreparationICON {
+  h1, ol.breadcrumb li span, .milestone-sequence {
+    color: $interview-icon;
+  }
+}
+
+.resume-builder-container .list-view a:hover {
+  color: #666666;
+  text-decoration: underline;
+}
+
+.status-bar {
+  margin: 0;
+  padding-top: 10px;
+  .bar-chart {
+    float: right;
+    width: 60%;
+    height: 10px;
+    margin-top: 4px;
+    .progress {
+      background: $gray;
+      border-radius: 4px;
+      box-shadow: inset 0px 2px 1px 0px $gray-darker;
+    }
+  }
+  .bar-chart-status {
+    @extend .mini-header;
+    float: right;
+    padding-left: $padding-small-horizontal;
+  }
+}
+
+.activity-checkbox {
+  padding: 1px 4px;
+  width: 60px;
+  .checkbox-off {
+    margin: 4px auto;
+    @extend .icon-check-box;
+  }
+  .checkbox-on {
+    margin: 4px auto;
+    @extend .icon-check-box-done;
+  }
+  span {
+    @extend .mini-header;
+    text-align: center;
+    display: block;
+  }
+}
+
+.demand-bar {
+  clear: both;
+  div {
+    width: auto;
+    span {
+      width: 23%;
+      height: 5px;
+      float: left;
+      &.spacer {
+        width: 2%;
+      }
+    }
+  }
+  label {
+    @extend .mini-header;
+    @extend .text-upper;
+    color: $gray-darker;
+    margin: 0;
+    span {
+      width: auto;
+      height: auto;
+    }
+  }
+  .demand-low {
+    .firstdemand {
+      background-color: $red;
+    }
+    .seconddemand, .thirddemand, .lastdemand {
+      background-color: $gray;
+    }
+  }
+  .demand-medium {
+    .firstdemand, .seconddemand {
+      background-color: $red;
+    }
+    .thirddemand, .lastdemand {
+      background-color: $gray;
+    }
+  }
+  .demand-high {
+    .firstdemand, .seconddemand, .thirddemand {
+      background-color: $red;
+    }
+    .lastdemand {
+      background-color: $gray;
+    }
+  }
+  .demand-veryhigh {
+    .firstdemand, .seconddemand, .thirddemand, .lastdemand {
+      background-color: $red;
+    }
+  }
+}
+
+
+/* close link for modals. sample markup:
+ * <a class="modal-close-link" ng-click="$close()" title="Close" role="button"><span class="icon"></span></a>
+ */
+
+.modal-close-link {
+  position: absolute;
+  z-index: 3;
+  // for normal / medium modals
+  top: 10px;
+  right: 10px;
+  .icon {
+    @extend .icon-close;
+  }
+  &:hover {
+    .icon {
+      @extend .icon-close-active;
+    }
+  }
+}
+
+.modal-sm, .modal-lg {
+  .modal-close-link {
+    top: -5px;
+    right: -5px;
+  }
+}
+
+// .modal-lg {
+//   .modal-close-link {
+//     top: -5px;
+//     right: -5px;
+//   }
+// }
+// Ensure that buttons are styled correctly
+.modal {
+  button.btn, input.btn {
+    @extend .button;
+  }
+}
+
+// angular-circles circles graph/chart coloring:
+// <div class="circles-chart" ng-circles value=".."...
+.circles-chart {
+  .circles-valueStroke {
+    stroke: $red;
+  }
+  .circles-maxValueStroke {
+    stroke: $pink;
+  }
+}
+
+
+/* Font Awesome images in input, use:
+  <div class="inner-fa left-fa">
+      <i class="fa fa-user"></i>
+      <input type="text" />
+  </div>
+*/
+
+.inner-fa {
+  position: relative;
+  .fa {
+    position: absolute;
+    padding: 15px 10px;
+    pointer-events: none;
+    color: $gray;
+  }
+  &.form-control {
+    .fa {
+      padding: 2px 10px;
+    }
+  }
+}
+
+.two-col .inner-fa .fa {
+  padding: 14px 26px;
+}
+
+.left-fa .fa {
+  left: 0px;
+}
+
+.right-fa .fa {
+  right: 0px;
+}
+
+.left-fa input, .left-fa .input {
+  padding-left: 30px;
+}
+
+.right-fa input, .right-fa .input {
+  padding-right: 30px;
+}
+
+// use font-awesome instead of glyphs
+.glyphicon {
+  @extend .fa;
+  &.glyphicon-chevron-right {
+    @extend .fa-chevron-right;
+  }
+  &.glyphicon-chevron-left {
+    @extend .fa-chevron-left;
+  }
+  &.glyphicon-chevron-up {
+    @extend .fa-chevron-up;
+  }
+  &.glyphicon-chevron-down {
+    @extend .fa-chevron-down;
+  }
+  &.glyphicon-thumbs-up {
+    @extend .fa-thumbs-o-up;
+  }
+  &.glyphicon-thumbs-down {
+    @extend .fa-thumbs-o-down;
+  }
+  &.glyphicon-star {
+    @extend .fa-star;
+  }
+  &.glyphicon-star-empty {
+    @extend .fa-star-o;
+  }
+  &.glyphicon-ban-circle {
+    @extend .fa-ban;
+  }
+  &.glyphicon-calendar {
+    @extend .fa-calendar;
+  }
+}
+
+// custom drag crip - refer to https://github.com/FortAwesome/Font-Awesome/issues/816
+.fa.fa-grip:before {
+  content: "\f142 \202F \f142 \202F \f142";
+}
+
+// .fa.fa-grip-large:before {
+//     content: "\f142 \202F \f142 \202F \f142 \202F \f142 \202F \f142 \202F \f142 \202F \f142";
+// }
+//Breadcrumb
+.breadcrumb {
+  margin: 0;
+  padding: $left-nav-adjust 0 0 0;
+  font-size: $font-size-small;
+  li {
+    display: inline-block;
+    .bc-link {
+      @extend .brand-title;
+    }
+    .bc-sep {
+      padding: 10px;
+      @extend .brand-title;
+    }
+    .bc-curr {
+      @extend .brand-text;
+    }
+  }
+}
+
+
+/* Let's go with standard stuff here.
+
+//Aria
+:focus, :active {
+  outline: none !important;
+}
+
+// bootstrap override
+a {
+  &:focus {
+    text-decoration: none;
+    transform: scale3d(1.25,1.25,1.5);
+    outline: none !important;
+  }
+  &:hover {
+    transform: scale(1);
+    color: $link-hover-color;
+  }
+}
+
+a.fa:hover, a.fa:focus, a[ng-click]:focus, span[ng-click]:focus, p[ng-click]:focus, i[ng-click]:focus, [data-ng-click]:focus, [x-ng-click]:focus {
+  text-decoration: none;
+  outline: none;
+  color: $link-hover-color;
+}
+
+// needed for slider since 3d causes problem
+rzslider span.rz-pointer:focus {
+  outline: 2px auto !important;
+}
+
+.padded-modal-content .modal-content {
+  padding: 15px;
+}
+
+*/
+
+
+/* Specify styling for tooltip contents */
+
+.smallInfoIcon {
+  svg {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 2px;
+    path {
+      fill: $blue;
+    }
+  }
+}
+
+div[uib-popover-popup] {
+  color: $black;
+  font-weight: 900;
+  background-color: $white;
+  box-shadow: 0 3px 8px $gray-dark;
+  border: solid 1px $gray-dark;
+}
+
+.tool-wrapper + nav #floating-nav {
+  pointer-events: none;
+}
+
+.jobApply-modal .radio:last-child {
+  margin-bottom: -5px;
+}
+
+.divider {
+  padding: 0 0 20px;
+  margin: 0 0 20px;
+  border-bottom: 1px $gray solid;
+}
+
+.buffer {
+  padding: 40px 40px 40px 40px;
+}
+
+
+/* resume builder preview message */
+
+section.resume-preview-container div.no-preview {
+  background-color: $white;
+  color: $brand-primary;
+}
+
+/* resume builder: editor 'select' */
+
+div.resume-editor {
+  select.form-control {
+      height: $input-height-base;
+  }
+}
+
+
+/******************************************************
+*
+* Everything below this comment is for Mobile layout
+*
+*******************************************************/
+@media all and (max-width: $screen-md-max){
+  img{
+    max-width:100%;
+  }
+}
+@media all and (max-width: $screen-xs-max) {
+  // this code removes all padding and marging for smaller 
+  // screen sizes.
+  // same class is used multiple times in order to increase the specificity
+  .row.row {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .content-wrap  {
+    .row.row  > [class|="col"],
+    .row.row  > [class*="col-"],
+    .row.row  > [class~="col"],
+    .row.row > .primary,
+    .row.row > .secondary,
+    .container-fluid, .eight-off-two, .eleven-one, .exercise-complete-layout, .four-col, .four-eight, .one-col, .one-ten, .one-eleven, .one-two-col, .six-col, .six-off-three, .ten-off-one, .ten-two, .three-col, .three-six, .two-col, .two-eight, .six-three, .two-five, .two-ten, .three-four-five, .two-three-seven, .one-four-seven, .one-five-six, .five-seven, .three-nine {
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  // same class is used multiple times in order to increase the specificity
+  // more similar classes can be added with different values
+  .padding-small-horizontal.padding-small-horizontal.padding-small-horizontal.padding-small-horizontal.padding-small-horizontal {
+    padding-left: $padding-small-horizontal;
+    padding-right: $padding-small-horizontal;
+  }
+
+  .padding-large-horizontal.padding-large-horizontal.padding-large-horizontal.padding-large-horizontal.padding-large-horizontal {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+
+/********** paginations  - mobile responsive *******/
+@media all and (max-width: $screen-xs-max) {
+   .pagination > li > a, .pagination > li > span{
+      padding:6px 8px;
+   }
+
+}
+@media all and (max-width: $screen-xs) {
+  .pagination{
+     display:block;
+   }
+   .pagination > li {
+       &.pagination-next{
+         clear:both;
+         display:block;
+         margin-top: 5px;
+         float:left;
+      }  
+      &.pagination-last{
+        display:block;
+        margin-top: 5px;
+        float:left;
+      } 
+      &.pagination-prev{
+         display:inline-block;
+      }
+   }
+   .pagination > li:nth-child(3){
+       clear:both;
+       display:block;
+   }
+
+}
+

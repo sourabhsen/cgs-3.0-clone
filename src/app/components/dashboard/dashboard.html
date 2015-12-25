@@ -1,0 +1,207 @@
+<section role="main" aria-label="Dashboard Content" id="Dashboard-Container" class="three-nine" ng-controller="DashboardCtrl as DashCtrl">
+  <div class="row dashboard-intro-container">
+    <div class="primary padding-small-horizontal" tabindex="0">
+      <header>
+        <h1 role="presentation">
+          Career Guidance Dashboard
+        </h1>
+      </header>
+    </div>
+    <div class="secondary">
+      <!-- Removing User Location: Only used to prepopulate job search, currently, so we don't need it to be super prominent.
+      <span class="fa fa-map-marker link"></span>
+      <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" e-typeahead="item.location for item in DashCtrl.model.suggestLocations($viewValue)" onbeforesave="DashCtrl.model.updateCgsLocation($data)" e-ng-blur="DashCtrl.model.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a>
+      -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="primary">
+      <!-- <section class="one-col welcome-container border-box" role="presentation">
+        <div class="row">
+          <div class="col">
+            <p role="presentation">
+              <span class="first-name"
+                    ng-show="user.profile.firstName && user.profile.firstName != undefined && user.profile.firstName != ''">
+                Hello, {{user.profile.firstName}}.
+              </span>
+              <button class="btn-link" type="button" ng-show="!user.profile.firstName" role="button" ng-click="DashCtrl.login()" >Hello, please sign in or register.</button>
+              Welcome to your Career Guidance Dashboard!
+            </p>
+          </div>
+        </div>
+      </section> -->
+      <section class="two-col milestone-list border-box padding-small-horizontal">
+        <div class="row status-header" tabindex="0" role="heading">
+          <div class="col">
+            <h2>Career Guidance Milestones</h2>
+          </div>
+          <div class="col status-bar">
+            <span class="bar-chart-status">
+              <span cg-busy="{promise: DashCtrl.playlistPromise, profile: 'inlineSmall'}"></span> {{(DashCtrl.milestones.progressPercentage || 0) | number:0}}% COMPLETE
+            </span>
+            <div class="bar-chart progress">
+              <uib-progressbar type="success" value="(DashCtrl.milestones.progressPercentage || 0) | number:0"></uib-progressbar>
+            </div>
+            <!-- <span class="bar-chart-infotip">Your progress will update each time you mark an individual stage as complete</span> -->
+          </div>
+        </div>
+        <div class="one-col">
+          <div class="row milestone-row">
+            <div class="col">
+              <div class="two-col milestone-rows">
+                <div class="row milestone" ng-repeat="milestone in DashCtrl.milestones" ng-mouseenter="focusedId=milestone.identifier" ng-mouseleave="focusedId=undefined">
+                  <div class="col milestone-left-block">
+                    <div class="milestone-title pointer" data-next="{{milestone.next && !milestone.completed}}" ui-sref="auth.milestones({milestoneId: milestone.orderSequence})">
+
+                      <div class="dashboard-milestone-status">
+                        <span class="icon" ng-class="{'icon-check-dash' : milestone.completed, 'text-caret-right' : (milestone.next && !milestone.completed)}" aria-hidden="true" data-next="{{milestone.next && !milestone.completed}}" data-completed="{{milestone.completed}}">
+                          {{(milestone.next && DashCtrl.milestones.progressPercentage > 0) ? 'NEXT' : ((!milestone.completed && milestone.next) ? 'START' : '')}}
+                        </span>
+                      </div>
+
+                      <div class="svg-placement">
+                        <apollo-svg-icon class="apollo-svg-icon" svg-icon=" (milestone && milestone.identifier) ? milestone.identifier.split('.')[1] + 'ICON' : '' "></apollo-svg-icon>
+                      </div>
+
+                      <div class="milestone-anchor">
+                        <a  class="ms-{{(milestone.identifier).split('.')[1]}}"
+                            aria-describedby="ms-tooltip-{{$index}}"
+                            ui-sref="auth.milestones({milestoneId: milestone.orderSequence})"
+                            ng-focus="focusedId=milestone.identifier"
+                            ng-blur="focusedId=undefined"
+                            ng-cloak>
+                          <span ng-bind="milestone.title" class="labelText"></span>
+                        </a>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col description-container" ng-class="(focusedId === milestone.identifier || milestone.next) ? 'show' : 'hide'" role="tooltip" id="ms-tooltip-{{$index}}">
+                    <a tabindex="-1" class="milestone-description" ui-sref="auth.milestones({milestoneId: milestone.orderSequence})">
+                      <span class="milestone-description-content" aria-hidden="true">{{::milestone.description | textClamp: 110}}</span>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <!-- <div class="one-col career-tools border-box"> -->
+          <!-- <div class="row"> -->
+            <!-- <div class="col"> -->
+        <div class="border-box">
+          <div class="career-tools">
+            <div class="heading-container">
+              <h2 role="heading">Career Tools</h2>
+            </div>
+            <div>
+            <!-- <div ng-init="layouts = ['one','two','three','four']" class="{{(DashCtrl.tools.length < 5) ? layouts[DashCtrl.tools.length - 1] + '-col' : 'six-col'}}"> -->
+              <div class="flex-container flatten">
+                <div class="tool-item" ng-repeat="tool in DashCtrl.tools">
+                  <a class="dashboard-tool tool-{{(tool.identifier).split('.')[1]}}" ui-sref="auth.tools({toolId: tool.identifier.split('.')[1]})" aria-label="Career Tool">
+                    <div class="svg-placement">
+                      <apollo-svg-icon svg-icon="(tool && tool.identifier)? tool.identifier.split('.')[1] + 'ICON' : ''" ></apollo-svg-icon>
+                    </div>
+                      <!-- data-tenant="width" provides a tenant specific solution for the width of this element -->
+                    <h4 data-tenant="width" class="tool-title link">{{tool.title}}</h4>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="secondary" aria-hidden="true">
+      <section class="one-col search-form-container widget border-box padding-small-horizontal">
+        <div class="row flatten">
+          <div class="col">
+            <h3 role="heading" class="flatten">Search Jobs</h3>
+            <job-search-form mode="Dash" display-type="widget"></job-search-form>
+          </div>
+        </div>
+      </section>
+      <section class="one-col my-jobs-container widget border-box padding-small-horizontal">
+        <div class="row flatten">
+          <div class="col">
+            <jobs-dashboard start-tab="{{DashCtrl.startTab}}" dashboard-type="widget" dashboard-title="My Jobs"
+                            program-code="{{user.profile.programCode}}"></jobs-dashboard>
+          </div>
+        </div>
+      </section>
+
+      <!-- Email alert Component -->
+      <email-alerts-dash-widget limit="3" user-authenticated="{{user.isAuthenticated()}}" profile-id="{{user.profileId}}" on-search="jobsModel.savedSearch(params)"></email-alerts-dash-widget>
+
+      <section class="one-col my-goal-list-container widget border-box padding-small-horizontal" role="dialog" aria-label="My Goals">
+        <div class="row flatten">
+          <div class="col" cg-busy="{promise: DashCtrl.model.promises.primaryGoal, profile:'inlineSmall'}">
+            <h3 role="heading">
+              My Goals
+            </h3>
+            <div ng-show="DashCtrl.model.ronetitems.length !== 1" class="mygoalslist-inner-container" tabindex="-1">
+              <p>You have no saved goals.</p>
+              <div class="widget-bottom">
+                <a class="go-to-setgoals get-started-link small-cta" ui-sref="auth.tools({toolId: 'careerExploration'})">Get started now</a>
+              </div>
+            </div>
+            <div ng-show="DashCtrl.model.ronetitems.length === 1" class="mygoalslist-inner-container" tabindex="-1">
+              <h6 class="goal-classification">
+                Primary Goal
+              </h6>
+              <div class="mygoal" data-ronet="{{DashCtrl.model.ronetitems[0].rOnet}}">
+                <div class="name"><a ui-sref="auth.tools.view({toolId: 'careerExploration', viewId: 'details', id: DashCtrl.model.ronetitems[0].rOnet})">{{DashCtrl.model.ronetitems[0].name}}</a></div>
+                <div class="salaryRange clearfix">
+                  <span aria-label="Dollars Per Year">{{DashCtrl.model.ronetitems[0].salaryTrendRealTimeMin | abbreviateUSD}} - {{DashCtrl.model.ronetitems[0].salaryTrendRealTimeMax | abbreviateUSD}}</span>, <span> Demand: {{DashCtrl.model.ronetitems[0].hiringTrend}}</span>
+                </div>
+                <div class="build-skill" ng-show="DashCtrl.model.ronetitems[0].rOnet">
+                  <p>
+                    <a ui-sref="auth.tools({toolId: 'skillBuilder', id: DashCtrl.model.ronetitems[0].rOnet})" class="smallerfont">Build skills for this goal</a>
+                  </p>
+                </div>
+              </div>
+              <div role="footer" class="widget-bottom">
+                <a ui-sref="auth.tools.view({toolId: 'careerExploration', viewId: 'myGoals'})" class="go-to-savedgoals pull-left small-cta" aria-label="Goals">See All</a>
+                <a ui-sref="auth.tools({toolId: 'careerExploration'})" class="go-to-setgoals small-cta">New Goal</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="resume-list-container widget border-box padding-small-horizontal" role="dialog" aria-label="My Resumes">
+        <div class="one-col resume-list-top">
+          <div class="row">
+            <div class="col" cg-busy="{promise: DashCtrl.resumeBuilderPromise, profile:'inlineSmall'}">
+              <h3 role="heading">
+                My Resumes
+              </h3>
+            </div>
+          </div>
+        </div>
+        <ap-list-resumes pid="user.profileId" mini="true" on-edit="DashCtrl.showEditor(promise)" on-preview="DashCtrl.showPreview(promise)" size="DashCtrl.resumeShowMoreLink(size)" is-known="user.isKnown()" authenticate="user.launchLoginModal()"></ap-list-resumes>
+        <div class="one-col resume-list-bottom">
+          <div class="row">
+            <div role="footer" class="col">
+            <div class="widget-bottom">
+              <a ng-show="DashCtrl.rlSize > 0"
+                 ui-sref="auth.tools({toolId: 'resumeBuilder'})"
+                 class="small-cta pull-left" aria-label="Resumes">See All</a>
+              <a ng-show="DashCtrl.rlSize === 0"
+                 ui-sref="auth.tools({toolId: 'resumeBuilder'})"
+                 class="small-cta">Get started now</a>
+              <a ng-show="DashCtrl.rlSize > 0 && DashCtrl.rlSize < 25" ui-sref="auth.tools({toolId: 'resumeBuilder', tab:'createResume'})"
+                  class="small-cta">New Resume</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</section>

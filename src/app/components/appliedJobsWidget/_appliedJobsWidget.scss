@@ -1,0 +1,36 @@
+.applied-jobs-results-widget {
+  padding: 10px 15px;
+}
+.appliedJobsWidget {
+  background-color: $white;
+  .alert-icon {
+    @extend .icon-alert-lg;
+    margin-top: 10px;
+  }
+  .md-show {
+    display: none;
+    @media (max-width: $screen-md) {
+      display: inline
+    }
+  }
+  @media (max-width: $screen-sm-max) {
+    div.applied-jobs-table-layout,
+    div.secondary {
+      display: none;
+    }
+  }
+
+  .appliedJobRemove {
+    float: right;
+    margin-top: 20px;
+  }
+  .company {
+    text-transform: capitalize;
+  }
+}
+
+#atsLoginModal {
+  p {
+    text-decoration: none;
+  }
+}

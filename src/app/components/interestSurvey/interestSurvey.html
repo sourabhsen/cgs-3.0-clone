@@ -1,0 +1,22 @@
+<div class="interest-survey" ng-controller="InterestSurveyController as survey">
+  <header>
+    <div class="one-col">
+      <div class="row">
+        <div class="col">
+        <!-- Remove bredcrumb from interest-survey, CAR 396 -->
+        <!--   <div ncy-breadcrumb></div> -->
+        </div>
+        <div class="col">
+          <h1>Interest Assessment</h1>
+          <div class="clearfix tool-previous-page">
+            <a class="pull-left mini-header text-uppercase" ui-sref="auth.tools({toolId: 'careerExploration'})">
+                <span class="icon icon-previous" aria-hidden="true">&nbsp;</span>Back to Career Exploration
+              </a>
+          </div>
+          <p class="header-desc">Rank each of the following activities from least interesting to most interesting. Answer the questions as accurately as you can. The results from the assessment will help you select a career area to explore.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <ap-interest-survey profile-id="survey.user.profileId" on-init="survey.onSurveyInit" restart="survey.restart" on-complete="survey.onSurveyComplete"></ap-interest-survey>
+</div>

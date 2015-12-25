@@ -1,0 +1,510 @@
+#Dashboard-Container {
+  padding-top: 20px;
+  h1 {
+    margin-top: 0;
+  }
+  h2 {
+    margin: 2px 0 10px 0;
+  }
+  &:focus {
+    outline: 0px;
+  }
+  .welcome-container .btn-link {
+    color: $white;
+    opacity: 1;
+    text-decoration: underline;
+    font-weight: normal;
+    &:hover, &:focus {
+      color: $gray-darker;
+    }
+    &:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+      outline-offset: -2px;
+    }
+  }
+  .first-name {
+    text-transform: capitalize;
+  }
+  .progress {
+    margin-bottom: 0;
+  }
+  .bar-chart-status {
+    padding-bottom: 10px;
+  }
+  .dashboard-location {
+    .pin {
+      display: inline-block;
+      position: relative;
+      float: left;
+      @extend .icon-geo;
+      text-indent: -30000px;
+      margin-right: 5px;
+    }
+  }
+  .welcome-container {
+    background-color: $brand-info;
+    color: $white;
+    padding-top: 10px;
+    .row {
+      margin-bottom: 0;
+    }
+    a {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
+  // Right Column
+  .widget {
+    background-color: $white;
+    font-size: 14px;
+    > .row {
+      padding-top: 20px;
+      padding-bottom: 10px;
+    }
+    h3 {
+      font-size: $font-size-h4;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .small-cta {
+      font-weight: 700;
+      font-size: 12px;
+      float: right;
+    }
+
+    /* instead of modifying the bootstrap file
+    same code is placed here without media query */
+    .nav-justified {
+      width: 100%;
+
+      > li {
+        float: none;
+        > a {
+          text-align: center;
+          margin-bottom: 5px;
+        }
+      }
+
+      > .dropdown .dropdown-menu {
+        top: auto;
+        left: auto;
+      }
+
+      
+      > li {
+        display: table-cell;
+        width: 1%;
+        > a {
+          margin-bottom: 0;
+        }
+      }
+      
+    }
+
+    .nav-tabs-justified {
+      border-bottom: 0;
+
+      > li > a {
+        // Override margin from .nav-tabs
+        margin-right: 0;
+        border-radius: $border-radius-base;
+      }
+
+      > .active > a,
+      > .active > a:hover,
+      > .active > a:focus {
+        border: 1px solid $nav-tabs-justified-link-border-color;
+      }
+
+      > li > a {
+        border-bottom: 1px solid $nav-tabs-justified-link-border-color;
+        border-radius: $border-radius-base $border-radius-base 0 0;
+      }
+      > .active > a,
+      > .active > a:hover,
+      > .active > a:focus {
+        border-bottom-color: $nav-tabs-justified-active-link-border-color;
+      }
+    }
+
+   .nav > li > a {
+      padding: 4px 4px;
+      font-size: 11px;
+    }
+    .search {
+      margin: 0;
+    }
+    .tab-content {
+      border: none;
+      padding: 10px 0 0 0;
+    }
+    .job:first-of-type {
+      margin-top: 0;
+    }
+    .widget-bottom {
+      border-top: 1px solid $gray-lighter;
+      padding-top: 10px;
+    }
+  }
+
+
+  .search-form-container {
+    .form-group {
+      display: inline;
+    }
+    .autocomplete {
+      padding: 0;
+      margin: 0;
+      input {
+        @extend .input-sm;
+        padding-left: 25px;
+        width: 100%;
+        font-size: $font-size-small;
+      }
+      .fa {
+        font-size: 14px;
+        padding: 10px 10px;
+      }
+    }
+    .dropdown-menu {
+      font-size: 14px;
+    }
+  }
+  .mygoal {
+    .salaryRange, .build-skill {
+      @extend .small;
+    }
+  }
+  .goal-classification {
+    font-weight: bold;
+    color: $red;
+    margin-bottom: 0;
+  }
+  .resume-list {
+    .additional-info {
+      color: $gray-dark;
+    }
+    .col-md-12 > .row {
+      margin-bottom: 0;
+    }
+  }
+  .resume-list-top {
+    padding-top: 20px;
+    > .row {
+      margin-bottom: 0;
+    }
+  }
+ 
+  #searchFieldDash {
+    padding-left: 0;
+    padding-right: 0;
+    #mobile-submit {
+      max-width: 100%;
+      width: 100%;
+      font-size: $font-size-small;
+    }
+  }
+  .career-tools {
+    padding: 20px 15px 15px;
+    .heading-container {
+      //border-bottom: 1px solid #d8d7d7;
+    }
+    h2 {
+      // padding-bottom: 10px;
+      margin: 0;
+    }
+    .flex-container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+
+    .tool-item {
+      padding: 0px 5px;
+      display: inline-block;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    a.dashboard-tool {
+      display: inline-block;
+      &:hover {
+        text-decoration: none;
+        h4 {
+          text-decoration: underline;
+          color: $link-hover-color;
+        }
+      }
+      .svg-placement {
+        display: inline-block;
+        margin: 10px 0 0 0;
+        .svg-icon-container {
+          display: inline-block;
+        }
+      }
+    }
+    h4 {
+      width: 100px;
+      padding-left: 10px;
+      font-size: $font-size-small;
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: -20px;
+    }
+  }
+  .milestone-list {
+    background-color: $white;
+    margin-bottom: 10px;
+    .status-header {
+      padding: 20px 0 0 0;
+      margin-bottom: 0;
+    }
+  }
+  .milestone-row {
+    margin-bottom: 0;
+  }
+  .milestone-rows, .milestone-rows .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .milestone {
+    display:table;
+    padding:10px 0;
+    width:100%;
+    border-top: 1px solid $gray-lighter;
+    margin-bottom: 0;
+    position: relative;
+    &:first-child {
+      border-top: 1px solid #000;
+    }
+    .milestone-left-block {
+      display: table-cell;
+      vertical-align: middle;
+      float: left;
+    }
+    .dashboard-milestone-status {
+      text-align: center;
+      width: 52px;
+      margin-right: 10px;
+    }
+    .milestone-title {
+      div {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      div.milestone-anchor {
+        left: 90px;
+        //min-width: 220px;
+      }
+      a {
+        padding-left: 10px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      &:hover {
+        text-decoration: none;
+        span {
+          &.labelText {
+            text-decoration: underline;
+            color: $link-hover-color;
+          }
+        }
+      }
+      .icon {
+        margin-right: 10px;
+      }
+      h5 {
+        font-size: 17px;
+        display: inline-block;
+      }
+    }
+  }
+  div.description-container {
+    .milestone-description {
+      color: $black;
+      text-decoration: none;
+      display:block;
+
+      &:focus, &:hover {
+        color: $black;
+        text-decoration: none;
+      }
+      span.milestone-description-content {
+
+        height: ($padding-large-vertical * 2 + 10);
+        line-height: 15px;
+        margin: 0;
+        font-size: 13px;
+        display: table-cell;
+        vertical-align: middle;
+        overflow:hidden;
+        @media all and (max-width: 500px) {
+          display: none;
+        }
+      }
+    }
+  }
+  // ICONS ***************************
+  .svg-icon {
+    .outline {
+      display: none;
+      fill: $gray-darker;
+    }
+    .filled {
+      display: inline;
+    }
+  }
+  /*
+  .milestone:hover, div[data-next=true], .milestone a:focus, .dashboard-tool:hover, .dashboard-tool:focus {
+    .outline {
+      display: none;
+    }
+    .filled {
+      display: inline;
+    }
+  }
+  */
+  .nav-dashboard-icon {
+    .filled {
+      fill: $dashboard-nav-icon;
+    }
+  }
+  .goals-icon {
+    .filled {
+      fill: $goals-icon;
+    }
+  }
+  .skills-icon {
+    .filled {
+      fill: $skills-icon;
+    }
+  }
+  .resume-icon {
+    .filled {
+      fill: $resume-icon;
+    }
+  }
+  .image-icon {
+    .filled {
+      fill: $image-icon;
+    }
+  }
+  .network-icon {
+    .filled {
+      fill: $network-icon;
+    }
+  }
+  .letter-icon {
+    .filled {
+      fill: $letter-icon;
+    }
+  }
+  .interview-icon {
+    .filled {
+      fill: $interview-icon;
+    }
+  }
+  .strategies-icon {
+    .filled {
+      fill: $strategies-icon;
+    }
+  }
+  .apply-icon {
+    .filled {
+      fill: $apply-icon;
+    }
+  }
+  .career-management-icon {
+    .filled {
+      fill: $career-management-icon;
+    }
+  }
+  .military-icon {
+    .filled {
+      fill: $military-icon;
+    }
+  }
+  .goals-tool-icon {
+    .filled {
+      fill: $goals-icon;
+    }
+  }
+  .skills-tool-icon {
+    .filled {
+      fill: $skills-icon;
+    }
+  }
+  .resume-tool-icon {
+    .filled {
+      fill: $resume-icon;
+    }
+  }
+  .interview-tool-icon {
+    .filled {
+      fill: $interview-icon;
+    }
+  }
+  .search-tool-icon {
+    .filled {
+      fill: $apply-icon;
+    }
+  }
+  @media (max-width: 440px) {
+    .milestone-description {
+      &:hover, &:focus {
+        display: none;
+      }
+    }
+  }
+}
+
+
+/******************************************************
+*
+* Everything below this comment is for Mobile layout
+*
+*******************************************************/
+
+#Dashboard-Container {
+  @media (max-width: ($screen-xs-max)) {
+    .milestone .milestone-title {
+      div.milestone-anchor {
+        min-width: inherit;
+      }
+    }
+
+    .text-caret-right {
+      font-size: 10px;
+    }
+
+    // progress bar
+    .bar-chart {
+      float: left;
+      width: 58%;
+    }
+
+    .career-tools  {
+      padding-right: 10px;
+      padding-left: 10px;
+      h4 {
+        width: 60%;
+      }
+
+      .flex-container {
+        flex-wrap: wrap;
+        justify-content: inherit;
+        .tool-item {
+          padding: 0px 5px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+}
+

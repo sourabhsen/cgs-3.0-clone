@@ -1,0 +1,196 @@
+$coach-mark-highlight: transparent;
+
+#ng-curtain, .coach-mark-curtain {
+  position: fixed;
+  background: $gray-darker;
+  opacity: 0.5;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 9998;
+  display: none;
+
+  &.curtain-transparent {
+    background: transparent;
+  }
+  &.curtain-frosted {
+    background: $gray-lightest;
+  }
+}
+
+.coach-mark-element-non-static {
+  z-index: 5;
+}
+
+.coach-mark-element-static {
+  position: relative;
+  z-index: 5;
+  background: $coach-mark-highlight
+}
+
+.coach-mark-title {
+  z-index: 5;
+  @extend .absolute-center;
+  text-align: left;
+  width:200px;
+  background: $gray-dark;
+  width: 35em;
+  color: $gray-lightest; // formerly $faint-gray
+}
+
+.coach-mark {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  .buttons {
+    @extend .pull-left;
+  }
+  button {
+    border-color: $gray;
+    font-family: $font-family-sans-serif;
+    border-radius: 0px;
+  }
+  .nextBtn {
+    margin-left: 4px;
+  }
+  .row {
+    margin-top: 20px;
+  }
+  .hide-intro, .prevBtn{
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "Open Sans", Arial, sans-serif;
+  }
+}
+
+.coach-mark.popover {
+  z-index: 99999;
+  background: $white;
+  color: $black; // formerly $faint-gray
+  min-width: 270px;
+  max-width: 90%;
+  &.top > .arrow:after {
+    border-top-color: $gray-lighter;
+  }
+  &.bottom > .arrow:after {
+    border-bottom-color: $gray-lighter;
+  }
+  &.left > .arrow:after {
+    border-left-color: $gray-lighter;
+  }
+  &.right > .arrow:after {
+    border-right-color: $gray-lighter;
+  }
+  .arrow {
+    display: block;
+  }
+}
+
+#popover-text {
+  // padding: 0 14px 9px;
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: subpixel-antialiased;;
+}
+
+.coach-mark .popover-title {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: $font-size-base;
+  line-height: 20px; // 20px
+  color: $orange;
+  margin: 20px 0 0;
+  padding: 0 14px;
+  text-align: left;
+}
+.coach-mark-modal.modal {
+    z-index:9999 !important;
+}
+
+.coach-mark {
+  [disabled].btn, button[disabled] {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.coach-mark-info {
+  @extend .pull-right;
+  margin-top: 24px;
+  margin-right: 24px;
+  width:20px;
+  height:20px;
+  background-image: url(/assets/images/info.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: $gray-dark 1px solid;
+  border-radius: 50%;
+  padding:20px;
+  &:hover {
+    background-color: $gray-lightest;
+    // no alternate images..would like it to be styled like the advance button with $green-fresh and $white inverse
+  }
+}
+
+// Specific element overrides for when backgrounds are not set correctly
+#favorites_tab.coach-mark-element-non-static {
+  background: $coach-mark-highlight;
+}
+// specific stylling for resume-tips slider content
+.tips-viewport {
+  width: 470px;
+  overflow: hidden;
+  .tips-wrapper {
+    position: relative;
+    left: 0;
+    width: 1500px;
+    overflow: hidden;
+    transition: left 300ms ease-in 0;
+    &.zero {
+      left:0px;
+    }
+    &.one {
+      left: -470px;
+    }
+    &.two {
+      left: -940px;
+    }
+    .items {
+      width: 470px;
+      float: left;
+    }
+    ul li {
+      width:400px;
+    }
+  }
+  .tips-control {
+    width: 100%;
+    float:left;
+    ul {
+      width: 150px;
+      float: left;
+      margin-left: -40px;
+    }
+    .tip-selector {
+      width:12px;
+      height:12px;
+      display: inline-block;
+      margin: 0 2px;
+      border-radius: 50%;
+      background: $white;
+      &.active {
+        background: $brand-primary;
+      }
+    }
+    .tip-menu {
+      width: 150px;
+      float: right;
+      text-align: right;
+      margin:4px 4px 0 0;
+    }
+  }
+}

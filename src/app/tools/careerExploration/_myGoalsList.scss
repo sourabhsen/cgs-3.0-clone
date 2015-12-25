@@ -1,0 +1,119 @@
+.my-goal-list-container {
+  .my-goal-title {
+    width: 100%;
+    padding: 30px 0 15px 0;
+    .left, .right {
+      line-height: 1.25;
+      margin-top: 0.75em;
+      font-size: 1em;
+      width: 38%;
+      border-bottom: 1px dotted $gray-darker;
+    }
+    .title {
+      font-size: 1.15em;
+      line-height: 1.25;
+      width: 24%;
+      text-align: center;
+    }
+  }
+  .angular-ui-tree-hidden {}
+  .angular-ui-tree-placeholder {
+    background: $gray;
+    border: 1px solid $red;
+  }
+}
+
+.my-goal-wrapper {
+  .goal-item {
+    &.row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .secondary {
+      background-color: none;
+      color: $red;
+      &.priority {
+        background-color: $red;
+        color: $white;
+      }
+      height: 100%;
+      .goal-rank {
+        @media screen and (min-width: $break-small) {
+          min-height: 70px;
+          padding-top: 8px;
+        }
+        @media screen and (min-width: $break-medium) {
+          min-height: 260px;
+          padding-top: 40px;
+        }
+        @media screen and (min-width: $break-large) {
+          min-height: 140px;
+          padding-top: 40px;
+        }
+        position: relative;
+        text-align: center;
+        .sno {
+          font-size: 31px;
+          line-height: 40px;
+        }
+        .rank {
+          font-size: 10px;
+          color: $gray-darker;
+          &.pri {
+            color: $white;
+          }
+        }
+      }
+    }
+    .goal-desc {
+      background-color: $white;
+      min-height: 140px;
+      .delete-mygoal {
+        position: relative;
+        float: right;
+        @extend .icon-delete;
+      }
+      .goal-title {
+        padding-top: 10px;
+        @media screen and (min-width: $break-medium) {
+          padding-top: 0;
+        }
+        padding-bottom: 10px;
+        border-bottom: 1px solid $black;
+        .fa-grip {
+          color: $gray;
+        }
+        span {
+          margin-left: 10px;
+          padding-top: 1px;
+        }
+      }
+      .col {
+        @media screen and (min-width: 0) {
+          border: none;
+        }
+        @media screen and (min-width: $break-large) {
+          border-right: 1px dotted $gray;
+        }
+        &:last-child {
+          border: none;
+        }
+        min-height: 60px;
+        &.primary {
+          padding-left: 0;
+        }
+        .demand-bar {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  &.angular-ui-tree-drag {
+    opacity: 0.9;
+    background: $white;
+    .goal-rank {
+      @extend .invisible;
+    }
+  }
+}
+

@@ -1,0 +1,65 @@
+<div class="navbar navbar-fixed-top navigation" ng-controller="HeaderDefaultCtrl as controller">
+  <div class="header">
+    <div class="brand-top">
+      <div class="brand-bar">
+        <div class="one-col">
+          <div class="col">
+            <a class="logo-link" href="https://ecampus.phoenix.edu/portal/portal/secure/homepage.aspx">
+              <img src="/assets/images/header-phoenix-logo.png" alt="Universitiy of Phoenix logo" title="eCampus home page">
+            </a>
+            <div uib-dropdown class="pull-right">
+              <a href id="ecampus-dropdown" uib-dropdown-toggle>
+                <img id="ecampusWidgetAvatarURL" width="25" height="25" ng-show="user.profile.profileAvatarUrl" ng-src="{{user.profile.profileAvatarUrl}}">
+                <span id="spanecampusWidgetName" ng-show="user.profile.firstName">{{user.profile.firstName}}</span>
+              </a>
+              <ul class="uib-dropdown-menu" aria-labelledby="ecampus drop down">
+                <li>
+                  <a id="profile" href="https://portal.phoenix.edu/profile">My Profile</a>
+                </li>
+                <li>
+                  <a id="myaccount" href="https://portal.phoenix.edu/account.html">My Account</a>
+                </li>
+                <li class="ecampus-logout">
+                  <a id="log" href="https://ecampus.phoenix.edu/portal/portal/secure/LogOut.aspx">Log out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-bottom">
+      <div class="header-nav">
+        <div class="one-col">
+          <div class="col">
+            <ul>
+              <li>
+                <a href="https://portal.phoenix.edu/home.html" name="home">Home</a>
+              </li>
+              <li>
+                <a href="https://ecampus.phoenix.edu/classroom/ic/classroom.aspx" name="classroom">Classroom</a>
+              </li>
+              <li>
+                <a href="https://portal.phoenix.edu/library.html" name="library">Library</a>
+              </li>
+              <li>
+                <a href="https://portal.phoenix.edu/program.html" name="program">Program</a>
+              </li>
+              <li>
+                <a href="https://portal.phoenix.edu/account.html" name="account">Account</a>
+              </li>
+              <li>
+                <a href="https://portal.phoenix.edu/social/index.jspa" name="Community">PhoenixConnect</a>
+              </li>
+
+              <li class="selected">
+                <a href="#/" name="Careers">Careers</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

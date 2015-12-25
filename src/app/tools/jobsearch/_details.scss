@@ -1,0 +1,77 @@
+.jobsearch-details {
+  .tab-content {
+    padding: 20px;
+  }
+  .company-title {
+    padding-bottom: 20px;
+    h4 {
+      line-height: 22px;
+    }
+  }
+  .companyName {
+    text-transform: capitalize;
+  }
+  p {
+    margin: 0;
+  }
+  h2 {
+    margin-top: 15px;
+  }
+  .tab-content {
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+  }
+  .job-details {
+    border-top: 1px dotted;
+    padding: 20px 0 0 0;
+    h3, h4, h5 {
+      margin: 0;
+    }
+  }
+  .location {
+    text-transform: capitalize;
+  }
+  p.jobsearch-details-content {
+    span {
+      display: block;
+      margin: 10px 0;
+    }
+    h3 {
+      padding: 10px 0;
+    }
+    // ul, li {
+    //   display: inline-block;
+    //   margin: 0;
+    //   padding: 0;
+    // }
+  }
+  .stack {
+    .apply-btn, .save-job {
+      display: block;
+      width: 100%;
+    }
+    @media (max-width: 990px) {
+      .apply-btn, .save-job {
+        text-align: left;
+      }
+      .apply-btn {
+        padding: 0;
+      }
+      .save-job {
+        padding: 20px 0;
+      }
+    }
+    @media (min-width: 991px) {
+      .apply-btn, .save-job {
+        text-align: right;
+      }
+      .apply-btn {
+        padding: 10px 0 0 0;
+      }
+      .save-job {
+        padding: 20px 0;
+      }
+    }
+  }
+}

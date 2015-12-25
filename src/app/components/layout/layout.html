@@ -1,0 +1,26 @@
+<!-- NOTE: AT SOME POINT WE NEED TO FIX THIS LAYOUT AND RIP OFF ALL THE GUNK STYLES AND START OVER.
+THE REQUIRED DESIGN IS ACHIEVABLE MUCH EASILY IF DONE PROPERLY"-->
+<!-- ToolOverlay container -->
+<div ng-class="{'tool-overlay':isTool}"></div>
+<header id="site-banner" ng-include="'app/components/header/tenant/' + uiTenant + '/' + $headerType + '.html'" role="banner" aria-label="Site"></header>
+<!-- class="content-wrap" NEEDED FOR STICKY FOOTER -->
+<div class="content-wrap" ng-class="{'tool-wrapper':isTool,'no-tool':!isTool}" ng-controller="LayoutToolCtrl as headerTool">
+  <div id="main-content-wrapper">
+    <main id="main-content-container" aria-labelledby="main-content-heading">
+      <!--Close icon -->
+      <a class="modal-close-link pull-right"
+          ng-click="modalClose()"
+          title="Close"
+          ng-cloak>
+        <span class="icon"></span>
+      </a>
+      <div ui-view="pageHeader" class="" id="page-header"></div>
+      <div loadingWidget="" class="pending"></div>
+      <div id="main-content" ui-view="main" ng-animate-children="" class=""></div>
+    </main>
+  </div>
+</div>
+<!--HACKY: So I am not wasting time to not show nav on tools page while in modal.-->
+<nav ui-view="navigation" aria-label="Main" ng-hide="isTool"></nav>
+<!-- class="footer" NEEDED FOR STICKY FOOTER -->
+<footer class="footer" ng-if="!$headerType !== 'tool'" ng-include="'app/components/footer/tenant/' + uiTenant + '/footer.html'" role="contentinfo" aria-label="Site"></footer>

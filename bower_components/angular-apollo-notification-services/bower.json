@@ -1,0 +1,36 @@
+{
+  "name": "angular-apollo-notification-services",
+  "description": "API to interactive with job notification services",
+  "main": "dist/angular-apollo-notification-services.js",
+  "version": "0.3.3",
+  "authors": [
+    "Yesh Ganta yesh.ganta@apollo.edu"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "gulp",
+    "angular",
+    "init",
+    "component",
+    "angular-apollo-notification-services"
+  ],
+  "repository": "https://git.corp.aptimus.net/git/eng/angular-apollo-notification-services",
+  "dependencies": {},
+  "devDependencies": {
+    "angularjs": "~1.3.15",
+    "angular-mocks": "~1.3.15"
+  },
+  "ignore": [
+    "bower_components",
+    "node_modules",
+    "example",
+    "src",
+    ".gitignore",
+    ".jshintrc",
+    "gulpfile.js",
+    ".editorconfig",
+    "coverage/Chrome*"
+  ]
+}

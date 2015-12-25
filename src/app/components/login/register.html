@@ -1,0 +1,189 @@
+<section class="login-modal text-center" ng-controller="RegisterCtrl as register">
+  <!-- Header -->
+  <header class="one-col">
+    <div class="row">
+      <div class="col">
+        <h1 class="font-large">Create an account</h1>
+        <a ng-if="main && main.mode" href="" class="modal-close-link" ng-click="$dismiss()" title="Close dialog"
+        role="button"><span class="icon"></span></a>
+      </div>
+    </div>
+  </header>
+  <!-- Main -->
+  <div class="eight-off-two">
+    <div class="row">
+      <!-- Left Social Login -->
+      <!--       <section class="primary">
+        <div class="one-col">
+          <div class="row">
+            <header class="col">
+              <h5 class="registration-secondary-head text-center">Sign up faster with social</h5>
+            </header>
+          </div>
+        </div>
+        <div class="one-two-col">
+          <div class="row">
+            <div class="col">
+              <a class="social-login" ng-click="register.login('linkedin')">
+                <span class="fa fa-lg fa-linkedin-square"></span><span class="social-text">Sign up with LinkedIn</span>
+              </a>
+            </div>
+            <div class="col">
+              <a class="social-login" ng-click="register.login('facebook')">
+                <span class="fa fa-lg fa-facebook-official"></span><span class="social-text">Sign up with Facebook</span>
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="social-login" ng-click="register.login('google')">
+                <span class="fa fa-lg fa-google-plus-square"></span><span class="social-text">Sign up with Google+</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="one-col">
+          <div class="row">
+            <div class="col">
+              <span class="registration-info">We'll never post anything without your permission.</span>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- center Divider -->
+      <!--       <div class="secondary">
+        <div class="or-container">
+          <div class="vertical-line"></div>
+          <div class="or-label">or</div>
+          <div class="vertical-line"></div>
+        </div>
+      </div> -->
+      <!-- Right Native Login -->
+      <div class="col">
+        <div class="one-col">
+          <!--<header class="row">-->
+          <!--<div class="col">-->
+          <!--<h5 class="text-center">Sign up with email</h5>-->
+          <!--</div>-->
+          <!--</header>-->
+          <div class="row">
+            <div class="col">
+              <form id="regForm" ng-submit="regPromise = register.register()" class="registration-form"
+                    name="register.regForm" novalidate role="form">
+                <alert type="danger" ng-if="register.errorReg">{{register.errorRegMsg}}</alert>
+                <div class="form-group"
+                     ng-class="{'has-error': (!register.regForm.username.$pristine || register.regForm.$submitted) &&
+                      register.regForm.username.$invalid}">
+                  <label for="username" class="sr-only">Username (Email)</label>
+                  <input id="username" type="email" name="username"
+                         ng-model="register.formValues.username"
+                         ng-model-options="{ updateOn: 'blur', debounce: { 'blur': 0 } }"
+                         placeholder="youremail@example.com"
+                         class="form-control"
+                         required
+                         ui-validate="{alreadyExists: 'register.alreadyExists !== true'}"
+                         ui-validate-watch="'register.alreadyExists'"
+                         focus-if="true">
+
+                  <div ng-messages="register.regForm.username.$error"
+                       ng-if="register.regForm.$submitted || register.regForm.username.$dirty" class="help-block">
+                    <p ng-message="required">Your email is required.</p>
+
+                    <p ng-message="email">Must be a valid email address.</p>
+
+                    <p ng-message="alreadyExists">Username already exists. Please try another or
+                      <a ui-sref="un-auth.login" role="button" ng-click="main.go($event, 'login')">Sign in.</a>
+                    </p>
+                  </div>
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': (!register.regForm.firstname.$pristine || register.regForm.$submitted) &&
+                      register.regForm.firstname.$invalid}">
+                  <label for="firstname" class="sr-only">First Name</label>
+                  <input type="text" id="firstname" name="firstname"
+                         ng-model="register.formValues.firstname"
+                         ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0 } }"
+                         placeholder="First Name"
+                         class="form-control"
+                         required>
+
+                  <div ng-messages="register.regForm.firstname.$error"
+                       ng-if="register.regForm.$submitted || register.regForm.firstname.$dirty" class="help-block">
+                    <p ng-message="required">Your first name is required.</p>
+                  </div>
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': (!register.regForm.lastname.$pristine || register.regForm.$submitted) &&
+                      register.regForm.lastname.$invalid}">
+                  <label for="lastname" class="sr-only">Last Name</label>
+                  <input type="text" id="lastname" name="lastname"
+                         ng-model="register.formValues.lastname"
+                         ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0 } }"
+                         placeholder="Last Name"
+                         class="form-control"
+                         required>
+
+                  <div ng-messages="register.regForm.lastname.$error"
+                       ng-if="register.regForm.$submitted || register.regForm.lastname.$dirty" class="help-block">
+                    <p ng-message="required">Your last name is required.</p>
+                  </div>
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': (!register.regForm.password.$pristine || register.regForm.$submitted) &&
+                      register.regForm.password.$invalid}">
+                  <label for="password" class="sr-only">Password</label>
+                  <input id="password" type="password" name="password"
+                         ng-model="register.formValues.password"
+                         ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0 } }"
+                         placeholder="Password"
+                         class="form-control"
+                         required>
+
+                  <div ng-messages="register.regForm.password.$error"
+                       ng-if="register.regForm.$submitted || register.regForm.password.$dirty" class="help-block">
+                    <p ng-message="required">Your password is required.</p>
+                  </div>
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': (!register.regForm.passwordConfirm.$pristine || register.regForm.$submitted) &&
+                      register.regForm.passwordConfirm.$invalid}">
+                  <label for="passwordConfirm" class="sr-only">Confirm Your Password</label>
+                  <input id="passwordConfirm" type="password" name="passwordConfirm"
+                         ng-model="register.formValues.passwordConfirm"
+                         ng-model-options="{ updateOn: 'blur', debounce: { 'blur': 0 } }"
+                         placeholder="Retype Your Password"
+                         class="form-control"
+                         required
+                         ui-validate="{mismatch: '$value==register.formValues.password'}"
+                         ui-validate-watch="'register.formValues.password'">
+
+                  <div ng-messages="register.regForm.passwordConfirm.$error"
+                       ng-if="register.regForm.$submitted || register.regForm.password.$dirty" class="help-block">
+                    <p ng-message="required">This field is required.</p>
+
+                    <p ng-message="mismatch">Your passwords do not match.</p>
+                  </div>
+                </div>
+                <div>
+                  <button form="regForm" type="submit" class="btn btn-large" id="submit"
+                          cg-busy="{promise: regPromise, profile: 'inlineReplaceSmall'}">Sign up
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="one-col">
+    <div class="row">
+      <div class="col">
+        <p class="small">
+          Already have an account? <a ui-sref="un-auth.login" role="button" tabindex="0" ng-click="main.go($event, 'login')">Sign in.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>

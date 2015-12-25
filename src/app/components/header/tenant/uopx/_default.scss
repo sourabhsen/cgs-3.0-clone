@@ -1,0 +1,80 @@
+.header {
+  .brand-top {
+    background-color: $uopx-red;
+  }
+  .brand-bottom {
+    background: $uopx-black;
+    border-bottom: 1px solid $gray;
+  }
+}
+
+.brand-bar {
+  max-width: 1200px;
+  margin: auto;
+  .row {
+    margin-top: 10px;
+  }
+  a {
+    color: $gray-lighter;
+    font-size: 95%;
+    font-weight: 400;
+  }
+  a:hover {
+    color: $white;
+  }
+  h2 {
+    display: inline-block;
+    margin: 10px;
+    color: $white;
+    font-family: "Neuton, serif";
+    font-size: 34px;
+    vertical-align: middle;
+  }
+}
+
+.universityLogo {
+  width: 60px;
+  height: 60px;
+}
+
+.header-nav {
+  max-width: 1200px;
+  margin: auto;
+  .row {
+    margin-bottom: 0;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    list-style: none;
+    font-size: 14px;
+    line-height: 34px;
+    padding: 6px 10px;
+    color: $gray-darker;
+    a, button.btn-link {
+      color: $gray-darker;
+      display: block;
+    }
+    &.selected a {
+      color: $white;
+    }
+    &:hover {
+      background-color: #252525;
+      a {
+        color: $white;
+      }
+    }
+  }
+  .not-user-link {
+    color: $gray-dark;
+  }
+}
+
+// Tenant specific override of the width property of dashboard tools
+// UOPX has seven tools, whereas other tenants have 6 or fewer
+#Dashboard-Container .dashboard-tool h4[data-tenant="width"] {
+  width: 80px;
+}

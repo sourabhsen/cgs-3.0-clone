@@ -1,0 +1,14 @@
+<div class="title-case inner-fa left-fa">
+  <span ng-show="!loadingLocation" class="fa fa-search"></span>
+  <span ng-class="{visible: loadingLocation, invisible: !loadingLocation}" class="fa fa-spinner fa-spin"></span>
+  <input  id="searchLocation"
+          autocomplete="off"
+          placeholder="City, State, or Zip Code"
+          type="text"
+          uib-typeahead="item.location for item in getLocation($viewValue)"
+          ng-model="searchQuery.query.location"
+          uib-typeahead-loading="loadingLocation"
+          uib-typeahead-wait-ms="300"
+          class="form-control input-lg"
+          aria-label="Search Jobs Within This City, State, or Zip Code"/>
+</div>

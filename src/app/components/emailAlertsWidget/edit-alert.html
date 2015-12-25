@@ -1,0 +1,67 @@
+<form name="myForm" novalidate>
+  <div class="email-alert-modals edit-modal container-fluid buffer">
+    <div class="button-container">
+      <a href="" ng-click="$close(false)">
+        <svg class="close-button" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22px" height="22px" viewBox="0 0 22 22" enable-background="new 0 0 22 22" xml:space="preserve">
+          <path d="M11,0.041C4.947,0.041,0.041,4.947,0.041,11S4.947,21.959,11,21.959S21.959,17.053,21.959,11S17.053,0.041,11,0.041z M17.351,14.518l-2.829,2.828l-3.535-3.535l-3.535,3.535l-2.828-2.828l3.535-3.536L4.623,7.446l2.828-2.828l3.535,3.535l3.535-3.535l2.829,2.828l-3.536,3.536L17.351,14.518z" />
+        </svg>
+      </a>
+    </div>
+    <div class="row divider">
+      <div class="">
+        <h3 class="no-margin">Edit Job Alert</h3>
+      </div>
+    </div>
+    <div class="form-group">
+      <input maxlength="50" type="text" ng-model="alert.userNotificationTitle" class="form-control alertTitle">
+      <small>Changing the name of an alert does not affect what it searches for.</small>
+    </div>
+    <div class="form-group"  ng-class="{ 'has-error' : myForm.email.$invalid }" >
+      <input  id="{{alert.attributes.emailAddressUserDefined}}"
+              class="form-control"
+              name="email"
+              type="email"
+              ng-minlength="4"
+              ng-maxlength="40"
+              ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+              ng-model="alert.attributes.emailAddressUserDefined"
+              ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0 } }"
+              placeholder="{{(alert.attributes.emailAddressUserDefined) ? alert.attributes.emailAddressUserDefined : alert.attributes.emailAddressProfile}}">
+      <small>
+        <span ng-show="myForm.email.$valid">All of your alerts will be sent to this email address.</span>
+        <div  class="help-block"
+              ng-class="{ 'has-error': myForm.email.$touched && myForm.email.$invalid }"
+              ng-messages="myForm.email.$error"
+              ng-show="myForm.email.$invalid">
+          <span ng-message="minlength, maxlength, pattern">Must be a valid email address.</span>
+        </div>
+      </small>
+    </div>
+      <div class="row divider">
+        <div id="edit-radios" class="col-md-12 no-margin no-padding radio">
+          <h4>Perform this search:</h4>
+          <div class="radio-spacing">
+            <label>
+              <input type="radio" name="schedule" ng-model="alert.notificationScheduleName" value="user-job-search-notification-daily">
+              <span class="edit-radio">&nbsp;</span> Once per day
+            </label>
+          </div>
+          <div class="radio-spacing">
+            <label>
+              <input type="radio" name="schedule" ng-model="alert.notificationScheduleName" value="user-job-search-notification-weekly">
+              <span class="edit-radio">&nbsp;</span> Once per week
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+        <div class="pull-left">
+          <button ng-disabled="myForm.email.$invalid" ng-click="$close(true)">Save</button>
+        </div>
+        <div class="pull-right">
+          <a href="" role="button" ng-click="$close(false)">Cancel</a>
+        </div>
+      </div>
+    </div>
+</form>

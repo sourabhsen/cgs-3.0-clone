@@ -1,0 +1,15 @@
+.with-header-default {
+  .goal-counter {
+    &.active {
+      margin-top: 167px;
+    }
+  }
+}
+
+.with-header-tool {
+  .goal-counter {
+    &.active {
+      margin-top: 108px;
+    }
+  }
+}

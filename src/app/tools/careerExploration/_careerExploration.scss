@@ -1,0 +1,271 @@
+#career-exploration-container .tab-content {
+  $border: 1px solid $gray;
+  border-left: $border;
+  border-right: $border;
+  border-bottom: $border;
+  //x-editable mutation
+  .editable-wrap {
+    //width: 54%;
+    // Always puts it on next line but really does not
+    // help much on small screens
+    width: 100%;
+    position: relative;
+    span {
+      display: block;
+      &::before {
+        font-family: FontAwesome;
+        font-weight: 400;
+        content: "\f002";
+        color: $gray;
+        position: absolute;
+        left: 8px;
+        top: 10px;
+      }
+    }
+    input {
+      padding-left: 30px;
+    }
+  }
+
+  .form-control.input-lg {
+    width: 50%;
+  }
+
+  .dropdown-menu {
+    max-height: 228px;
+  }
+
+  .recommendationSearch, .occupationsSearch {
+    .dropdown-menu {
+      width: 50%;
+    }
+  }
+
+  .assessmentButton {
+    @extend .button;
+    padding: 6px 15px;
+    display: inline-block;
+    top: 5px;
+    position: relative;
+    svg-wrap {
+      svg {
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+      }
+    }
+    span {
+      position: relative;
+      top: -3px;
+    }
+  }
+  .list-jobs-container.list-tiles{
+    box-shadow: #f2f2f2 1px 42px 11px 4px;
+    background: #f2f2f2;
+    padding-top: 20px;
+    margin-left: -25px;
+    margin-right: -25px;
+    padding-bottom: 20px;
+  }
+}
+
+#count-arrow {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+}
+
+.noMarginBottom {
+  // Set the margin on each group to 0 for table view.
+  margin-bottom: 0;
+}
+
+//set custom padding as per design
+.job-header{
+  .group{
+    padding-bottom:5px;
+  }
+}
+
+
+.solidBorderBottom {
+  border-bottom: 1px solid $black;
+}
+
+.dashedBorderBottom {
+  border-bottom: 1px dashed $black;
+}
+
+.dottedBorderBottom{
+  border-bottom: 1px dotted #111c24;
+}
+
+.toggle-buttons {
+  padding: 10px;
+  .list-icon {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    margin-left: 5px;
+    padding: 0;
+    text-indent: -30000px;
+    display: inline;
+    float: left;
+    @extend .icon-list;
+    &[disabled="disabled"], &:hover {
+      @extend .icon-list-active;
+    }
+  }
+  .tile-icon {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    margin-left: 5px;
+    padding: 0;
+    text-indent: -30000px;
+    display: inline;
+    float: left;
+    @extend .icon-tile;
+    &[disabled="disabled"], &:hover {
+      @extend .icon-tile-active;
+    }
+  }
+}
+
+.job-header {
+  div {
+    section.three-four-five {}
+  }
+}
+
+.goal-item {
+  .salary-range-short {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: $red;
+    font-weight: 700;
+  }
+  .goal-title {
+    a {
+      font-weight: 700;
+    }
+  }
+  .goal-caption {
+    font-weight: 400;
+    p {
+      font-size: 15px;
+      line-height: 19px;
+      margin: -4px 0 0 0;
+    }
+    .salary-range-long {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      font-size: 17px;
+      color: $red;
+      font-weight: 400;
+    }
+  }
+}
+
+//TODO: Remove duplicate goal-item CSS
+.salary-range-short {
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.job-container-detail {
+  .table-sz {
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  .goal-title a {
+    //font-size: 18px;
+    font-weight: bold;
+    min-height: 40px;
+    height: 34px;
+    overflow: hidden;
+  }
+  .goal-title {
+    color: $black;
+    margin-top:0;
+  }
+  &.tiles-view {
+    .col {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    .goal-item {
+      padding: 0;
+      .goal-desc {
+        min-height: 290px; // To account for 3 line job title
+        padding: 20px 15px 10px;
+        .goal-title{
+           height: 44px;
+           overflow:hidden;
+        }
+        .valign-mid{
+          display:table-cell;
+          height: 44px;
+          vertical-align:bottom;
+        }
+        .goal-details {
+         // border-bottom: 1px dotted $gray-dark;
+          border-top: 1px solid $gray-dark;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          height: 54px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          margin: 0px;
+          font-size: 13px;
+          line-height: 20px;
+          overflow:hidden;
+        }
+        .more-info a {
+          width: 100%;
+          margin: 15px 0 0;
+          display: block;
+          font-size: 12px;
+          padding-bottom: 15px;
+          border-bottom: 1px dotted $gray-dark;
+          .more-details-icon {
+            @extend .icon-more;
+            display: inline-block;
+            float: left;
+            margin-right: 10px;
+          }
+          &:hover .more-details-icon {
+            @extend .icon-more-active;
+          }
+        }
+        .demand-bar{
+          padding-bottom: 5px;
+          padding-top: 15px;
+        }
+      }
+    }
+  }
+  &.table-view{
+      .goal-item {
+      .goal-desc {
+        .valign-mid {
+           padding-top: 5px;
+        }
+     }
+    }
+  }
+}
+
+.more-list-item {
+  margin-top: 10px;
+}
+
+// Mobile
+@media (max-width: $break-small) {
+  #career-exploration-container .toggle-buttons {
+    display: none;
+  }
+}

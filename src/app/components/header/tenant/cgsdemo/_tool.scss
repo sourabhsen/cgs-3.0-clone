@@ -1,0 +1,40 @@
+body {
+  &.with-header-tool {
+    margin-top: 80px;
+  }
+}
+
+.header-tool-nav {
+  width: 100%;
+  min-height: 56px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: $garnet;
+  @media (max-width: $screen-xs-max) {
+    top: -55px;
+    .close-col {
+      float: right;
+    }
+  }
+  .logo img {
+    height: 58px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+  }
+  // at the top, show just the close button (no bg-color)
+  .tool-title {
+    white-space: nowrap;
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: $white;
+    font-weight: bold;
+  }
+  .close-link {
+    color: $white;
+    font-size: $font-size-h2;
+    margin: 12px 12px 2px 0;
+  }
+}

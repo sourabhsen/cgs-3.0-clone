@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Index file to test resume builder</title>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot"/>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg"/>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf"/>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff"/>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"/>
+
+
+  <!-- bower:css -->
+  <link rel="stylesheet" href="../bower_components/angular-busy/dist/angular-busy.css" />
+  <link rel="stylesheet" href="../bower_components/textAngular/dist/textAngular.css" />
+  <!-- endbower -->
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../dist/apollo-angular-resume-builder.css">
+  <!-- endinject -->
+</head>
+<body>
+
+<!-- bower:js -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.js"></script>
+<script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="../bower_components/jquery-ui/jquery-ui.js"></script>
+<script src="../bower_components/angular-dragdrop/src/angular-dragdrop.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angularjs-file-upload/ng-file-upload.js"></script>
+<script src="../bower_components/apollo-angular-resume-services/dist/apollo-angular-resume-services.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-busy/dist/angular-busy.js"></script>
+<script src="../bower_components/rangy/rangy-core.js"></script>
+<script src="../bower_components/rangy/rangy-classapplier.js"></script>
+<script src="../bower_components/rangy/rangy-highlighter.js"></script>
+<script src="../bower_components/rangy/rangy-selectionsaverestore.js"></script>
+<script src="../bower_components/rangy/rangy-serializer.js"></script>
+<script src="../bower_components/rangy/rangy-textrange.js"></script>
+<script src="../bower_components/textAngular/dist/textAngular.js"></script>
+<script src="../bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+<script src="../bower_components/textAngular/dist/textAngularSetup.js"></script>
+<script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+<!-- endbower -->
+
+<!-- inject:js -->
+<script src="stubs.js"></script>
+<script src="../dist/resume-builder-tpls.min.js"></script>
+<script src="../dist/apollo-angular-resume-builder.min.js"></script>
+<!-- endinject -->
+
+<div ng-app="response-stubs">
+
+  <div ng-controller="test as t">
+
+
+    <p>Sample resume section of directive</p>
+    <ap-sample-resumes num-rows="3"></ap-sample-resumes>
+
+    <hr/>
+    <p>Create a new resume options</p>
+    <ap-create-resume pid="'27e6d24a-0010-4dde-9be4-2f2baf313a78'"></ap-create-resume>
+
+    <hr/>
+    <p>Full version of resume list</p>
+    <ap-list-resumes pid="'27e6d24a-0010-4dde-9be4-2f2baf313a78'" on-edit="t.afterEdit(size)"
+                     on-preview="t.previewResume()"></ap-list-resumes>
+
+    <hr/>
+    <p>Stripped down version of resume list for dashboard</p>
+    <ap-list-resumes pid="'27e6d24a-0010-4dde-9be4-2f2baf313a78'" mini="true" on-edit="t.afterEdit(size)
+    "></ap-list-resumes>
+
+
+    <div ng-if="t.editor">
+      <hr/>
+      <p>The editor view</p>
+      <ap-resume-editor pid="'27e6d24a-0010-4dde-9be4-2f2baf313a78'"></ap-resume-editor>
+    </div>
+
+    <div ng-if="t.preview">
+      <hr/>
+      <p>Preview view</p>
+      <ap-preview-resume></ap-preview-resume>
+    </div>
+
+
+  </div>
+</div>
+
+</body>
+</html>

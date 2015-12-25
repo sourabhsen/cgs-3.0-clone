@@ -1,0 +1,25 @@
+<section ui-view="content" id="resume-builder-container" class="one-col resume-builder-container"
+         ng-controller="ResumeBuilderController as rbCtrl">
+  <!-- View -->
+  <div class="row">
+    <div class="col">
+      <uib-tabset>
+        <uib-tab heading="Editor">
+          <ap-resume-editor pid="user.profileId" on-save="rbCtrl.editor(promise)"
+                            on-preview="rbCtrl.preview(promise, hideEdit, cta)" on-delete="rbCtrl.listView(promise)"
+                            on-fail="rbCtrl.listView()"></ap-resume-editor>
+        </uib-tab>
+        <uib-tab heading="Samples">
+          <ap-sample-resumes num-cols="3" modal-size="lg"></ap-sample-resumes>
+        </uib-tab>
+        <li class="list-view">
+          <div class="tool-previous-page">
+            <a href="" role="button" ng-click="rbCtrl.listView()" class="">
+              <span aria-hidden="true" class="icon icon-previous">&nbsp;</span> BACK TO LIST VIEW
+            </a>
+          </div>
+        </li>
+      </uib-tabset>
+    </div>
+  </div>
+</section>

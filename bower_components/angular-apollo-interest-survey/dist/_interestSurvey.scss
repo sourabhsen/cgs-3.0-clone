@@ -1,0 +1,120 @@
+$bar-background: #FFFFFF !default;
+$bar-unselected-background: #C8CFC6 !default;
+$bar-selected-background: #4D5661 !default;
+$pointer-background: #4FDCC6 !default;
+$tick-background: #a3a3a1 !default;
+
+.survey-slider {
+  // .rz-bar.unselected {
+  //   width: auto;
+  //   background: $gray;
+  //   opacity: 0.5;
+  // }
+  .rz-pointer {
+    height: 25px;
+    width: 25px;
+    top: -5px;
+    background-color: $pointer-background;
+    border-radius: 50%;
+  }
+  .rz-pointer {
+    &.rz-active {
+      outline: $input-border-focus solid 2px;
+    }
+    &:after {
+      display: none;
+    }
+  }
+  .rz-bubble {
+    font-size: 0.7em;
+    line-height: 1.4em;
+    font-family: sans-serif;
+    text-align: center;
+    text-shadow: none;
+    top: -1.3em;
+    cursor: default;
+  }
+  // .bubble.selection, .bubble.limit {
+  //   top: 25%;
+  // }
+  // .bubble.floor {
+  //   padding-left: 4px !important;
+  // }
+  // .bubble.ceiling {
+  //   padding-right: 4px !important;
+  // }
+}
+
+.slider-label {
+  display: block;
+  font-size: 13px;
+  margin: 0;
+  text-align: center;
+}
+
+// Disable div elements
+.is-disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.select2-container {
+  .select2-search input {
+    width: 100%;
+  }
+}
+
+.interest-survey {
+  .questions .col {
+    margin: 6px 0;
+  }
+  .question-text {
+    text-align: left;
+    padding-top: 5px;
+  }
+  .survey-slider {
+    // display: inline-block;
+    // position: relative;
+    height: 15px;
+    // width: 100%;
+    margin: 10px 5px 5px 5px;
+    // vertical-align: middle;
+    cursor: pointer;
+    // input {
+    //     cursor: pointer;
+    // }
+    .rz-bar {
+      width: 100%;
+      height: 15px;
+      z-index: 0;
+      border-radius: 1em/1em;
+      background: $bar-background;
+      // opacity: 1;
+      // box-shadow: inset 0px 1px 0px 1px $tick-background;
+    }
+    .rz-ticks {
+      top: 3px;
+      .tick {
+        background: $tick-background;
+        box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.7);
+        opacity: .5;
+      }
+    }
+    // .last .marker span {
+    //   margin-left: -10px;
+    // }
+    // .rz-bar.unselected {
+    //   width: 0%;
+    //   z-index: 1;
+    //   background: $bar-selected-background;
+    //   opacity: .5;
+    //   margin-left: -1px !important;
+    // }
+    .rz-bubble {
+      visibility: hidden;
+    }
+  }
+  .survey-btn {
+    margin: 0 12px;
+  }
+}

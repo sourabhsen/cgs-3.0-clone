@@ -1,0 +1,27 @@
+{
+  "name": "apollo-skill-services",
+  "version": "0.2.2",
+  "authors": [
+    {
+      "name": "Mark Maday",
+      "email": "mark.maday@apollo.edu"
+    }
+  ],
+  "main": [
+    "dist/apollo-skill-services.js"
+  ],
+  "ignore": [
+    "src",
+    "test",
+    "coverage",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular-mocks": ">=1.2.0",
+    "angular-scenario": ">=1.2.0",
+    "angular": ">=1.2.0"
+  }
+}

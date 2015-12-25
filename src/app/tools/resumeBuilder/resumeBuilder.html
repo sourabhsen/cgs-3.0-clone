@@ -1,0 +1,51 @@
+<div id="resume-builder-container" class="one-col resume-builder-container"
+     ng-controller="ResumeBuilderController as rbCtrl" ng-init="rbCtrl.init()">
+  <div class="row" cg-busy="{promise: rbCtrl.resumelistWait, profile:'fixedCenter'}">
+    <div class="col" ng-show="viewFlag">
+      <!-- create from scratch view -->
+         <section class="row" aria-labelledby="create-new-resume-section"
+               aria-describedby="by uploading an existing resume or from scratch" ng-if="!rbCtrl.showList() || rbCtrl.createResume">
+        <h2 class="sr-only" id="create-new-resume-section" role="heading">Create a new resume</h2>
+
+        <div class="col" role="alert form">
+          <ap-create-resume pid="user.profileId"
+                            on-complete="rbCtrl.newResume(promise)"
+                            is-known="user.isKnown()"
+                            authenticate="user.launchLoginModal(callback)"
+                            ng-hide="rbCtrl.hasMaxed()"></ap-create-resume>
+
+          <p ng-show="rbCtrl.hasMaxed()" class="alert alert-info small">You reached max number of allowed resumes.
+            If you wish to create a new resume please delete an unused existing resume before.</p>
+
+        </div>
+      </section>
+      <div class="row" ng-show="rbCtrl.showList() && !rbCtrl.createResume">
+        <div class="col">
+          <div class="one-col">
+            <!-- Resume list -->
+            <section class="row resume-list" aria-labelledby="your-resume-list-section"
+                     ng-class="{'box-border': rbCtrl.showList()}">
+              <h2 class="sr-only" id="your-resume-list-section" ng-if="!user.isKnown()">List of your resumes</h2>
+
+              <div class="col">
+                <ap-list-resumes pid="user.profileId"
+                                 on-edit="rbCtrl.editor(promise)"
+                                 on-preview="rbCtrl.preview(promise)"
+                                 on-complete="rbCtrl.list(promise)"
+                                 on-selection-complete="rbCtrl.newResume(promise)"
+                                 is-known="user.isKnown()"
+                                 authenticate="user.launchLoginModal(callback)"
+                                 size="rbCtrl.size(size)"></ap-list-resumes>
+
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,9 @@
+<a tabindex="-1" ng-class="match.model.type">
+  <span ng-bind-html="match.model.value | uibTypeaheadHighlight:query"></span>
+</a>
+<span ng-show="$parent.$last" class="legend" ng-class="{'active': $parent.$last}">
+  <span class="title icon"></span>
+  <span>TITLE</span>
+  <span class="company icon"></span>
+  <span>COMPANY</span>
+ </span>

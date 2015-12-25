@@ -1,0 +1,50 @@
+<div ng-controller="InterestSurveyResultsController as surveyResults" cg-busy="{promise: surveyResults.initWait}">
+  <header class="one-col">
+    <div class="row">
+      <div class="col">
+        <!-- Remove bredcrumb from interest-survey, CAR 396 -->
+       <!-- <div ncy-breadcrumb></div> -->
+      </div>
+      <div class="col">
+        <h1>Interest Results</h1>
+        <div class="clearfix tool-previous-page">
+          <a class="pull-left mini-header text-uppercase" ui-sref="auth.tools({toolId: 'careerExploration'})">
+              <span class="icon icon-previous" aria-hidden="true">&nbsp;</span>Back to Career Exploration
+            </a>
+        </div>
+        <p class="header-desc">Here are the results based on your interests<span class="interest-survey-disclaimer">&#42;</span></p>
+      </div>
+    </div>
+  </header>
+  <div class="six-col">
+    <div class="row">
+      <div class="col pointer" ng-repeat="score in surveyResults.vm.scores track by score.rank" ng-mouseenter="surveyResults.selectedCat = score.scoreName" ng-mouseleave="surveyResults.selectedCat = ''" ng-attr-data-cat="{{score.scoreName}}">
+        <div class="interest-chart">
+          <h4 class="text-center" ng-style="{bottom: score.scorePct + '%' }">{{score.scorePct}}%</h4>
+          <div class="interest-block" ng-class="'interest-chart-' + score.rank" ng-style="{height: score.scorePct + '%' }">&nbsp;</div>
+        </div>
+        <h5 class="mini-header text-center">{{score.scoreName}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="one-col">
+    <div class="row">
+      <div class="col">
+        <div class="interest-descriptions">
+          <p ng-hide="surveyResults.selectedCat">Review the details by hovering over the individual traits above. We have updated your career goal recommendations based on this information. If your results do not look correct, <a href ng-click="surveyResults.deleteSurveyClick(true)">retake the interest assessment</a>.
+          </p>
+          <p ng-repeat="cat in surveyResults.vm.categories track by cat.elementId" ng-show="cat.name === surveyResults.selectedCat">
+            {{cat.description}}
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <a class="button pull-right" ui-sref="auth.tools({toolId: 'careerExploration', header:surveyResults.stateParams.header, from:surveyResults.stateParams.from, fromAnchor: surveyResults.stateParams.fromAnchor})">See Your Career Recommendations</a>
+      </div>
+      <div class="col">
+        <hr/>
+        <h6 class="interest-survey-disclaimer">&#42; The information on this site is intended to help you make an informed decision about career options. You should further explore options with your Academic Advisor to help you identify educational programs relevant to your career of interest. You take sole responsibility for your use of these resources in making any decisions concerning career options or educational programs.</h6>
+      </div>
+    </div>
+  </div>
+</div>

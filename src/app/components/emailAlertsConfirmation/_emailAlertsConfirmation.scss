@@ -1,0 +1,17 @@
+.savedJobsWidget {
+  .company {
+    text-transform: capitalize;
+  }
+}
+.email-alerts {
+  padding: $padding-large-vertical $padding-large-horizontal;
+}
+
+.title-changer {
+  label {
+    margin-top: 10px;
+  }
+  input {
+    width: 100%;
+  }
+}

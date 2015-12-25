@@ -1,0 +1,158 @@
+<section class="email-alerts container-fluid" ng-controller="emailAlertsManagerCtrl as alertsMgr"
+         ng-init="alertsMgr.init()">
+  <div class="row border-box">
+    <div class="col-md-12">
+      <div class="row" ng-switch="alertsMgr.view">
+
+        <div class="endAlert-single col-md-12" ng-switch-when="scheduler">
+          <header class="endAlert-title">
+            <h1>Alert Change Confirmation</h1>
+          </header>
+          <div ng-if="alertsMgr.queryParams.schedulename == 'user-job-search-notification-weekly'">
+            <p class="endAlert-ad-single">You have changed the frequency of your Job-Search Alert to
+              <em ng-if="!alertsMgr.action"><strong>weekly</strong></em><em ng-if="alertsMgr.action"><strong>daily
+              </strong></em>.
+            </p>
+            <p class="endAlert-cm-single" ng-if="!alertsMgr.action">
+              Changed your mind? Click <a href="" role="button" class="EA-restore-link" ng-click="alertsMgr.changeSchedule()">here</a> to set
+              the alert back to daily.
+            </p>
+          </div>
+          <div ng-if="alertsMgr.queryParams.schedulename== 'user-job-search-notification-daily'">
+            <p class="endAlert-ad-single">You have changed the frequency of your Job-Search Alert to
+              <em ng-if="!alertsMgr.action"><strong>daily</strong></em><em ng-if="alertsMgr.action"><strong>weekly
+              </strong></em>.
+            </p>
+            <p class="endAlert-cm-single" ng-if="!alertsMgr.action">
+              Changed your mind? Click <a href="" role="button" class="EA-restore-link" ng-click="alertsMgr.changeSchedule()">here</a> to set
+              the alert back to
+              weekly.
+            </p>
+          </div>
+        </div>
+
+        <div class="endAlert-single col-md-12" ng-switch-when="emailConfirmation">
+          <div class="confirm-success" >
+            <header class="endAlert-title">
+              <h1>{{alertsMgr.emailConfirmed ? 'Email Change Confirmation' : 'Confirming' }}</h1>
+            </header>
+            <hr/>
+            <div class="two-col" ng-show="alertsMgr.emailConfirmed">
+              <div class="row">
+                <div class="col">
+                  <p class="endAlert-ad-single">You have successfully changed your email address.</p>
+                </div>
+                <div class="col">
+                  <section class="one-col search-form-container widget border-box">
+                    <div class="row flatten">
+                      <div class="col">
+                        <h3 role="heading" class="flatten">Search Jobs</h3>
+                        <job-search-form mode="Dash" display-type="widget"></job-search-form>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- <button type="button" class="button pull-right">Go to Jobsearch</button> -->
+                </div>
+              </div>
+            </div>
+            <div ng-show="alertsMgr.emailConfirmationError">
+              <p bg-danger>Unfortunately there was an error, please reload the page </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="endAlert-confirmation col-md-12" ng-switch-when="confirmation">
+          <div ng-if="alertsMgr.action==='status'">
+            <header class="endAlert-title">
+              <h1>Your alerts have been reactivated</h1>
+            </header>
+            <p>We re-activated your job alerts. You will continue to receive emails with new jobs.</p>
+          </div>
+          <div ng-if="alertsMgr.action==='feedback'">
+            <header class="endAlert-title row">
+              <h1 class="col-md-12">Thanks for your feedback</h1>
+            </header>
+            <p>We are always working to improve our tools, and your input is greatly appreciated.</p>
+          </div>
+        </div>
+
+        <div class="endAlert-multi col-md-12" ng-switch-default>
+          <header class="endAlert-title row">
+            <h1 class="col-md-12">Alert Cancellation Confirmation</h1>
+          </header>
+          <p class="endAlert-ad-multiple" ng-show="alertsMgr.queryParams.additionalid.length>1">You will no longer
+            receive job alerts for any of your saved searches.</p>
+
+          <p class="endAlert-ad-multiple" ng-show="alertsMgr.queryParams.additionalid.length<2">You will no longer
+            receive job alerts for the specified search.</p>
+
+          <p class="endAlert-cm-multiple">
+            <a href="" role="button" class="EA-restore-link" ng-click="alertsMgr.enable()">I changed my mind, I still want to receive
+              emails with new
+              jobs.</a>
+          </p>
+
+          <div class="row">
+            <div class="col-md-12">
+              <hr/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-horizontal">
+                <p>Help us improve job alerts. Please tell us why you cancelled this alert.</p>
+
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="radio">
+                      <label ng-click="isCollapsed = false">
+                        <input name="reason" class="reason" ng-model="alertsMgr.feedback.reason" type="radio"
+                               value="Too many emails">
+                        Too many emails.
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label ng-click="isCollapsed = false">
+                        <input name="reason" class="reason" type="radio" ng-model="alertsMgr.feedback.reason"
+                               value="Jobs were not related with my search">
+                        Jobs were not related with my search.
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label ng-click="isCollapsed = false">
+                        <input name="reason" class="reason" type="radio" ng-model="alertsMgr.feedback.reason"
+                               value="I am no longer looking for a job.">
+                        I am no longer looking for a job.
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label ng-click="isCollapsed = true">
+                        <input name="reason" class="reason" type="radio" ng-model="alertsMgr.feedback.reason"
+                               value="other">
+                        Other
+                      </label>
+                    </div>
+
+                    <div class="form-group" collapse="!isCollapsed">
+                      <label class="col-md-3 control-label" for="additonal-comments">Additional comments:</label>
+                  <textarea maxlength="999" name="detail" id="additonal-comments" ng-model="alertsMgr.feedback.detail"
+                            class="endAlert-form-text" cols="50"
+                            rows="4"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-3">
+                    <button type="button" ng-click="alertsMgr.submitFeedback()">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

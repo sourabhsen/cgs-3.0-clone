@@ -1,0 +1,187 @@
+/* Main, Logo, Nav */
+body {
+  margin: 0;
+  background-color: #FFFFFF;
+  margin: 0 0 420px 0; // To account for header and footer heights;
+  font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  &.with-header-default {
+    margin-top: 134px; // To account for header height;
+  }
+}
+
+header {
+  background-color: $white;
+}
+
+.nav-wrapper { // custom header/footer padding for proper vertical nav scrolling
+  padding: 135px 0 430px 0;
+}
+
+header#asu_header {
+  width: 100%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  clear: both;
+}
+#asu_hdr {
+  position: relative;
+  background-color: #fff;
+  display: block;
+  overflow: visible!important;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1em;
+  color: #000;
+  z-index: 500;
+  height: 58px;
+}
+#asu_hdr #asu_login_module a, #asu_hdr #asu_universal_nav a {
+  color: #000;
+}
+#asu_logo {
+  margin: 0;
+  float: left;
+  min-width: 203px;
+  padding: 12px 0;
+}
+#asu_hdr * {
+  -webkit-box-sizing: initial!important;
+  -moz-box-sizing: initial!important;
+  box-sizing: initial!important;
+}
+#asu_hdr img {
+  border: 0;
+}
+#asu_login_module, #asu_search {
+  padding-right: 12px;
+}
+#asu_login_module li a {
+  text-decoration: none;
+  line-height: 1em;
+}
+#asu_login_module li {
+  color: #000;
+  font-weight: 700;
+  line-height: 1em;
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 .41em;
+}
+#asu_nav_menu {
+  position: relative;
+  float: right;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 100;
+}
+#asu_hdr .hidden, #asu_hdr .icn, #asu_hdr .icn2, #asu_universal_nav_new, #main-search .closed, .main-search {
+  display: none!important;
+}
+#asu_universal_nav>ul {
+  display: table;
+  margin: 0 auto;
+}
+#asu_universal_nav ul {
+  margin: 0;
+  list-style: none;
+  white-space: nowrap;
+  text-align: left;
+  background-color: transparent;
+  padding: 0;
+  display: inline;
+}
+#asu_universal_nav>ul>li {
+  float: left;
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+#asu_hdr #asu_universal_nav a {
+  color: #000;
+}
+#asu_universal_nav ul a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  padding: 8px 8px 5px;
+}
+#asu_universal_nav ul ul {
+  position: absolute;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  padding-top: 10px;
+  -moz-box-shadow: 0 3px 3px 0 #999;
+  -webkit-box-shadow: 0 3px 3px 0 #999;
+  box-shadow: 0 3px 3px 0 #999;
+  zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#dddddd, direction=135, strength=5), progid:DXImageTransform.Microsoft.Shadow(color=#dddddd, direction=225, strength=5);
+}
+#asu_login_module {
+  border-left: 1px solid #999;
+  margin: 8px 0 0 8px;
+  padding: 0 0 0 8px;
+  float: right;
+  display: inline-block;
+}
+#asu_universal_nav li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline;
+}
+#asu_universal_nav>ul>li {
+  float: left;
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+/* Sub Nav */
+header#header {
+  width: 100%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  clear: both;
+  margin-bottom: 20px;
+}
+.view-display-id-feature_stories_tabs .views-view-grid {
+  width: 100%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  clear: none;
+  background-color: #353535;
+}
+.view-display-id-feature_stories_tabs .views-view-grid .row-1 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.view-display-id-feature_stories_tabs .views-view-grid .row-1 .col-1 {
+  width: 2%;
+}
+.view-display-id-feature_stories_tabs .views-view-grid .row-1 div {
+  width: 10%;
+  float: left;
+  margin-left: 2%;
+  clear: none;
+}
+.view-display-id-feature_stories_tabs .views-view-grid .row-1 div a {
+  color: #ededed;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 0.25s ease-in-out 0s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+}
+.view-display-id-feature_stories_tabs .views-view-grid .row-1 a {
+  font-size: 16px !important;
+}

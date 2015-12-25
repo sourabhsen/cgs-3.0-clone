@@ -1,0 +1,247 @@
+.header {
+  &.ironyard {
+    background-color: $mako-blue-bg;
+  }
+  .brand-bar {
+    max-width: 1200px;
+    margin: auto;
+  }
+  .brand-top {
+    padding-top: 15px;
+  }
+  .secondary-nav ul {
+    display: inline-block;
+    li {
+      display: inline-block;
+      color: $mystic-white-color;
+      font-size: 14px;
+      font-weight: bold;
+      a {
+        color: $mystic-white-color;
+        font-size: 17px;
+        font-weight: 900;
+        &:hover {
+          text-decoration: none;
+          color: $mystic-white-color;
+          border-bottom: 3px solid rgba(255, 255, 255, .5);
+        }
+        &:visited {
+          color: $mystic-white-color;
+        }
+      }
+      a.btn {
+        &:hover {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  .ironyardLogo {
+    .bgFill {
+      fill: $logoBgFill;
+    }
+    .textFill {
+      fill: $logoTextFill;
+    }
+  }
+  li.first-name {
+    margin-right: 12px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header .logo {
+    float: none;
+    width: 160px;
+    margin: 0 auto;
+  }
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .mobile-nav {
+    display: block;
+  }
+}
+
+.mobile-nav .mobile-ctas {
+  height: 60px;
+  line-height: 56px;
+  text-transform: uppercase;
+  font-weight: 800;
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-nav .mobile-ctas a {
+  color: #eef1f6;
+}
+
+.mobile-nav .mobile-ctas a:hover {
+  text-decoration: none;
+}
+
+.mobile-nav .mobile-ctas .mobile-nav-apply {
+  background: #6fbbb7;
+  width: 50%;
+  float: left;
+  height: 100%;
+  text-align: center;
+}
+
+.mobile-nav .mobile-ctas .mobile-nav-menu {
+  background: #A6A6A6;
+  height: 100%;
+  text-align: center;
+}
+
+.mobile-nav .mobile-ctas .mobile-nav-menu:hover {
+  cursor: pointer;
+}
+
+.mobile-nav .mobile-ctas .mobile-nav-menu img {
+  width: 18px;
+  position: relative;
+  top: 3px;
+  left: 6px;
+}
+
+.mobile-nav .logo {
+  width: 30%;
+}
+
+.mobile-nav .primary-nav {
+  padding: 0;
+  background: #727d84;
+  margin-top: 0;
+}
+
+.mobile-nav .primary-nav ul {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.mobile-nav .primary-nav ul li {
+  padding: 18px 0;
+  width: 100%;
+  border-bottom: 1px solid #8d969c;
+  display: block;
+  margin: 0;
+}
+
+.mobile-nav .primary-nav ul li a:hover {
+  border-bottom: none;
+}
+
+.mobile-nav .secondary-nav {
+  background: #727d84;
+  padding: 0;
+}
+
+.mobile-nav .secondary-nav ul li {
+  display: block;
+  padding: 8px 0;
+  width: 100%;
+  border-bottom: 1px solid #8d969c;
+  display: block;
+  margin: 0;
+}
+
+.mobile-nav .secondary-nav ul li:last-of-type {
+  width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .nav {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .nav {
+    padding-top: 0 !important;
+  }
+}
+
+.primary-nav {
+  width: 30% !important;
+}
+
+@media only screen {
+  .primary-nav {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .primary-nav {
+    width: 55% !important;
+    margin-top: 28px !important;
+  }
+}
+
+@media only screen {
+  .primary-nav ul {
+    display: inline-block;
+  }
+}
+
+.secondary-nav {
+  width: 70% !important;
+}
+
+@media only screen {
+  .secondary-nav {
+    width: 100% !important;
+  }
+  //.secondary-nav .apply-now {
+  //  margin-top: 14px;
+  //}
+}
+
+@media only screen and (min-width: 990px) {
+  .secondary-nav {
+    width: 45% !important;
+    position: relative;
+    top: 25px !important;
+  }
+  .secondary-nav a {
+    font-size: 14px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 990px) {
+  .secondary-nav {
+    bottom: 16px;
+  }
+  .secondary-nav a {
+    font-size: 14px !important;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .secondary-nav ul {
+    margin-left: 0 !important;
+  }
+}
+
+@media only screen and (min-width: 770px) and (max-width: 990px) {
+  .secondary-nav {
+    position: relative;
+    top: 20px !important;
+  }
+}
+
+.apply-now {
+  background: #6fbbb7;
+  color: #fff !important;
+  width: 125px;
+  font-size: 14px;
+}
+
+.apply-now:hover {
+  background: #5B9D99;
+}

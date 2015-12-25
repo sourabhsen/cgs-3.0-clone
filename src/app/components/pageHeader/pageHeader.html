@@ -1,0 +1,15 @@
+<div ng-controller="PageHeaderCtrl as header">
+  <div class="one-col" ng-class="header.details.icon" ng-if="header.details">
+    <div class="row flatten">
+      <div class="col">
+       <!-- Remove breacrumb from Tool, CAR -396 -->
+       <!-- <div ncy-breadcrumb></div> -->
+       <h1 ng-show="isTool" ng-bind="header.details.title" id="main-content-heading"></h1>
+      </div>
+      <div class="col">
+      <!-- Remove breacrumb and Tool heading, CAR -396 -->
+       <!-- <h1 ng-bind="header.details.title" id="main-content-heading"></h1> -->
+      </div>
+    </div>
+  </div>
+</div>

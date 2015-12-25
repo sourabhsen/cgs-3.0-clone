@@ -1,0 +1,11 @@
+<div ng-controller="JobSearchCtrl as jobsModel">
+    <job-search-form mode=""></job-search-form>
+    <!-- TODO: Add recent search left panel -->
+    <div class="one-col">
+      <div class="row results">
+        <div class="col jobContent" ui-view="content">
+          <jobs-dashboard dashboard-type="page" full-size="true" dashboard-title="" program-code="{{user.programCode}}" start-tab="{{jobsModel.startTab}}"></jobs-dashboard>
+        </div>
+      </div>
+    </div>
+</div>

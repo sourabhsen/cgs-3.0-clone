@@ -1,0 +1,42 @@
+{
+  "name": "angular-apollo-interest-survey",
+  "version": "0.3.3",
+  "description": "Career Interest Survey implementation in Angular",
+  "authors": [
+    {
+      "name": "mmaday",
+      "email": "mark.maday@apollo.edu"
+    }
+  ],
+  "main": [
+    "dist/angular-apollo-interest-survey.js",
+    "dist/_interestSurvey.scss"
+  ],
+  "ignore": [
+    "src",
+    "test",
+    "coverage",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "dependencies": {
+    "angular-apollo-survey-services": "~0.1.1",
+    "angularjs-slider": "git://github.com/mmaday/angularjs-slider#master"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.2.0",
+    "angular-scenario": ">=1.2.0",
+    "angular": ">=1.2.0"
+  },
+  "repository": "https://git.corp.aptimus.net/git/eng/angular-apollo-interest-survey",
+  "_release": "0.3.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.3",
+    "commit": "8687545539eb19660fa04b982ebaadbdfc3e48da"
+  },
+  "_source": "https://git.corp.aptimus.net/git/eng/angular-apollo-interest-survey",
+  "_target": "~0.3.3",
+  "_originalSource": "angular-apollo-interest-survey"
+}

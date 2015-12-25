@@ -1,0 +1,278 @@
+<section id="career-exploration-container" ng-controller="CareerExplorationController as careerExpCtrl">
+  <div class="main-details-container" id="main-details-container">
+    <!-- content and mygoals button part starts here-->
+    <div class="my-goals-container">
+      <section class="header-content four-eight">
+        <div class="career-exploration-desc row">
+          <div class="primary">
+            <ul>
+              <li>Explore careers that might be a good fit for you</li>
+              <li>Choose favorites and set them as career goals</li>
+            </ul>
+          </div>
+          <div class="secondary">
+            <my-goal-count-button count="{{careerExpCtrl.vm.totalSaved}}" limit="{{careerExpCtrl.vm.reachedSavedLimit}}"></my-goal-count-button>
+          </div>
+        </div>
+      </section>
+      <!-- header-content ends here-->
+      <section class="one-col tab-main-container">
+        <div class="row">
+          <div class="col">
+            <tabset justified="true">
+              <tab active="careerExpCtrl.vm.activeTab[0].active" select="careerExpCtrl.vm.activateTab(0)" id="careerExpRecommendations">
+                <tab-heading>Our Recommendations</tab-heading>
+                <div id="postEducation" class="one-eleven" ng-show="careerExpCtrl.vm.selectedProgram.programName">
+                  <div class="row">
+                    <div class="primary">
+                      <p><label>Below are career suggestions to browse based on your <a href="#" e-type="text" onbeforesave="careerExpCtrl.vm.onBeforeSaveFired(this)" e-submit="return false;" e-onfocus="this.select()" e-ng-blur="clearIt(false)" e-placeholder="Enter program name..." e-typeahead-on-select="careerExpCtrl.vm.onProgramNameSelect( $model, 'careerExploration.selectedProgram')" e-typeahead="item as item.programName for item in careerExpCtrl.vm.getProgramCodeBySearch($viewValue)" e-value="{{careerExpCtrl.vm.selectedProgram.programName || ''}}" e-class="form-control input-lg" e-typeahead-min-length="3" e-typeahead-wait-ms="500" class="chosenDegree" typeahead-loading="loadingRecommendations" editable-text="careerExpCtrl.vm.selectedProgram.programName" buttons="no">{{careerExpCtrl.vm.selectedProgram.programName}}</a> degree <span ng-if="careerExpCtrl.vm.interestSurvey.completed"> and your
+                      <a id="PostEducation-PostSurvey" ui-sref="auth.interestSurvey.results({header:careerExpCtrl.stateParams.header, from:careerExpCtrl.stateParams.from, fromAnchor: careerExpCtrl.stateParams.fromAnchor})" class="recommended-survey-link">Interest Assessment results</a></span> in <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" blur="submit" e-class="form-control input-lg" e-typeahead="item.location for item in careerExpCtrl.vm.suggestLocations($viewValue)" e-typeahead-min-length="3" e-typeahead-wait-ms="500" onbeforesave="careerExpCtrl.vm.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a>.
+                          <span ng-show="!careerExpCtrl.vm.interestSurvey.completed">Get more refined recommendations in <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" blur="submit" e-class="form-control input-lg" e-typeahead="item.location for item in careerExpCtrl.vm.suggestLocations($viewValue)" e-typeahead-min-length="3" e-typeahead-wait-ms="500" onbeforesave="careerExpCtrl.vm.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a> by taking the <a ui-sref="auth.interestSurvey({header:careerExpCtrl.stateParams.header, from:careerExpCtrl.stateParams.from, fromAnchor: careerExpCtrl.stateParams.fromAnchor})" class="search-tab-survey-link PostEducation-PreSurvey">Interest Assessment.</a></span>
+                        </label>
+                      </p>
+                    </div>
+                    <div class="secondary toggle-buttons" ng-show="careerExpCtrl.vm.goalsByProgram.length">
+                      <button class="list-icon" ng-click="careerExpCtrl.vm.setRecTable()" ng-disabled="careerExpCtrl.vm.recTableView">Table View</button>
+                      <button class="tile-icon" ng-click="careerExpCtrl.vm.setRecTiles()" ng-disabled="careerExpCtrl.vm.recTilesView">Tile View</button>
+                    </div>
+                  </div>
+                </div>
+                <div id="preEducation" class="one-eleven" ng-show="!careerExpCtrl.vm.selectedProgram.programName">
+                  <div class="row">
+                    <div class="primary">
+
+                      <label ng-show="careerExpCtrl.vm.interestSurvey.completed">
+                        Below are the recommended careers based upon your <a id="PreEducation-PostSurvey" ui-sref="auth.interestSurvey.results({header:careerExpCtrl.stateParams.header, from:careerExpCtrl.stateParams.from, fromAnchor: careerExpCtrl.stateParams.fromAnchor})" class="recommended-survey-link">interest assessment results</a>. Get more refined recommendations in
+                        <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" blur="submit" e-class="form-control input-lg" e-typeahead="item.location for item in careerExpCtrl.vm.suggestLocations($viewValue)" e-typeahead-min-length="3" e-typeahead-wait-ms="500" onbeforesave="careerExpCtrl.vm.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a> by entering your educational background.
+                      </label>
+
+                      <label ng-show="!careerExpCtrl.vm.interestSurvey.completed">
+                        Get career recommendations in <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" blur="submit" e-class="form-control input-lg" e-typeahead="item.location for item in careerExpCtrl.vm.suggestLocations($viewValue)" e-typeahead-min-length="3" e-typeahead-wait-ms="500" onbeforesave="careerExpCtrl.vm.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a> by entering your educational background or by taking our <a ui-sref="auth.interestSurvey({header:careerExpCtrl.stateParams.header, from:careerExpCtrl.stateParams.from, fromAnchor: careerExpCtrl.stateParams.fromAnchor})" class="search-tab-survey-link PostEducation-PreSurvey">Interest Assessment.</a>
+                      </label>
+
+                      <div class="inner-fa left-fa recommendationSearch">
+                        <span ng-show="!loadingRecommendations" class="fa fa-search"></span>
+                        <span ng-class="{visible: loadingRecommendations, invisible: !loadingRecommendations}" class="fa fa-spinner fa-spin"></span>
+                        <input aria-label="" type="text" ng-model="careerExpCtrl.vm.selectedProgram" ng-blur="clearIt(false)" placeholder="Enter program name..." typeahead-on-select="careerExpCtrl.vm.onProgramNameSelect(careerExpCtrl.vm.selectedProgram, 'careerExploration.selectedProgram')" typeahead="item as item.programName for item in careerExpCtrl.vm.getProgramCodeBySearch($viewValue)" value="{{careerExpCtrl.vm.selectedProgram.programName || ''}}" typeahead-loading="loadingRecommendations" class="form-control input-lg" typeahead-min-length="3" typeahead-wait-ms="500" style="display: inline;">
+                        <span ng-show="!careerExpCtrl.vm.interestSurvey.completed"> or
+                          <a class="assessmentButton" ui-sref="auth.interestSurvey({header:careerExpCtrl.stateParams.header, from:careerExpCtrl.stateParams.from, fromAnchor: careerExpCtrl.stateParams.fromAnchor})" inherit-breadcrumb>
+                            <svg-wrap class="assessmentIcon">
+                              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                   viewBox="0 0 37.043 37.043" enable-background="new 0 0 37.043 37.043" xml:space="preserve">
+                                <rect x="12" y="28" fill="#FFFFFF" width="13" height="2"/>
+                                <rect x="12" y="13" fill="#FFFFFF" width="3" height="13"/>
+                                <rect x="17" y="7" fill="#FFFFFF" width="3" height="19"/>
+                                <rect x="22" y="19" fill="#FFFFFF" width="3" height="7"/>
+                                <path fill="#FFFFFF" d="M18.436,36.157c-9.696,0-17.584-7.889-17.584-17.584c0-9.696,7.888-17.584,17.584-17.584
+                                  c9.696,0,17.584,7.888,17.584,17.584C36.02,28.268,28.131,36.157,18.436,36.157z M18.436,2.989c-8.593,0-15.584,6.991-15.584,15.584
+                                  c0,8.592,6.991,15.584,15.584,15.584c8.592,0,15.584-6.992,15.584-15.584C34.02,9.98,27.028,2.989,18.436,2.989z" />
+                              </svg>
+                            </svg-wrap>
+                            <span>
+                              Interest Assessment
+                            </span>
+                          </a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="secondary toggle-buttons" ng-show="careerExpCtrl.vm.goalsByProgram.length">
+                      <button class="list-icon" ng-click="careerExpCtrl.vm.setRecTable()" ng-disabled="careerExpCtrl.vm.recTableView">Table View</button>
+                      <button class="tile-icon" ng-click="careerExpCtrl.vm.setRecTiles()" ng-disabled="careerExpCtrl.vm.recTilesView">Tile View</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="one-col info-box error" ng-show="false">
+                  <div class="row">
+                    <div class="col">
+                      <p>
+                        We are still working on mapping careers to your particular program.
+                        <br>Try selecting a similar program to see related results.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="one-eleven" >
+                  <div class="row" ng-show="!careerExpCtrl.vm.selectedProgram.programName && careerExpCtrl.vm.interestSurvey.completed">
+                    <div class="primary">
+                      <p>
+                        <label>Below are the recommended careers based upon your <a id="PreEducation-PostSurvey" ui-sref="auth.interestSurvey.results({header:careerExpCtrl.stateParams.header, from:careerExpCtrl.stateParams.from, fromAnchor: careerExpCtrl.stateParams.fromAnchor})" class="recommended-survey-link">interest assessment results</a>. Get more refined recommendations in
+                        <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" blur="submit" e-class="form-control input-lg" e-typeahead="item.location for item in careerExpCtrl.vm.suggestLocations($viewValue)" e-typeahead-min-length="3" e-typeahead-wait-ms="500" onbeforesave="careerExpCtrl.vm.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a> by entering your educational background.</label>
+                      </p>
+                    </div>
+                  </div>
+                </div> -->
+
+                <!-- Our Recommendations results-->
+                <section class="list-jobs-container" ng-class="{'list-tiles':careerExpCtrl.vm.recTilesView}">
+                  <div class="job-container" infinite-scroll="(careerExpCtrl.vm.activeTab[0].active) ? careerExpCtrl.vm.getGoalsByProgram(careerExpCtrl.vm.params.programCode) : {}">
+                    <div aria-hidden="true" class="five-seven job-header solidBorderBottom" ng-class="{'solidBorderBottom': recTableView}" ng-show="careerExpCtrl.vm.recTableView && careerExpCtrl.vm.goalsByProgram.length">
+                      <div class="row group flatten" ng-class="{'noMarginBottom': recTableView}">
+                        <div class="secondary">
+                          <span class="mini-header"> OCCUPATION TITLE </span>
+                        </div>
+                        <div class="primary">
+                          <div class="three-four-five">
+                            <div class="row flatten">
+                              <div class="col tertiary">
+                                <span class="mini-header"> ANNUAL SALARY </span>
+                              </div>
+                              <div class="col secondary">
+                                <span class="mini-header"> HISTORICAL DEMAND </span>
+                              </div>
+                              <div class="col primary">
+                                <!-- Placeholder -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="two-col error" ng-show="careerExpCtrl.vm.selectedProgram.programName.length && careerExpCtrl.vm.programPromise.$cgBusyFulfilled && !careerExpCtrl.vm.goalsByProgram.length">
+                      <p class="error">We're sorry, no results were found for {{(careerExpCtrl.vm.selectedProgram.programName.length ? '"' + careerExpCtrl.vm.selectedProgram.programName + '"' : 'the program you selected')}}. Please search for a different educational background.</p>
+                    </div>
+                    <career-exp-tiles ng-if="careerExpCtrl.vm.recTilesView" career-goals="careerExpCtrl.vm.goalsByProgram"></career-exp-tiles>
+                    <career-exp-table ng-if="careerExpCtrl.vm.recTableView" career-goals="careerExpCtrl.vm.goalsByProgram"></career-exp-table>
+                    <div class="two-col" cg-busy="{promise: careerExpCtrl.vm.programPromise, profile: 'inline'}"></div>
+                  </div>
+                </section>
+              </tab>
+
+              <!-- By Occupation -->
+              <tab active="careerExpCtrl.vm.activeTab[1].active" select="careerExpCtrl.vm.activateTab(1)" id="careerExpOccupations">
+                <tab-heading>Specific Occupations</tab-heading>
+                <div class="one-eleven">
+                  <div class="row">
+                    <div class="primary">
+                      <label>Enter the name of a specific occupation and we'll show you some careers that match in
+                        <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" blur="submit" e-class="form-control input-lg" e-typeahead="item.location for item in careerExpCtrl.vm.suggestLocations($viewValue)" e-typeahead-min-length="3" e-typeahead-wait-ms="500" onbeforesave="careerExpCtrl.vm.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a> area:
+                      </label>
+
+                      <div class="inner-fa left-fa occupationsSearch">
+                        <span ng-show="!loadingOccupations" class="fa fa-search"></span>
+                        <span ng-class="{visible: loadingOccupations, invisible: !loadingOccupations}" class="fa fa-spinner fa-spin"></span>
+                        <input class="form-control input-lg" type="text" aria-label="Enter occupation title" placeholder="Enter occupation title..." typeahead-on-select="careerExpCtrl.vm.onProgramNameSelect(careerExpCtrl.vm.selectedOccupation, 'careerExploration.selectedOccupation', 1); careerExpCtrl.vm.occupationDataCheck(careerExpCtrl.vm.selectedOccupation)" typeahead="item as item.name for item in careerExpCtrl.vm.suggestOccupations($viewValue)" typeahead-loading="loadingOccupations" ng-model="careerExpCtrl.vm.selectedOccupation" typeahead-wait-ms="500" value="{{careerExpCtrl.vm.selectedOccupation.name || ''}}" my-enter="careerExpCtrl.vm.occupationDataCheck(careerExpCtrl.vm.selectedOccupation)">
+                      </div>
+                    </div>
+                    <div class="secondary toggle-buttons" ng-show="careerExpCtrl.vm.goalsByOccupation">
+                      <button class="list-icon" ng-click="careerExpCtrl.vm.setOccTable()" ng-disabled="careerExpCtrl.vm.occTableView">Table View</button>
+                      <button class="tile-icon" ng-click="careerExpCtrl.vm.setOccTiles()" ng-disabled="careerExpCtrl.vm.occTilesView">Tile View</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-jobs-container" ng-show="careerExpCtrl.vm.goalsByOccupation" ng-class="{'list-tiles':careerExpCtrl.vm.occTilesView}">
+                  <div class="job-container">
+                    <section aria-hidden="true" class="five-seven job-header solidBorderBottom" ng-class="{true: 'solidBorderBottom', false: ''}[occTableView]" ng-show="careerExpCtrl.vm.occTableView &&  (careerExpCtrl.vm.occupationPromise.$cgBusyFulfilled && careerExpCtrl.vm.goalsByOccupation.length && !careerExpCtrl.vm.occupation.error)">
+                      <div class="row group flatten" ng-class="{true: 'noMarginBottom', false: ''}[occTableView]">
+                        <div class="secondary">
+                          <span class="mini-header"> OCCUPATION TITLE </span>
+                        </div>
+                        <div class="primary">
+                          <section class="three-four-five">
+                            <div class="row flatten">
+                              <div class="col tertiary">
+                                <span class="mini-header"> ANNUAL SALARY </span>
+                              </div>
+                              <div class="col secondary">
+                                <span class="mini-header"> HISTORICAL DEMAND </span>
+                              </div>
+                              <div class="col primary">
+                                <!-- Placeholder -->
+                              </div>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    </section>
+                    <section class="two-col" ng-show="careerExpCtrl.vm.occupationPromise.$cgBusyFulfilled && (!careerExpCtrl.vm.goalsByOccupation.length || careerExpCtrl.vm.occupation.error)">
+                      <p class="error">We're sorry, no results were found for {{(careerExpCtrl.vm.selectedOccupation.name.length ? '"' + careerExpCtrl.vm.selectedOccupation.name + '"' : 'the occupation you selected')}}. Please search for a different occupation.</p>
+                    </section>
+                    <career-exp-tiles ng-if="careerExpCtrl.vm.occTilesView && (careerExpCtrl.vm.occupationPromise.$cgBusyFulfilled && careerExpCtrl.vm.goalsByOccupation.length && !careerExpCtrl.vm.occupation.error)" career-goals="careerExpCtrl.vm.goalsByOccupation"></career-exp-tiles>
+                    <career-exp-table ng-if="careerExpCtrl.vm.occTableView && (careerExpCtrl.vm.occupationPromise.$cgBusyFulfilled && careerExpCtrl.vm.goalsByOccupation.length && !careerExpCtrl.vm.occupation.error)" career-goals="careerExpCtrl.vm.goalsByOccupation"></career-exp-table>
+                    <section class="two-col" cg-busy="{promise: careerExpCtrl.vm.occupationPromise, profile: 'inline'}"></section>
+                  </div>
+                </div>
+              </tab>
+
+              <!-- By Career Area -->
+              <tab active="careerExpCtrl.vm.activeTab[2].active" select="careerExpCtrl.vm.activateTab(2)" id="careerExpCareerAreas">
+                <tab-heading>Career Areas</tab-heading>
+                <div class="one-eleven">
+                  <div class="row career-area-dropdowns no-margin">
+                    <label class="career-area-desc"> Choose a broad career area then select a specific career area below and we'll show you matches in <a href="#" class="pulse location" editable-text="user.profile.cgsLocation" buttons="no" blur="submit" e-class="form-control input-lg" e-typeahead="item.location for item in careerExpCtrl.vm.suggestLocations($viewValue)" e-typeahead-min-length="3" e-typeahead-wait-ms="500" onbeforesave="careerExpCtrl.vm.updateCgsLocation($data)">{{user.profile.cgsLocation}}</a><span aria-hidden="true">:</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="one-five-six">
+                  <div class="row career-area-dropdowns">
+                    <div class="primary">
+                      <ui-select aria-label="Select Career Area" ng-model="careerExpCtrl.vm.selectedCareerArea" on-select="careerExpCtrl.vm.careerAreaSelected($item, $model)">
+                        <ui-select-match placeholder="Select Career Area">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="careerArea.name as careerArea in careerExpCtrl.vm.careerAreas | filter: $select.search">
+                          {{careerArea.name}}
+                        </ui-select-choices>
+                      </ui-select>
+                    </div>
+                    <div class="secondary" ng-hide="!careerExpCtrl.vm.selectedCareerArea" >
+                      <span ng-class="{ 'contentBlock' : !careerExpCtrl.vm.selectedCareerArea }"></span>
+                      <ui-select aria-label="Select Specific Career" ng-model="careerExpCtrl.vm.selectedCareer" on-select="careerExpCtrl.vm.careerSelected($item, $model)">
+                        <ui-select-match placeholder="Select Specific Career">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="career.name as career in careerExpCtrl.vm.careers | filter: $select.search" refresh="careerExpCtrl.vm.careers" refresh-delay="0">{{career.name}}
+                        </ui-select-choices>
+                      </ui-select>
+                    </div>
+                    <div class="tertiary toggle-buttons" ng-show="(careerExpCtrl.vm.selectedCareerArea && careerExpCtrl.vm.careerAreaGoals[0].rOnet)">
+                      <button class="list-icon" ng-click="careerExpCtrl.vm.setCaTable()" ng-disabled="careerExpCtrl.vm.caTableView">Table View</button>
+                      <button class="tile-icon" ng-click="careerExpCtrl.vm.setCaTiles()" ng-disabled="careerExpCtrl.vm.caTilesView">Tile View</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-jobs-container" ng-class="{'list-tiles':careerExpCtrl.vm.caTilesView}">
+                  <div class="job-container" infinite-scroll="(careerExpCtrl.vm.careersPromise.$cgBusyFulfilled) ? careerExpCtrl.vm.getGoalsByCareerArea(false) : return">
+                    <section aria-hidden="true" class="five-seven job-header solidBorderBottom" ng-class="{true: 'solidBorderBottom', false: ''}[caTableView]" ng-show="careerExpCtrl.vm.caTableView && careerExpCtrl.vm.careersPromise.$cgBusyFulfilled && careerExpCtrl.vm.careerAreaGoals.length">
+                      <div class="row group flatten" ng-class="{true: 'noMarginBottom', false: ''}[caTableView]">
+                        <div class="col secondary">
+                          <span class="mini-header"> OCCUPATION TITLE </span>
+                        </div>
+                        <div class="col primary">
+                          <section class="three-four-five">
+                            <div class="row flatten">
+                              <div class="col tertiary">
+                                <span class="mini-header"> ANNUAL SALARY </span>
+                              </div>
+                              <div class="col secondary">
+                                <span class="mini-header"> HISTORICAL DEMAND </span>
+                              </div>
+                              <div class="col primary toggle-buttons">
+                                <!-- Placeholder -->
+                              </div>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    </section>
+                    <section class="two-col error" ng-show="careerExpCtrl.vm.careersPromise.$cgBusyFulfilled && !careerExpCtrl.vm.careerAreaGoals.length">
+                      <p class="error">Sorry, we could not find any labor market data for this search.</p>
+                    </section>
+                    <career-exp-tiles ng-if="careerExpCtrl.vm.caTilesView" career-goals="careerExpCtrl.vm.careerAreaGoals"></career-exp-tiles>
+                    <career-exp-table ng-if="careerExpCtrl.vm.caTableView" career-goals="careerExpCtrl.vm.careerAreaGoals"></career-exp-table>
+                    <section class="two-col" cg-busy="{promise: careerExpCtrl.vm.careersPromise, profile: 'inline'}"></section>
+                  </div>
+                </div>
+              </tab>
+            </tabset>
+          </div>
+          <div class="col">
+            <h6 class="col" id="disclaimer">The information on this site is intended to help you make an informed
+              decision about career options. You should further explore options with your Academic Advisor to help you
+              identify educational programs relevant to your career of interest. You take sole responsibility for your
+              use of these resources in making any decisions concerning career options or educational programs. <br><br>This
+              information provides an overview of salary and recent hiring trends nationally and by geographic area for
+              this occupation based on job postings that specify this information.</h6>
+          </div>
+        </div>
+        <!-- mygoals-container ends here-->
+      </section>
+    </div>
+  </div>
+</section>
+<div style="text-align: center; font-size: 10px;">Patent Pending (U.S. Pat. App. No. 14/332,264)</div>

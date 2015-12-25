@@ -1,0 +1,13 @@
+.jobsDashboard {
+  .tab-content {
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+  }
+  .moreLink {
+    text-align: center;
+  }
+  .company {
+    text-transform: capitalize;
+  }
+}

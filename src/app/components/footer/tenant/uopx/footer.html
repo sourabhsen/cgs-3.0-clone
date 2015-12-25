@@ -1,0 +1,123 @@
+<div class="footer-container" id="foot-element" ng-controller="FeedbackCtrlUOPX as fbCtrl">
+  <!-- Sticky Footer Feedback  -->
+  <!-- <div id="feedback-div-fixed" ng-class="{'present' : fbCtrl.feedbackObjFixedVis }"> -->
+  <div id="feedback-div-fixed" ng-class=" fbCtrl.feedbackObjVis ? 'not-present' : 'present' ">
+    <button id="triggerButtonFeedback-fixed" aria-description="open a feedback modal popup"
+            ng-click="fbCtrl.vm.showFeedbackForm()" ng-disabled="fbCtrl.vm.btnDisabled">
+      <span class="feedback-icon" aria-label="share your feedback"></span><span class="feedback-title"><b>Share</b> Your Feedback</span>
+    </button>
+  </div>
+
+  <div id="feedback-div" ng-class=" fbCtrl.feedbackObjVis ? 'present' : 'not-present' ">
+    <button id="triggerButtonFeedback"
+            aria-description="open a feedback modal popup"
+            ng-click="fbCtrl.vm.showFeedbackForm()"
+            ng-disabled="fbCtrl.vm.btnDisabled">
+      <span class="feedback-icon" aria-label="share your feedback"></span><span class="feedback-title"><b>Share</b> Your Feedback</span>
+    </button>
+  </div>
+
+  <div class="header-nav">
+    <div class="footer-content">
+    <div class="footer-info">
+      <div class="ftr-links">
+        <div class="ftr-link-section">
+          <a class="ftr-header" href="/">Home</a>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header" href="https://ecampus.phoenix.edu/classroom/ic/classroom.aspx">Classroom</a>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header" href="https://ecampus.phoenix.edu/classroom/ic/library.aspx">Library</a>
+          <ul>
+            <li class="ftr-item"><a href="https://ecampus.phoenix.edu/classroom/ic/cwe/home.aspx">Center for Writing
+              Excellence</a></li>
+            <li class="ftr-item"><a href="https://ecampus.phoenix.edu/classroom/ic/cme.aspx">Center for Mathematics
+              Excellence</a></li>
+          </ul>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header" href="https://ecampus.phoenix.edu/portal/portal/secure/accountsummary.aspx">Account</a>
+          <ul>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/profile/">My Profile</a></li>
+            <li class="ftr-item"><a
+              href="http://ecampus.phoenix.edu/content/FAAccount/FacultyPayHistory/FacultyPay.aspx">My Pay Records</a>
+            </li>
+            <li class="ftr-item"><a
+              href="https://ecampus.phoenix.edu/myaccount/demographics/views/demographicsupdate.aspx">Change Address</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header"
+             href="http://kb.phoenix.edu/?cid=5&amp;t=opt1&amp;c=12&amp;cpc=dt2wJiVUQ8s0WMPyKTgX6Jd18xTb14qA40Nfr5EdyY0JfnR2">Contact
+            Us</a>
+          <ul>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/community/support/help">Report a Problem</a>
+            </li>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/community/support/help">Ask a Question</a>
+            </li>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/community/support/suggestions">Share a
+              Thought</a></li>
+          </ul>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header" href="https://portal.phoenix.edu/te/ux-core/public/academic-support.html">Support</a>
+          <ul>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/te/ux-core/sitemap.html">Sitemap</a></li>
+            <li class="ftr-item"><a href="https://ecampus.phoenix.edu/portal/portal/public/download.aspx">Downloads</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header"
+             href="https://ecampus.phoenix.edu/portal/portal/secure/facultyresources.aspx">Faculty</a>
+          <ul>
+            <li class="ftr-item"><a
+              href="http://ecampus.phoenix.edu/content/FAAccount/FacultyContracts/MyCourseContracts.aspx">Course
+              Contracts</a></li>
+            <li class="ftr-item"><a
+              href="http://ecampus.phoenix.edu/content/FCServices/FacultySolicitations/solicitations.aspx">Solicitations</a>
+            </li>
+            <li class="ftr-item"><a href="https://ecampus.phoenix.edu/content/FAResources/facultylounges/default.aspx">Faculty
+              Forums</a></li>
+          </ul>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header" href="https://portal.phoenix.edu/social/">Phoenix Connect</a>
+          <ul>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/index.jspa">Overview</a></li>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/people">People Directory</a></li>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/community">Communities</a></li>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/groups">Groups</a></li>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/blogs/browse">Blogs</a></li>
+            <li class="ftr-item"><a href="https://portal.phoenix.edu/social/community/support/tips">Guidelines &amp;
+              Tips</a></li>
+          </ul>
+        </div>
+
+        <div class="ftr-link-section">
+          <a class="ftr-header" href="http://store.phoenix.edu/">Student Store</a>
+        </div>
+      </div>
+      <div class="ftr-info" role="contentinfo">
+        Copyright © 2011-2014 University of Phoenix | <a
+        href="http://www.phoenix.edu/copyright-legal/terms_and_conditions.html">Terms of Use</a> | <a
+        href="http://www.phoenix.edu/copyright-legal/privacy_policy.html">Privacy Policy</a> | <a
+        href="https://portal.phoenix.edu/policies/ethics_and_compliance.html">Ethics and Compliance</a> | <a
+        href="http://kb.phoenix.edu/?cid=5&amp;t=opt1&amp;c=12&amp;cpc=dt2wJiVUQ8s0WMPyKTgX6Jd18xTb14qA40Nfr5EdyY0JfnR2">Contact
+        Us</a> | <a
+        href="http://kb.phoenix.edu/display/2/index.aspx?c=12&amp;cpc=dt2wJiVUQ8s0WMPyKTgX6Jd18xTb14qA40Nfr5EdyY0JfnR2&amp;cid=5&amp;cat=&amp;catURL=&amp;r=0.683908879756927">Help</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>

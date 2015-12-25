@@ -1,0 +1,82 @@
+// Details view styles
+.career-exploration-detail-container {
+  // margin-top: 80px;
+  .details-overview {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 2.5em;
+  }
+  .related-titles {
+    font-size: .75em;
+  }
+  h6, h4, h5, .large-bold {
+    font-weight: 700;
+  }
+  h6, .group section p {
+    margin-left: -($line-height-computed / 2);
+  }
+  .group {
+    section {
+      margin-left: -5px;
+      &.four-eight {
+        p {
+          margin-left: 0;
+        }
+      }
+      &.one-col {
+        p {
+          margin-left: 0;
+        }
+      }
+    }
+    .xsmall-gray {
+      font-size: $font-size-smallest;
+      color: $gray-dark;
+      font-weight: 700;
+    }
+    .xlarge-red {
+      font-size: 36px;
+      color: $red;
+      margin-bottom: 0;
+    }
+    .circles-chart {
+      // add max width so chart isn't huge
+      max-width: 100px;
+    }
+  }
+  .demand-bar {
+    margin-top: 13.5px;
+    margin-bottom: 13.5px;
+  }
+  .list {
+    margin-left: -50px;
+    font-size: $font-size-small;
+    li {
+      margin-left: 18px; // to handle hiding of numbers for 2 col list layout
+    }
+  }
+  .list-small {
+    font-size: 12px;
+  }
+  .ol-2 {
+    column-count: 2;
+    margin-left: -4em;
+    font-size: 12px;
+    li {
+      margin-left: 3em; // to handle hiding of numbers for 2 col list layout
+    }
+  }
+
+  h4 {
+    border-bottom: solid $black 1px;
+    width: auto;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    span {
+      display: inline;
+      float: left;
+      position: relative;
+      margin-right: 10px;
+    }
+  }
+}

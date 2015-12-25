@@ -1,0 +1,36 @@
+{
+  "name": "apollo-skill-services",
+  "version": "0.2.2",
+  "authors": [
+    {
+      "name": "Mark Maday",
+      "email": "mark.maday@apollo.edu"
+    }
+  ],
+  "main": [
+    "dist/apollo-skill-services.js"
+  ],
+  "ignore": [
+    "src",
+    "test",
+    "coverage",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular-mocks": ">=1.2.0",
+    "angular-scenario": ">=1.2.0",
+    "angular": ">=1.2.0"
+  },
+  "_release": "0.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.2",
+    "commit": "5bc447559694134d14b4bf3f933b2ee65bb62663"
+  },
+  "_source": "https://git.corp.aptimus.net/git/eng/angular-apollo-skill-services",
+  "_target": "~0.2.2",
+  "_originalSource": "angular-apollo-skill-services"
+}

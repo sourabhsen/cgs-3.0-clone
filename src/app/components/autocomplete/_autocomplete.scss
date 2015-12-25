@@ -1,0 +1,75 @@
+careers-location-autocomplete {
+  li {
+    background-color: $gray-lightest;
+  }
+}
+/******** CGS-371 **********/
+careers-jobsearch-autocomplete {
+ .dropdown-menu > li > a{  
+    padding: 3px 32px;
+  }
+  li {
+    position: relative;
+    background-color: $gray-lightest;
+      a.title{
+        &:before{
+          @extend .icon-symbol-suitcase; 
+          content: "";
+          height: 13px;
+          display: inline-block;
+          top: 9px;
+          left: 12px;
+          position: absolute;
+        }      
+    }
+    a.company{
+      &:before{
+        @extend .icon-symbol-bldg;
+        content: "";
+        height: 13px;
+        margin-right: 4px;
+        display: inline-block;
+        position: absolute;
+        top:9px;
+        left:12px;
+      }
+    } 
+  }
+
+/******** CGS-371 **********/
+  span.title {
+     background: url('/assets/images/title_green_briefcase.png') no-repeat 0 3px transparent;
+     @extend .icon-symbol-suitcase;
+  }
+  span.company {
+     background: url('/assets/images/company_blue_building.png') no-repeat 0 0 transparent;
+     @extend .icon-symbol-bldg;
+  }
+  span.icon {
+    display: inline-block;
+    top: 2px;
+    position: relative;
+    line-height: 19px;
+    padding: 13px 0 0 0;
+    margin-right: 7px;
+    margin-left: -5px;
+  }
+  .legend {
+    background-color: $gray-lighter;
+    padding: 2px 0 5px 7px;
+    font-size: 0.7em;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    display:none;
+    @include transition(all 1.2s ease 0s);
+    span.icon {
+      margin-left: 7px;
+      margin-right: 2px;
+    }
+    &.active{
+     display: block;
+    }
+  }
+ 
+}

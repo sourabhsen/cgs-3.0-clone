@@ -1,0 +1,97 @@
+
+main {
+  padding-bottom: 40px;
+  background-color: $white;
+  .container {
+    padding-bottom: 20px;
+
+  }
+}
+
+#main-content-container {
+  max-width: 1170px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.siteHeader {
+  position: relative;
+  min-height: 144px;
+  padding-bottom: 0px;
+  background-color: $white;
+  .nav > li > a {
+    color: $brand-primary;
+    padding: 0 10px 0 9px;
+    margin-left: -1px;
+    border-left: 1px solid #436bb4;
+    display: block;
+    line-height: 7px;
+  }
+}
+
+.siteHeader .logo {
+  margin-top: 53px;
+  margin-left: 92px;
+  float: left;
+}
+
+.siteHeader .nav {
+  float: left;
+  margin-right: 0;
+  margin-left: 101px;
+  margin-top: 82px;
+  margin-bottom: 0;
+  border-bottom: 2px solid #ececec;
+  width: auto;
+  list-style: none;
+}
+
+.pageTitle {
+  padding: 14px 0;
+  background-color: #0d3f51;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.pageTitle h1 {
+  font-size: 36px;
+  -webkit-text-fill-color: currentcolor;
+  -webkit-background-clip: border-box;
+  background: transparent;
+  color: #feffff;
+  font-family: "OpenSans", sans-serif;
+  padding-bottom: 5px;
+  line-height: 25px;
+  margin: 0;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.siteHeader .nav li {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  float: left;
+  margin-bottom: -2px;
+  border-bottom: 2px solid #ececec;
+  padding: 5px 0 7px 0;
+  margin-left: 1px;
+}
+
+.siteHeader .nav > li.active, .siteHeader .nav > li.nav-path-selected {
+  border-bottom: 2px solid #999;
+}
+
+.siteHeader #social-popup {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 87px;
+}
+
+.siteHeader #hourly-btn {
+  position: absolute;
+  top: 77px;
+  right: 87px;
+}

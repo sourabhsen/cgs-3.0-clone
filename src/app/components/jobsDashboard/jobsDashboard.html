@@ -1,0 +1,140 @@
+<div ng-class="dashboardType" class="jobsDashboard clearfix">
+  <h1 ng-if="!jobsDashboardModel.isWidget" class="pull-left">{{dashboardTitle}}</h1>
+
+  <h3 ng-if="jobsDashboardModel.isWidget">{{dashboardTitle}}</h3>
+
+  <uib-tabset class="resultsContent" justified="true">
+    <uib-tab active="tabs[0].active"
+             select="setTab(tabs[0].name);jobsDashboardModel.getRecommendedJobs()">
+      <tab-heading aria-label="Recommended Jobs">
+        <span class="hidden-xs hidden-sm hidden-lg">
+          <small>Recommended</small>
+        </span>
+        <span class="hidden-md">Recommended</span>
+      </tab-heading>
+      <span
+        cg-busy="{promise: jobsDashboardModel.recommendationsPromise, profile: (jobsDashboardModel.isWidget ? 'inlineSmall' : 'inline')}"></span>
+
+      <div ng-if="jobsDashboardModel.pageRecommendedResults" class="tabdesc">
+        <span ng-hide="jobsDashboardModel.isWidget">
+          You can improve these recommendations by setting  <a
+          ui-sref="auth.tools({toolId: 'careerExploration'})">goals</a>, building a <a
+          ui-sref="auth.tools({toolId: 'resumeBuilder' })">resume</a>, and <a
+          ui-sref="auth.tools({toolId: 'jobsearch'})">searching for jobs</a>
+          <div class="recinfo-icon-container">
+            <div class="recinfo-icon"></div>
+          </div>
+        </span>
+      </div>
+      <div ng-if="!jobsDashboardModel.isWidget" class="">
+        <div id="job.job.jobId" class="job four-eight no-padding clearfix"
+             ng-repeat="job in jobsDashboardModel.data.jobs | limitTo: jobsDashboardModel.itemsLimit()"
+             ng-attr-id="{{job.job.jobId}}" ng-class="{'last':$last}">
+          <div class="row jobInfo no-margin clearfix">
+            <div class="primary no-padding">
+              <div ng-show="job.job.title" class="title"><a ng-click="jobsDashboardModel.sendActivity($index)"
+                                                            ui-sref="auth.tools.view({toolId: 'jobsearch', viewId: 'details', id: job.job.jobId})">{{
+                job.job.title }}</a></div>
+              <div ng-show="job.job.companyName || job.job.providerCompanyName" class="company">{{job.job.companyName ||
+                job.job.providerCompanyName | lowercase }}
+              </div>
+              <div ng-show="job.job.location" class="location">
+                <span class="title-case">{{job.job.location.city | lowercase }}{{job.job.location.state ? ', ' : ''}}{{job.job.location.state | lowercase }}</span>
+              </div>
+              <small ng-show="job.job.postingDate" class="postedDate">Posted on: {{ job.job.postingDate | date :
+                'longDate' }}
+              </small>
+            </div>
+            <div class="secondary">
+              <div class="pull-right">
+                <div class="clearfix" ng-if="dashboardType === 'page'">
+                  <div class="clearfix icons">
+                    <span class="col icon icon-tuition-assistance" ng-show="job.tuitionReimbursement"
+                          popover-template="'app/components/popovers/tuitionAssistance.html'"
+                          popover-trigger="mouseenter" popover-placement="left"></span>
+                    <span class="col icon icon-preferred-partner" ng-show="job.preferredPartner"
+                          popover-template="'app/components/popovers/preferredPartner.html'"
+                          popover-trigger="mouseenter" popover-placement="left"></span>
+                  </div>
+                  <div class="clearfix">
+                    <a class="applied-link" ui-sref="auth.tools({toolId: 'jobsearch', tab: 'applied'})"
+                       ng-show="job.applied">View
+                      My Application Status</a>
+                    <job-playlist job="job" reload-saved-results="jobsDashboardModel.reloadSaved"
+                                  ng-hide="job.applied"></job-playlist>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="noJobs" ng-if="jobsDashboardModel.noRecommendedResults">
+          <span>We have no recommended jobs for you. Please try uploading a <a
+            ui-sref="auth.tools({toolId: 'resumeBuilder' })">resume</a>, setting a <a
+            ui-sref="auth.tools({toolId: 'careerExploration'})">career goal</a> or changing your location to a larger city nearby.</span>
+        </div>
+      </div>
+      <div ng-if="jobsDashboardModel.isWidget">
+        <div class="job no-padding clearfix"
+             ng-repeat="job in jobsDashboardModel.data.jobs | limitTo: jobsDashboardModel.itemsLimit()"
+             ng-attr-id="{{job.job.jobId}}" ng-class="{'last':$last}">
+          <div class="jobInfo primary">
+            <div ng-show="job.job.title" class="title"><a
+              ui-sref="auth.tools.view({toolId: 'jobsearch', viewId: 'details', id: job.job.jobId})"
+              ng-click="jobsDashboardModel.sendActivity($index)">{{ job.job.title
+              }}</a></div>
+            <div ng-show="job.job.companyName || job.job.providerCompanyName" class="company">{{job.job.companyName ||
+              job.job.providerCompanyName | lowercase }}
+            </div>
+            <div ng-show="job.job.location" class="location">
+              <span class="title-case">{{job.job.location.city | lowercase }}{{job.job.location.state ? ', ' : ''}}{{job.job.location.state | lowercase }}</span>
+            </div>
+            <small ng-show="job.job.postingDate" class="postedDate">Posted on: {{ job.job.postingDate | date :
+              'longDate' }}
+            </small>
+          </div>
+        </div>
+        <div class="noJobs" ng-if="jobsDashboardModel.noRecommendedResults">
+          <span>We have no recommended jobs for you. Please try uploading a <a
+            ui-sref="auth.tools({toolId: 'resumeBuilder' })">resume</a>, setting a <a
+            ui-sref="auth.tools({toolId: 'careerExploration'})">career goal</a> or changing your location to a larger city nearby.</span>
+        </div>
+      </div>
+      <div class="moreLink" ng-if="jobsDashboardModel.pageRecommendedResults">
+        <a href="" role="button" ng-show="jobsDashboardModel.hasMoreItemsToShow()"
+           ng-click="jobsDashboardModel.showMoreItems()" aria-label="Jobs">View More</a>
+      </div>
+      <div class="widgetFooterCTA widget-bottom" ng-if="jobsDashboardModel.widgetRecommendResults">
+        <a ui-sref="auth.tools({toolId: 'jobsearch'})" aria-label="Jobs" class="small-cta pull-left">See All</a>
+      </div>
+    </uib-tab>
+
+    <uib-tab active="tabs[1].active" select="setTab(tabs[0].name)">
+      <tab-heading aria-label="Applied Jobs">Applied</tab-heading>
+      <span
+        cg-busy="{promise: appliedJobsWidgetViewModel.appliedJobsPromise, profile: (jobsDashboardModel.isWidget ? 'inlineSmall' : 'inline')}"></span>
+
+      <div class="clearfix">
+        <applied-jobs-widget applied-jobs-layout="{{dashboardType}}" profile-id="{{profileId}}"></applied-jobs-widget>
+      </div>
+    </uib-tab>
+    <uib-tab active="tabs[2].active" select="setTab(tabs[0].name)">
+      <tab-heading aria-label="Saved Jobs">Saved</tab-heading>
+      <span
+        cg-busy="{promise: savedJobsWidgetViewModel.savedJobsPromise, profile: (jobsDashboardModel.isWidget ? 'inlineSmall' : 'inline')}"></span>
+
+      <div class="clearfix">
+        <saved-jobs-widget reload-saved-results="jobsDashboardModel.reloadSaved" saved-jobs-layout="{{dashboardType}}"
+                           profile-id="{{profileId}}"></saved-jobs-widget>
+      </div>
+    </uib-tab>
+    <uib-tab active="tabs[3].active" select="setTab(tabs[0].name)" ng-if="!jobsDashboardModel.isWidget">
+      <tab-heading aria-label="Job Alerts">Alerts</tab-heading>
+      <div ng-if="isAuthenticated()">
+        <email-alerts-widget layout="tabbed" limit="{{dashboardType === 'widget' ? 3 : undefined}}"
+                             profile-id="{{user.profileId}}" on-search="savedSearch(params)"></email-alerts-widget>
+      </div>
+      <div ng-if="!isAuthenticated()">Sign in to see your job alerts.</div>
+    </uib-tab>
+  </uib-tabset>
+</div>

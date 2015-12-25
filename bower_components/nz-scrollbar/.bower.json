@@ -1,0 +1,36 @@
+{
+  "name": "nzScrollbar",
+  "authors": [
+    "tannerlinsley"
+  ],
+  "description": "An AngularJS virtual scrollbar directive (based on the work of Ariya Hidayat)",
+  "main": "nzScrollbar.js",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "scrollbar",
+    "nozzle"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.2",
+    "javascript-detect-element-resize": "~0.5.3"
+  },
+  "homepage": "https://github.com/vimcat/nzScrollbar",
+  "_release": "a9e0121fb1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a9e0121fb139b2b0a229d011360b712ff6342e7d"
+  },
+  "_source": "git://github.com/vimcat/nzScrollbar.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/vimcat/nzScrollbar"
+}

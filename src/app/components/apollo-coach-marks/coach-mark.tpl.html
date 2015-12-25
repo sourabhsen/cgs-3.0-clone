@@ -1,0 +1,23 @@
+<div class="popover coach-mark fade in">
+  <div class="arrow"></div>
+  <div class="popover-inner">
+    <h3 class="popover-title">{{heading}}</h3>
+    <div class="popover-content container-fluid">
+      <div class="row">
+        <div class="col-md-12 popover-text">{{text}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 text-left skip-class">
+          <!--<button id="skipBtn" tabindex="0" class="skipBtn btn-xs" type="button">SKIP</button> -->
+          <label class="hide-intro">
+            <input id="skipBtn" tabindex="0" type="checkbox" class="skipBtn btn-xs"/> Don\'t show this tip again
+          </label>
+        </div>
+        <div class="col-md-5 text-right buttons">
+          <button id="nextBtn" tabindex="0" class="nextBtn btn-xs" type="button">Close</button>
+          <button id="prevBtn" tabindex="0" class="prevBtn btn-xs" type="button">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

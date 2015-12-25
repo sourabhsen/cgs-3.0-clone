@@ -1,0 +1,10 @@
+<nav role="navigation" aria-label="breadcrumbs">
+  <!-- <p id="breadcrumblabel" class="sr-only"></p> -->
+  <ol class="breadcrumb" id="breadcrumb-list">
+    <li ng-repeat="step in steps" ng-class="{active: $last}" ng-switch="$last || !!step.abstract">
+      <a ng-switch-when="false" class="bc-link" href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel}}</a>
+      <span ng-switch-when="false" class="bc-sep" aria-hidden="true">&gt;</span>
+      <span ng-switch-when="true" class="bc-curr">{{step.ncyBreadcrumbLabel}}</span>
+    </li>
+  </ol>
+</nav>

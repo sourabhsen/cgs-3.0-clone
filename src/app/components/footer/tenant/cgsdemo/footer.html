@@ -1,0 +1,20 @@
+<div class="footer-container" ng-controller="FeedbackCtrl as fbCtrl">
+  <div class="footer-content">
+    <div class="footer-info">
+      © 2015 Apollo Education Group, Inc. All rights reserved.
+    </div>
+  </div>
+  <div class="feedback">
+    <button id="triggerButtonFeedback"
+            aria-label="Leave Feedback Form Button"
+            aria-description="open a feedback modal popup"
+            role="button"
+            ng-click="fbCtrl.vm.showFeedbackForm()"
+            ng-disabled="fbCtrl.vm.btnDisabled">
+      <span aria-hidden="true" class="feedback-icon" ></span>
+      <span class="feedback-title">
+        <b>Share</b> Your Feedback
+      </span>
+    </button>
+  </div>
+</div>

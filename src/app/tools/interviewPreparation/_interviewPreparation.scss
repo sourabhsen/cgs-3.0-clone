@@ -1,0 +1,436 @@
+// Sliding animation
+//.slide-animate-container {
+//  position:relative;
+//  background:white;
+//  //border:1px solid black;
+//  height:600px;
+//  overflow:hidden;
+//}
+//
+//.slide-animate {
+//  padding:10px;
+//}
+//
+//.slide-animate.ng-enter, .slide-animate.ng-leave {
+//  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+//  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+//
+//  position:absolute;
+//  top:0;
+//  left:0;
+//  right:0;
+//  bottom:0;
+//  display:block;
+//  padding:10px;
+//}
+//
+//.slide-animate.ng-enter {
+//  top:-50px;
+//}
+//.slide-animate.ng-enter.ng-enter-active {
+//  top:0;
+//}
+//
+//.slide-animate.ng-leave {
+//  top:0;
+//}
+//.slide-animate.ng-leave.ng-leave-active {
+//  top:50px;
+//}
+
+// Component styles
+
+.interview-prep {
+
+  .section-description,
+  .section-aside {
+    padding: $padding-large-vertical $padding-large-horizontal;
+  }
+
+  .section-divider {
+    border: 1em solid $gray-lightest;
+  }
+
+  .coaches-tip {
+    @extend .margin-medium;
+
+    .coaches-link {
+      color: $link-color;
+      svg {
+        margin-right:10px;
+        path {
+          fill: $link-color;
+        }
+      }
+
+      &:hover {
+        color: $link-hover-color;
+        svg {
+          path {
+            fill: $link-hover-color;
+          }
+        }
+      }
+    }
+  }
+
+  .search .search-input {
+    width: 27%;
+  }
+
+  .search #interview-search {
+    width: 100%;
+  }
+
+  .carousel-inner {
+    min-height: 554px;
+  }
+
+  .carousel{
+     .controls{
+      .icon-previous{
+        margin-right: 10px;
+      }
+      .icon-next{
+        margin-left: 10px;
+      }
+    }
+    .indicators{
+      span{
+        font-size: $font-size-small;
+      }
+    }
+
+    .controls,
+    .indicators {
+      padding-top: 13.5px;
+    }
+  }
+
+  .video-frame {
+    max-width: 385px;
+    min-height: 220px;
+    background-color: $black;
+  }
+
+  .training-section{
+    padding-left: 80px;
+    padding-top: 20px;
+
+    h3{
+      margin:0;
+      padding:0;
+      /*custom font*/
+      font-size: $font-size-h1;
+      color:$interview-icon;
+    }
+
+    h4{
+      margin:0;
+      padding:0;
+      color:$interview-icon;
+    }
+    p{
+      font-size:$font-size-base;
+    }
+
+    .learn{
+      h4{
+        padding-bottom:20px;
+      }
+    }
+    .question{
+      padding-top : 30px;
+
+      .question-mark{
+        display: inline;
+        margin-left:-55px;
+        margin-right:5px;
+      }
+
+      p{
+        display:inline-block;
+        line-height:30px;
+      }
+    }
+
+    .coaches-tip{
+      p{
+        font-size: $font-size-small;
+        line-height:22px;
+        color:$gray-darker;
+      }
+
+      hr{
+        margin-top:10px;
+        margin-bottom:20px;
+      }
+    }
+  }
+
+  // training view styles
+
+  .training {
+    .section-description,
+    .section-main,
+    .section-aside {
+      background-color: $white;
+    }
+
+    .section-main{
+      margin-right: 10px;
+    }
+
+  }
+
+  // search view styles
+
+  .search {
+
+    .section-aside {
+      background-color: $gray-lightest;
+    }
+
+    .section-description {
+      background-color: $red;
+      margin-bottom: 0;
+
+      h4{
+        color: $white;
+      }
+    }
+
+    .section-main {
+      background-color: $white;
+
+      .panel-heading {
+        text-align: left;
+      }
+
+      // Font size was being overridden by bootstrap ui css.
+      // Overriding it back to app styles.
+      .panel-title {
+        font-size: $font-size-h4;
+        overflow:hidden;
+
+        a:focus {
+          outline: 0;
+        }
+      }
+
+      .panel {
+        border-bottom: 1px dotted #111c24;
+        border-radius:0;
+      }
+
+      .panel-group {
+        border-bottom-width: 0;
+      }
+    }
+
+    .search-pagination {
+      text-align: center;
+    }
+
+    label {
+      display: inline;
+    }
+  }
+
+  .search.search-page {
+    margin: 0;
+  }
+
+  .info-text {
+    font-size: 13px;
+    text-align: right;
+    padding-bottom:10px;
+  }
+
+  .questions {
+    position: relative;
+  }
+
+  .accordion-group {
+    padding: 0;
+    margin: 0;
+    .panel {
+      padding-bottom: 10px;
+    }
+    .panel-heading {
+      h4 {
+        svg-wrapper {
+          float: left;
+          position: absolute;
+          display: inline;
+          margin-top :1px;
+          line-height:24px;
+          svg {
+            path {
+              fill: $link-color;
+            }
+          }
+        }
+        li {
+          float: right;
+          text-align: left;
+          width: 100%;
+          padding-left: 30px;
+
+          span {
+            float: left;
+            position: relative;
+            display: inline;
+            color: $link-color;
+            text-align: left;
+            line-height:24px;
+          }
+
+        }
+        &:hover {
+          text-decoration: none;
+          span {
+            color: $link-hover-color;
+            text-decoration: underline;
+          }
+          path {
+            fill: $link-hover-color;
+          }
+        }
+      }
+    }
+    .panel-collapse {
+      .panel-body {
+        padding-top: 30px;
+      }
+    }
+    .coaches-tip{
+      padding-left:40px;
+      hr{
+        margin:10px 0 20px;
+      }
+    }
+
+  }
+
+  /******************CAR 481 ***********************/
+  /**Back is missing/styling is inconsistent *******/
+  .tool-previous-page{
+     top: 35px;
+     span{
+       margin: 0 10px 0px 0;
+     }
+   }
+
+}
+.questions-list{
+  background-color:$gray-light; /*#d5d6d2*/
+  margin-right:15px;
+}
+
+.timeline {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height:550px;
+  border-top:1px solid $gray;
+  border-bottom: 1px solid $gray;
+  box-shadow: inset 0px 11px 8px -5px #CCC, inset 0px -11px 8px -5px #CCC;
+  margin-right:-10px;
+
+  &::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #E0DED9;
+  }
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: #E0DED9;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: $link-color;
+  }
+
+
+
+  .question {
+    background-color: $white;
+    min-height: 112px;
+    cursor: pointer;
+    padding: 20px 10px;
+    border:1px solid #ebebea;
+    margin-bottom:10px;
+
+    &:nth-last-of-type{
+      margin-bottom:0;
+    }
+
+    &.active {
+      background-color: $gray-darker;
+      .question-text, .question-meta-info{
+        color:$white;
+      }
+    }
+
+    &:hover {
+      background-color: $link-color;
+      .question-text, .question-meta-info{
+        color:$white;
+      }
+    }
+
+    .question-text {
+      font-size: $font-size-small;
+      line-height:16px;
+      color:$blue;
+      padding-left:15px;
+    }
+
+    .question-meta-info {
+        font-size: $font-size-h4;
+        color: #8c8c8c;
+        margin-top:-10px;
+    }
+  }
+}
+
+
+
+// Mobile overrides
+@media all and (max-device-width: 767px) {
+  .interview-prep .section-main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .interview-prep .training-section {
+    padding-left: 0;
+
+    .question {
+      padding-top: 15px;
+
+      .question-mark {
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+      }
+    }
+  }
+
+
+  .interview-prep .search .search-input {
+    width: 95%;
+  }
+
+
+
+  .desktop-only {
+    display: none;
+  }
+
+  .controls {
+    padding-top: 4px;
+  }
+}

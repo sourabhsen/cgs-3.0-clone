@@ -1,0 +1,22 @@
+.job-search-history-widget {
+  padding: 10px 15px;
+}
+.jobSearchHistoryWidget {
+  background-color: $white;
+  .alert-icon {
+    @extend .icon-alert-lg;
+    margin-top: 10px;
+  }
+  .md-show {
+    display: none;
+    @media (max-width: $screen-md) {
+      display: inline
+    }
+  }
+  @media (max-width: $screen-sm-max) {
+    div.applied-jobs-table-layout,
+    div.secondary {
+      display: none;
+    }
+  }
+}

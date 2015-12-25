@@ -1,0 +1,18 @@
+<nav role="navigation" class="header-tool-nav three-col">
+  <div class="row" ng-controller="HeaderToolCtrl as headerTool">
+    <div class="col logo">
+      <a href="/#/">
+        <img src="app/components/header/tenant/amazon/logo.png" width="214" height="71" alt="Amazon Fulfillment">
+      </a>
+    </div>
+    <div class="col tool-title-col">
+      <h2 class="tool-title header-bold text-center" ng-cloak><span ncy-breadcrumb-last></span></h2>
+    </div>
+    <div class="col close-col">
+      <a class="close-link pull-right" ui-sref="auth.milestones({milestoneId: headerTool.fromMilestoneSeq, '#': headerTool.fromMilestoneAnchor})" title="Close and return to Milestone {{headerTool.fromMilestoneSeq}}" ng-cloak>
+        <!-- CAR 396 , Commented the existing html code -->
+        <!-- <span class="fa fa-step-backward"></span> <small>Return to Milestone {{headerTool.fromMilestoneSeq}}</small> -->
+      </a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="alert-btn" ng-click="alertsLoadWait = alertsCtrl.setAlert(newTitle)"
+             ng-disabled="alertsCtrl.hasMaxed()">Set A Job Alert <i class="fa fa-bell-o"></i></button>
+      <p ng-show="alertsCtrl.hasMaxed()" class="alert alert-info small">You reached max number of alerts.
+        Please delete unused saved alerts before creating any new alerts.</p>
+
+      <p ng-if="alertsCtrl.error" class="alert alert-danger small">{{alertsCtrl.errorText}}</p>
+
+
+
+      <div ng-if="alertsCtrl.titleError" class="alert title-changer alert-info small">
+          <h4>Duplicate Title:</h4>
+          <p>Please change the name of this search alert.</p>
+          <form ng-submit="alertsCtrl.setAlert(newTitle)">
+            <label>New Title
+              <input   maxlength="50" ng-keyup="$event.keyCode == 13 ? alertsCtrl.setAlert(newTitle) : null"
+                      autofocus
+                      type="textarea"
+                      ng-model="newTitle"
+                      data-ng-init="newTitle = alertsCtrl.title"
+                      ng-cloak>
+            </label>
+            <button class="alert-btn" ng-click="alertsLoadWait = alertsCtrl.setAlert(newTitle)"
+             ng-disabled="alertsCtrl.hasMaxed()">Set New Title <i class="fa fa-bell-o"></i></button>
+          </form>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

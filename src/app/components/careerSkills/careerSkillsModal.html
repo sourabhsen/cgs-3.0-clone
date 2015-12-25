@@ -1,0 +1,143 @@
+<div class="skill-courses" id="skills-courses-top" cg-busy="{promise: csm.courseWait, profile: 'fixedCenter'}">
+  <div class="four-eight">
+    <div class="row skill-courses-close-row">
+      <div class="primary"></div>
+      <div class="secondary">
+        <a href="" class="modal-close-link" ng-click="$close()" title="Close" role="button"><span class="icon"></span></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="primary">
+        <h1 class="skill-course-count-header">{{csm.model.totalNumberOfResults | number}}&#32;<ng-pluralize count="csm.model.totalNumberOfResults" when="{'one': 'course', 'other': 'courses'}"></ng-pluralize>&#32;for {{csm.keywords | keywordFilter}}<small><sup>*</sup></small><small ng-hide="!csm.filter.type && csm.filter.price === '{}'">&#32;(Filtered)</small></h1>
+      </div>
+      <div class="secondary">
+        <a href="" role="button" class="pull-right course-filters" ng-click="csm.filter.collapsed = !csm.filter.collapsed">Filter Results <i class="icon" ng-class="{'icon-expand-tip': csm.filter.collapsed, 'icon-collapse-tip': !csm.filter.collapsed}"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- filters -->
+  <form name="courseForm" class="course-filters" collapse="csm.filter.collapsed">
+    <div class="two-col">
+      <div class="row">
+        <div class="col">
+          <h4 class="header-bold text-center">Course Type</h4>
+          <div class="filter-list-wrapper type-filter">
+            <ul class="filter-list">
+              <li class="radio">
+                <label>
+                  <input type="radio" name="allTypes" id="allTypes" value="" title="All Types" ng-model="csm.filter.type" ng-change="csm.updateModel(0, csm.filter.type, csm.filter.price)" tabindex="0"> All Types <span class="font-small">( {{csm.productTypesCount | number}} )</span>
+                </label>
+              </li>
+              <li class="radio" ng-repeat="type in csm.productTypes track by $index" ng-class="{disabled: type.count === 0}">
+                <label>
+                  <input type="radio" name="{{type.text}}" value="{{type.term}}" ng-model="csm.filter.type" ng-change="csm.updateModel(0, csm.filter.type, csm.filter.price)" ng-disabled="type.count === 0" tabindex="0">{{type.text}} <span class="font-small">( {{type.count | number}} )</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col">
+          <h4 class="header-bold text-center">Price</h4>
+          <div class="filter-list-wrapper price-filter">
+            <ul class="filter-list">
+              <li class="radio">
+                <label>
+                  <input type="radio" name="allPrices" value="{}" ng-model="csm.filter.price" ng-change="csm.updateModel(csm.currentPage, csm.filter.type, csm.filter.price)" tabindex="0">All Prices <span class="font-small" style="display:none;">( {{csm.allPricesCount | number}} )</span>
+                </label>
+              </li>
+              <li class="radio" ng-repeat="price in csm.priceRanges track by $index" ng-class="{disabled: price.totalCount === 0}">
+                <label>
+                  <input type="radio" name="{{price.from}}" value="{{price.value}}" ng-model="csm.filter.price" ng-change="csm.updateModel(0, csm.filter.type, price.value)" ng-disabled="price.totalCount === 0" tabindex="0">{{price.name}} <span class="font-small">( {{price.totalCount | number}} )</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <section class="eleven-one skill-course-listing">
+    <article class="row" ng-repeat="course in csm.model.results track by course.id" ng-attr-data-course-id="{{course.id}}">
+      <div class="secondary">
+        <img ng-src="{{course.provider.icon | removeProtocol}}" alt="{{course.provider.name}} logo" class="course-icon">
+      </div>
+      <div class="primary">
+        <div class="three-nine">
+          <div class="row">
+            <div class="primary">
+              <div class="course-info">
+                <h3>{{course.provider.name}}</h3>
+                <h2>{{course.name}}</h2>
+                <p ng-text-truncate="course.description" ng-tt-chars-threshold="260" ng-tt-more-label="Read more" ng-tt-less-label="View less"></p>
+                <ul class="list-inline">
+                  <li ng-if="course.durationDisplay">
+                    <span aria-label="duration" class="icon skill-course-icon-time"></span>
+                    <span>{{course.durationDisplay}}</span>
+                  </li>
+                  <li ng-if="course.author.name">
+                    <span aria-label="trainer" class="icon skill-course-icon-trainer"></span>
+                    <span>{{course.author.name}}</span>
+                  </li>
+                  <li ng-if="course.type.name">
+                    <span aria-label="features" class="icon skill-course-icon-feature"></span>
+                    <span>{{course.type.name}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="secondary text-center">
+              <a ng-href="{{course.uri}}" target="_blank" class="button course-link">Take Course <span class="icon icon-arrow-button"></span></a>
+              <div class="course-price">
+                <span class="header-bold" ng-if="course.offers[0].price.displayText">{{course.offers[0].price.displayText}}</span>
+                <span class="header-bold" ng-if="!course.offers[0].price.displayText">N/A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+  <section class="one-col">
+    <div class="row">
+      <div class="col">
+        <div class="pagination-container text-center">
+          <pagination ng-model="csm.currentPage" total-items="csm.model.totalNumberOfResults" items-per-page="csm.model.pageSize" max-size="6" rotate="false" ng-change="csm.updateModel(csm.currentPage, csm.filter.type, csm.filter.price)"></pagination>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4 class="text-center">
+          <small>
+            <!-- TODO: May need to replace AEG with tenant name -->
+            <sup>*</sup> You will be taken an external site to access these courses. Note that Apollo Education Group or one of its subsidiaries might make a profit from course referrals.
+          </small>
+        </h4>
+      </div>
+    </div>
+  </section>
+  <!-- if no results <div class="skill-course-error col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <p class="course-result-error">{{config.errorMessage}}</p>
+  <div class="otherways-build-skill">
+    <p>{{config.otherWaysToBuild}}</p>
+    <ul>
+      <li>
+        {{config.classProjects}}
+      </li>
+      <li>
+        {{config.internships}}
+      </li>
+      <li>
+        {{config.programCoursework}}
+      </li>
+      <li>
+        {{config.shadowJob}}
+      </li>
+      <li>
+        {{config.volunteering}}
+      </li>
+    </ul>
+  </div>
+</div>
+ -->
+</div>

@@ -1,0 +1,20 @@
+<form name="jobSearch" class="form-inline search clearfix no-padding" ng-submit="searchQuery.submitSearchForm(searchQuery.query.location, searchQuery.keywords)">
+    <div id="searchFieldDash" class="one-col">
+      <div class="row">
+        <div class="col">
+          <!-- <label for="searchWords" class="sr-only">Job Title, Keywords, or Company Name</label> -->
+          <careers-jobsearch-autocomplete class="autocomplete" placeholder="Job Title"></careers-jobsearch-autocomplete>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <careers-location-autocomplete class="autocomplete"></careers-location-autocomplete>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button id="mobile-submit" tabindex="0" class="mobile-submit button" type="submit" ng-disabled="!(searchQuery.keywords || searchQuery.query.location)">Search</button>
+        </div>
+      </div>
+    </div>
+</form>

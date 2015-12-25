@@ -1,0 +1,29 @@
+.styles {
+  .black { background-color: $black; }
+  .brand-danger { background-color: $brand-danger; }
+  .brand-info { background-color: $brand-info; }
+  .brand-primary { background-color: $brand-primary; }
+  .brand-success { background-color: $brand-success; }
+  .brand-warning { background-color: $brand-warning; }
+  .blue { background-color: $blue; }
+  .blue-darker { background-color: $blue-darker; }
+  .blue-darkest { background-color: $blue-darkest; }
+  .careers-corneliamarieblue { background-color: $brand-info; }
+  .orange { background-color: $orange; }
+  .pink { background-color: $pink; }
+  .green { background-color: $green; }
+  .red { background-color: $red; }
+  .garnet { background-color: $garnet; }
+  .gold { background-color: $gold; }
+  .gray { background-color: $gray; }
+  .gray-dark { background-color: $gray-dark; }
+  .gray-darker { background-color: $gray-darker; }
+  .gray-light { background-color: $gray-light; }
+  .gray-lighter { background-color: $gray-lighter; }
+  .gray-lightest { background-color: $gray-lightest; }
+  .white { background-color: $white; }
+}
+
+.margin-right {
+  margin-right: $padding-small-horizontal;
+}

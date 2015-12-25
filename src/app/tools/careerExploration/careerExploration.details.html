@@ -1,0 +1,248 @@
+<main class="five-seven career-exploration-detail-container" ng-controller="CareerExplorationDetailsCtrl as careerDetails" cg-busy="{promise: careerDetails.initWait}">
+<div class="clearfix tool-previous-page">
+  <a class="pull-left mini-header text-uppercase" href ng-click="back()">
+      <span class="icon icon-previous" aria-hidden="true">&nbsp;</span>Back to previous page
+    </a>
+</div>
+  <div class="row" ng-if="careerDetails.vm.goal">
+    <div class="col primary">
+      <section class="one-col">
+        <div class="row">
+          <div class="col group">
+            <h2 class="details-overview" ng-bind="careerDetails.vm.goal.laborData.name"></h2>
+            <p class="related-titles" ng-show="careerDetails.vm.goal.jobTitles.length">
+              <span class="font-bold">Related Titles:</span>
+              <span ng-repeat="job in careerDetails.vm.goal.jobTitles track by job.id">{{(!$first ? ', ' : '') + job.name}}</span>
+            </p>
+            <p ng-bind="careerDetails.vm.goal.laborData.description"></p>
+          </div>
+        </div>
+        <div class="row" ng-if="careerDetails.vm.goal.skills">
+          <div class="col group">
+            <h4 class="details-skill-req"><span class="icon icon-symbol-computer"></span>Skills Requirements</h4>
+            <p>
+              Below are required skills for this occupation. This data is based on national job openings over the last 12 months.
+            </p>
+            <section class="one-col">
+              <div class="row">
+                <div class="col">
+                  <tabset>
+                    <tab heading="Specialized" ng-if="careerDetails.vm.goal.skills.specialized">
+                      <div>
+                        <ol class="ol-2">
+                          <li ng-repeat="skill in careerDetails.vm.goal.skills.specialized track by skill.id" ng-bind="skill.name"></li>
+                        </ol>
+                      </div>
+                    </tab>
+                    <tab heading="Software" ng-if="careerDetails.vm.goal.skills.software">
+                      <div>
+                        <ol class="ol-2">
+                          <li ng-repeat="skill in careerDetails.vm.goal.skills.software track by skill.id" ng-bind="skill.name"></li>
+                        </ol>
+                      </div>
+                    </tab>
+                    <tab heading="Foundation" ng-if="careerDetails.vm.goal.skills.foundation">
+                      <div>
+                        <ol class="ol-2">
+                          <li ng-repeat="skill in careerDetails.vm.goal.skills.foundation track by skill.id" ng-bind="skill.name"></li>
+                        </ol>
+                      </div>
+                    </tab>
+                  </tabset>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="row" ng-if="careerDetails.vm.goal.maxExperience.experiencePercentile">
+          <div class="col group">
+            <h4 class="details-experience"><span class="icon icon-symbol-globe"></span>Experience</h4>
+            <p>
+              Minimum Level of Experience is required in job postings nationwide
+            </p>
+            <section class="one-col">
+              <div class="row">
+                <div class="col">
+                  <ul class="list">
+                    <li ng-repeat="exp in careerDetails.vm.goal.laborData.experienceLevels track by exp.experienceLevel">{{exp.experiencePercentile}}% {{exp.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="row" ng-if="careerDetails.vm.goal.maxEducation.requirementPercentile">
+          <div class="col group">
+            <h4 class="details-education"><span class="icon icon-symbol-edu"></span>Education</h4>
+            <p>
+              Depending on the applicant's job experience, these positions may require one or more of the following training or degree programs:
+            </p>
+            <section class="one-col">
+              <div class="row" ng-if="(careerDetails.vm.displayDegrees && careerDetails.vm.goal.programs.length)">
+                <div class="col">
+                  <h6>University of Phoenix degrees</h6>
+                  <ul class="list">
+                    <li ng-repeat="prog in careerDetails.vm.goal.programs">{{prog.programLevel}} - <a ng-href="{{prog.programLink}}" target="_blank" ng-bind="prog.programName"></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row" ng-if="careerDetails.vm.goal.degreeList.length">
+                <div class="col">
+                  <h6>General degrees</h6>
+                  <ul class="list">
+                    <li ng-repeat="deg in careerDetails.vm.goal.degreeList" ng-bind="deg.name"></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row" ng-if="careerDetails.vm.goal.laborData.educationRequirements.length">
+                <div class="col">
+                  <h6>Minimum degree level is required in job postings nationwide</h6>
+                  <ul class="list">
+                    <li ng-repeat="edu in careerDetails.vm.goal.laborData.educationRequirements track by edu.educationRequirementType">{{edu.requirementPercentile}}% {{edu.name}}</li>
+                  </ul>
+                  <p>
+                    This information reflects the minimum degree employers will accept. Employers will often prefer completion of a higher level degree for applicants without significant work experience. Similarly, employers will often allow significant work experience to substitute for their minimum degree requirement
+                  </p>
+                </div>
+              </div>
+              <div class="row" ng-if="careerDetails.vm.goal.laborData.certifications.length">
+                <div class="col">
+                  <h6>Certifications and Licences</h6>
+                  <ul class="list">
+                    <li ng-repeat="cert in careerDetails.vm.goal.laborData.certifications" ng-bind="cert.name"></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div id="legal" class="row">
+          <div class="col">
+            <p>
+              This information provides an overview of salary, education, experience, and recent hiring trends nationally and by geographic area for this occupation and its related job titles based on job postings that specify this information.
+            </p>
+            <p>
+              Current job openings are based on available positions related to that job title in the selected location within the last 60 days.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="col secondary">
+      <section class="one-col">
+
+        <div class="row">
+          <div class="col group no-padding">
+            <my-goal-button goal="careerDetails.vm.goal.laborData" view-goals-on-limit="true"></my-goal-button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col group">
+            <section class="one-col">
+              <div class="row flatten">
+                <!-- Salary range and demand bar -->
+                <div class="col goal-caption salary-range" ng-show="careerDetails.vm.goal.laborData.salaryTrendMin && careerDetails.vm.goal.laborData.salaryTrendMin != 0 && careerDetails.vm.goal.laborData.salaryTrendMax && careerDetails.vm.goal.laborData.salaryTrendMax != 0">
+                  <p class="xlarge-red">{{careerDetails.vm.goal.laborData.salaryTrendMin | currency:undefined:0}} - {{careerDetails.vm.goal.laborData.salaryTrendMax | currency:undefined:0}}</p>
+                  <p class="xsmall-gray">ANNUAL SALARY RANGE</p>
+                </div>
+                <div class="col secondary demand-bar">
+                  <div ng-class="'demand-' + careerDetails.vm.goal.laborData.hiringTrend.replace(' ','').toLowerCase()">
+                    <div>
+                      <span class="firstdemand"> &nbsp; </span>
+                      <span class="spacer"></span>
+                      <span class="seconddemand"> &nbsp; </span>
+                      <span class="spacer"></span>
+                      <span class="thirddemand"> &nbsp; </span>
+                      <span class="spacer"></span>
+                      <span class="lastdemand"> &nbsp; </span>
+                    </div>
+                    <label class="xsmall-gray" ng-cloak>HISTORICAL DEMAND - {{careerDetails.vm.goal.laborData.hiringTrend}}</label>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="one-col">
+              <div class="row">
+                <!-- Current job openings and link to more openings -->
+                <div class="col">
+                  <p class="xlarge-red" ng-bind="careerDetails.vm.goal.jobs.totalNumberOfResults"></p>
+                  <p class="xsmall-gray"><a ng-click="careerDetails.vm.setSearchCompanyFilter(careerDetails.vm.goal.laborData.rOnet, '')">CURRENT JOB OPENINGS IN YOUR AREA</a></p>
+                  <!-- <a ng-href="{{careerDetails.jobSearchUrl}}" inherit-breadcrumb>View more current job openings</a> -->
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row" ng-if="careerDetails.vm.goal.maxExperience.experiencePercentile">
+          <div class="col group">
+            <section class="four-eight">
+              <div class="row max-exp">
+                <!-- Experience percentage -->
+                <div class="col primary">
+                  <h5>EXPERIENCE</h5>
+                  <p ng-cloak>{{careerDetails.vm.goal.maxExperience.experiencePercentile}}% of employers require</p>
+                  <p class="large-bold" ng-bind="careerDetails.vm.goal.maxExperience.name"></p>
+                </div>
+                <div class="col secondary">
+                  <div aria-hidden="true" class="circles-chart" ng-circles value="careerDetails.vm.goal.maxExperience.experiencePercentile"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row" ng-if="careerDetails.vm.goal.maxEducation.requirementPercentile">
+          <div class="col group">
+            <section class="four-eight">
+              <div class="row">
+                <!-- Experience percentage -->
+                <div class="col primary">
+                  <h5>EDUCATION</h5>
+                  <p ng-cloak>{{careerDetails.vm.goal.maxEducation.requirementPercentile}}% of employers require a</p>
+                  <p class="large-bold" ng-bind="careerDetails.vm.goal.maxEducation.name"></p>
+                </div>
+                <div class="col secondary">
+                  <div aria-hidden="true" class="circles-chart" ng-circles value="careerDetails.vm.goal.maxEducation.requirementPercentile"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row" ng-show="((careerDetails.vm.goal.jobs.facetFields | filter:{name:'Company'})[0].values | limitTo: 5).length">
+          <div class="col group">
+            <section class="one-col">
+              <div class="row">
+                <!-- Top 5 employers -->
+                <div class="col">
+                  <h5>EMPLOYERS</h5>
+                  <!-- TODO fix company filter link -->
+
+                  <ul class="list-small font-bold">
+                    <li ng-repeat="company in ((careerDetails.vm.goal.jobs.facetFields | filter:{name:'Company'})[0].values | limitTo: 5)"><a ng-click="careerDetails.vm.setSearchCompanyFilter(careerDetails.vm.goal.laborData.rOnet, company.name)">{{company.name}} ({{company.count}})</a></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!--         <div class="row">
+          <div class="col group">
+            <section class="one-col">
+              <div class="row">
+                <div class="col primary">
+                  <h5>VIDEO</h5> [ player with video goes here ]
+                </div>
+              </div>
+            </section>
+          </div>
+    </div> -->
+
+      </section>
+    </div>
+  </div>
+
+</main>

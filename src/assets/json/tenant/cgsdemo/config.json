@@ -1,0 +1,501 @@
+  {
+    "NOTE": "** Mock version of data populated from /api/utility/2/uopx/config/app/cgs/module/main via index.html **",
+    "config": {
+      "resultsPerPage": 10,
+      "suggestResults": 25,
+      "dashboardResults": 5,
+      "recommendations": 30,
+      "widgetResults": 3,
+      "savedGoalLimit": 10,
+      "cgsApp": "cgs3",
+      "defaultLocation": {
+        "stateAreaId": 525,
+        "city": "Phoenix",
+        "state": "AZ"
+      },
+      "aptinet": {
+        "orderaction": {
+          "mode": "test",
+          "poid": "139144_00429_1_76"
+        }
+      },
+      "cdnUrl": "//nonprod-career-bootcamp-aptimus-net.s3.amazonaws.com/cgs",
+      "tracking": {
+        "url": "",
+        "inline": ""
+      },
+      "audit": {
+        "appName": "cgs",
+        "hostStartsWith": "careerguidance"
+      }
+    },
+    "milestones": [{
+      "identifier": "milestones.goals",
+      "title": "Set Your Career Goals",
+      "url": "career-plan/goals",
+      "description": "Get on the right career track by targeting the specific jobs you’re interested in. In this milestone, you’ll explore careers, choose your favorites and begin building your list of career goals.",
+      "orderSequence": 1,
+      "activities": [{
+        "identifier": "goals-chart",
+        "playlistId": "/career-plan/milestones/goals/chart-your-career-path",
+        "title": "Chart your career path",
+        "url": "career-plan/goals/chart-your-career-path",
+        "description": "Learn why it’s important to establish clear goals and how to research your options.",
+        "time": "5 mins",
+        "contentType": "",
+        "orderSequence": 1
+      }, {
+        "identifier": "goals-set",
+        "playlistId": "/career-exploration",
+        "title": "Set your career goals",
+        "url": "career-plan/goals/set-your-career-goals",
+        "description": "Use the Career Exploration Tool to browse job types, and begin your career goal list.",
+        "time": "15 min - 2 hrs",
+        "contentType": "tool",
+        "orderSequence": 2
+      }]
+    }, {
+      "identifier": "milestones.skills",
+      "title": "Sharpen Your Skills",
+      "url": "career-plan/skills",
+      "description": "Whether you're a short-order cook or a CEO, every job has a required skillset.  Find out what skills you need for the jobs that are on your career goal list - and how to improve in these areas.",
+      "orderSequence": 2,
+      "activities": [{
+        "identifier": "skills-basics",
+        "playlistId": "/career-plan/milestones/skills/skill-basics",
+        "title": "Skill basics",
+        "url": "career-plan/skills/skill-basics",
+        "description": "Find out why skills matter so much to employers.",
+        "time": "2 mins",
+        "contentType": "video",
+        "orderSequence": 1
+      }, {
+        "identifier": "skills-experience",
+        "playlistId": "/career-plan/milestones/skills/gaining-experience",
+        "title": "Gaining experience",
+        "url": "career-plan/skills/gaining-experience",
+        "description": "Learn how to acquire skills for the jobs that interest you.",
+        "time": "5 - 10 mins",
+        "contentType": "",
+        "orderSequence": 2
+      }, {
+        "identifier": "skills-develop",
+        "playlistId": "/skill-builder",
+        "title": "Develop the important skills",
+        "url": "career-plan/skills/develop-the-important-skills",
+        "description": "Use the Skill builder tool to start developing the skills you need.",
+        "time": "15 mins - 1 hr",
+        "contentType": "tool",
+        "orderSequence": 3
+      }]
+    }, {
+      "identifier": "milestones.resume",
+      "title": "Build Your Resume",
+      "url": "career-plan/resume",
+      "description": "You can't get the job without the interview - and you can't get the interview without a great resume. Learn what makes a resume stand out and how to customize yours for each job you pursue.",
+      "orderSequence": 3,
+      "activities": [{
+        "identifier": "resume-discover",
+        "playlistId": "/career-plan/milestones/resume/learn-what-recruiters-want",
+        "title": "Discover what recruiters want",
+        "url": "career-plan/resume/discover-what-recruiters-want",
+        "description": "Make employers sit up and take notice. Watch and learn how.",
+        "time": "20 mins",
+        "contentType": "video",
+        "orderSequence": 1
+      }, {
+        "identifier": "resume-create",
+        "playlistId": "/career-plan/milestones/resume/create-your-resume",
+        "title": "Learn how to create your targeted resume",
+        "url": "career-plan/resume/learn-how-to-create-your-targeted-resume",
+        "description": "Why it's critical to tailor your resume to the job, and how to do it.",
+        "time": "5 mins",
+        "contentType": "",
+        "orderSequence": 2
+      }, {
+        "identifier": "resume-build",
+        "playlistId": "/resume-builder",
+        "title": "Build your resume",
+        "url": "career-plan/resume/build-your-resume",
+        "description": "Use the Resume Builder tool to create a tailored resume for any job.",
+        "time": "1 hr+",
+        "contentType": "tool",
+        "orderSequence": 3
+      }]
+    }, {
+      "identifier": "milestones.image",
+      "title": "Craft Your Image",
+      "url": "career-plan/image",
+      "description": "How you're perceived will affect your job search success. In this milestone you'll find five ways to create a professional image that will move you closer to the career you want.",
+      "orderSequence": 4,
+      "activities": [{
+        "identifier": "image-brand",
+        "playlistId": "/career-plan/milestones/image/whats-your-brand",
+        "title": "What's your brand?",
+        "url": "career-plan/image/whats-your-brand",
+        "description": "Learn about professional branding and why it's important to your current and future career success.",
+        "time": "5 mins",
+        "contentType": "video",
+        "orderSequence": 1
+      }, {
+        "identifier": "image-pitch",
+        "playlistId": "/career-plan/milestones/image/elevator-pitch",
+        "title": "The elevator pitch",
+        "url": "career-plan/image/the-elevator-pitch",
+        "description": "Get tips on creating this short introduction about yourself.",
+        "time": "30 mins - 1 hr",
+        "contentType": "video",
+        "orderSequence": 2
+      }, {
+        "identifier": "image-online",
+        "playlistId": "/career-plan/milestones/image/online-presence",
+        "title": "Your online presence",
+        "url": "career-plan/image/online-presence",
+        "description": "Potential employers will likely look you up online. Here’s how to make sure they see your best side.",
+        "time": "30 mins",
+        "contentType": "video",
+        "orderSequence": 3
+      }, {
+        "identifier": "image-linkedin",
+        "playlistId": "/career-plan/milestones/image/linkedin-basics",
+        "title": "LinkedIn Basics",
+        "url": "career-plan/image/linkedin-basics",
+        "description": "Learn how to create an effective LinkedIn profile-which could be one of your most powerful career tools.",
+        "time": "30 mins - 1 hr",
+        "contentType": "video",
+        "orderSequence": 4
+      }, {
+        "identifier": "image-dress",
+        "playlistId": "/career-plan/milestones/image/dress-for-success",
+        "title": "Dress for success",
+        "url": "career-plan/image/dress-for-success",
+        "description": "Appearance matters. Follow these guidelines to help you become the well-dressed interviewee who gets the job.",
+        "time": "5 - 10 mins",
+        "contentType": "video",
+        "orderSequence": 5
+      }]
+    }, {
+      "identifier": "milestones.network",
+      "title": "Network Like a Pro",
+      "url": "career-plan/network",
+      "description": "Networking is all about building quality relationships with fellow professionals - relationships that can lead to employment. This milestone offers activities that will teach you to network like you've been doing it forever.",
+      "orderSequence": 5,
+      "activities": [{
+        "identifier": "network-basics",
+        "playlistId": "/career-plan/milestones/network/network-basics",
+        "title": "Learn networking basics",
+        "url": "career-plan/network/learn-networking-basics",
+        "description": "What exactly is networking-and how can you make it part of your daily routine? Find out here.",
+        "time": "2 mins",
+        "contentType": "video",
+        "orderSequence": 1
+      }, {
+        "identifier": "network-linkedin",
+        "playlistId": "/career-plan/milestones/network/linkedin",
+        "title": "Use LinkedIn",
+        "url": "career-plan/network/use-linkedin",
+        "description": "Building a powerful professional network on LinkedIn is easy if you follow these simple tips.",
+        "time": "1 hr +",
+        "contentType": "video",
+        "orderSequence": 2
+      }, {
+        "identifier": "network-organizations",
+        "playlistId": "/career-plan/milestones/network/professional-organizations",
+        "title": "Join professional organizations",
+        "url": "career-plan/network/join-professional-organizations",
+        "description": "If you're new to your field, professional organizations can help you meet people who share your career interests.",
+        "time": "30 mins +",
+        "contentType": "video",
+        "orderSequence": 3
+      }, {
+        "identifier": "network-yourself",
+        "playlistId": "/career-plan/milestones/network/promote-yourself",
+        "title": "Put yourself out there",
+        "url": "career-plan/network/put-yourself-out-there",
+        "description": "Asking your network for help can help your job search. Here's how to craft emails and social media posts that say you're on the market.",
+        "time": "5 mins",
+        "contentType": "",
+        "orderSequence": 4
+      }, {
+        "identifier": "network-plan",
+        "playlistId": "/career-plan/milestones/network/plan",
+        "title": "Create a plan",
+        "url": "career-plan/network/create-a-plan",
+        "description": "Keep yourself on track by creating a networking plan. Here's how.",
+        "time": "5 mins",
+        "contentType": "",
+        "orderSequence": 5
+      }]
+    }, {
+      "identifier": "milestones.letter",
+      "title": "Write a Great Cover Letter",
+      "url": "career-plan/letter",
+      "description": "Don't skip it! Your cover letter can actually make or break your chances of getting hired. Learn what's in a great cover letter and how to craft yours.",
+      "orderSequence": 6,
+      "activities": [{
+        "identifier": "letter-employers",
+        "playlistId": "/career-plan/milestones/letter/what-employers-want-to-see",
+        "title": "What employers want to see",
+        "url": "career-plan/letter/what-employers-want-to-see",
+        "description": "What do hiring managers look for in a cover letter - and what turns them off? Find out here.",
+        "time": "20 mins",
+        "contentType": "video",
+        "orderSequence": 1
+      }, {
+        "identifier": "letter-story",
+        "playlistId": "/career-plan/milestones/letter/get-your-story-straight",
+        "title": "Get your story straight",
+        "url": "career-plan/letter/get-your-story-straight",
+        "description": "Start brainstorming for the exceptional cover letter that gets you noticed.",
+        "time": "15 mins +",
+        "contentType": "",
+        "orderSequence": 2
+      }, {
+        "identifier": "letter-polish",
+        "playlistId": "/career-plan/milestones/letter/perfect-your-letter",
+        "title": "Polish it up",
+        "url": "career-plan/letter/polish-it-up",
+        "description": "Use our cover letter checklist to ensure your cover letter is ready for prime time.",
+        "time": "5 mins +",
+        "contentType": "",
+        "orderSequence": 3
+      }]
+    }, {
+      "identifier": "milestones.interview",
+      "title": "Ace Your Interview",
+      "url": "career-plan/interview",
+      "description": "With little practice, you can gain the confidence to ace any interview. here, we will help you get prepared to present your best self.",
+      "orderSequence": 7,
+      "activities": [{
+        "identifier": "interview-employers",
+        "playlistId": "/career-plan/milestones/interview/learn-what-employers-want",
+        "title": "Learn what employers want",
+        "url": "career-plan/interview/learn-what-employers-want",
+        "description": "Hear what hiring managers have to say about the importantce of interviewing well.",
+        "time": "2 mins",
+        "contentType": "video",
+        "orderSequence": 1
+      }, {
+        "identifier": "interview-storyteller",
+        "playlistId": "/career-plan/milestones/interview/be-a-good-storyteller",
+        "title": "Be a good storyteller",
+        "url": "career-plan/interview/be-a-good-storyteller",
+        "description": "Discover how to answer interview questions in a powerful, memorable way.",
+        "time": "15 mins",
+        "contentType": "video",
+        "orderSequence": 2
+      }, {
+        "identifier": "interview-research",
+        "playlistId": "/career-plan/milestones/interview/do-your-research",
+        "title": "Do your research",
+        "url": "career-plan/interview/do-your-research",
+        "description": "Make sure you know your stuff when it's time for the interview.",
+        "time": "10 mins +",
+        "orderSequence": 3
+      }, {
+        "identifier": "interview-prep",
+        "playlistId": "/interview-preparation",
+        "title": "Use the Interview Prep tool",
+        "url": "career-plan/interview/use-the-interview-prep-tool",
+        "description": "The Interview Prep tool will help you practice common questions and learn strategies for tackling each of them.",
+        "time": "30 mins +",
+        "contentType": "tool",
+        "orderSequence": 4
+      }, {
+        "identifier": "interview-history",
+        "playlistId": "/career-plan/milestones/interview/explain-your-career-history",
+        "title": "Explain your career history",
+        "url": "career-plan/interview/explain-your-career-history",
+        "description": "How to explain when and why you changed jobs.",
+        "time": "10 mins",
+        "orderSequence": 5
+      }, {
+        "identifier": "interview-questions",
+        "playlistId": "/career-plan/milestones/interview/show-excitement",
+        "title": "Ask your own questions",
+        "url": "career-plan/interview/ask-your-own-questions",
+        "description": "Coming prepared with questions shows a true interest in the position.",
+        "time": "10 mins",
+        "contentType": "video",
+        "orderSequence": 6
+      }, {
+        "identifier": "interview-practice",
+        "playlistId": "/career-plan/milestones/interview/practice-makes-perfect",
+        "title": "Practice makes perfect",
+        "url": "career-plan/interview/practice-makes-perfect",
+        "description": "The best way to improve your interview skills is practice, practice, practice.",
+        "time": "5 mins",
+        "contentType": "",
+        "orderSequence": 7
+      }, {
+        "identifier": "interview-informational",
+        "playlistId": "/career-plan/milestones/interview/informational-interviews",
+        "title": "Do informational interviews",
+        "url": "career-plan/interview/do-informational-interviews",
+        "description": "This is a great way to learn about a company and career, and whether a job is a good fit for you.",
+        "time": "5 mins",
+        "contentType": "video",
+        "orderSequence": 8
+      }]
+    }, {
+      "identifier": "milestones.strategies",
+      "title": "Develop Your Game Plan",
+      "url": "career-plan/strategies",
+      "description": "Knowing how to get through to a busy hiring manager is critical. The activities in this milestone will help you create a plan to get your application seen - and give you a real edge in your job search.",
+      "orderSequence": 8,
+      "activities": [{
+        "identifier": "strategies-managers",
+        "playlistId": "/career-plan/milestones/strategies/what-hiring-managers-want",
+        "title": "What hiring managers want",
+        "url": "career-plan/strategies/what-hiring-managers-want",
+        "description": "Learn what hiring managers have to say about creating your job search game plan.",
+        "time": "2 mins",
+        "contentType": "video",
+        "orderSequence": 1
+      }, {
+        "identifier": "strategies-prioritize",
+        "playlistId": "/career-plan/milestones/strategies/select-and-prioritize-job-postings",
+        "title": "Select and prioritize job postings",
+        "url": "career-plan/strategies/select-and-prioritize-job-postings",
+        "description": "Learn how to find the right job openings and how to prioritize them.",
+        "time": "15 mins",
+        "contentType": "",
+        "orderSequence": 2
+      }, {
+        "identifier": "strategies-insider",
+        "playlistId": "/career-plan/milestones/strategies/apply-through-an-insider",
+        "title": "Apply through an insider",
+        "url": "career-plan/strategies/apply-through-an-insider",
+        "description": "Get your application to the top of the pile by connecting with someone you know at the company.",
+        "time": "10 mins",
+        "contentType": "",
+        "orderSequence": 3
+      }]
+    }, {
+      "identifier": "milestones.apply",
+      "title": "Search and Apply",
+      "url": "career-plan/apply",
+      "description": "Now it's time to put your preparation in to action. Learn how to tailor your resume and cover letter to specific jobs, how to submit applications and how to keep track of them - and how to brush up on your interviewing skills before each interview.",
+      "orderSequence": 9,
+      "activities": [{
+        "identifier": "apply-customize",
+        "playlistId": "/career-plan/milestones/apply/customize",
+        "title": "Customize it",
+        "url": "career-plan/apply/customize-it",
+        "description": "Want to get noticed? Make your resume and cover letter match the specific job you're applying for.",
+        "time": "10 mins",
+        "contentType": "",
+        "orderSequence": 1
+      }, {
+        "identifier": "apply-search",
+        "playlistId": "/job-search",
+        "title": "Use the Job Search tool",
+        "url": "career-plan/apply/use-the-job-search-tool",
+        "description": "Search through over 1 million job openings, see who offers tuition assistance and track the jobs you have applied to.",
+        "time": "10 mins - 2 hrs",
+        "contentType": "tool",
+        "orderSequence": 2
+      }, {
+        "identifier": "apply-track",
+        "playlistId": "/career-plan/milestones/apply/application-tracker",
+        "title": "Track your job applications",
+        "url": "career-plan/apply/track-your-job-applications",
+        "description": "Keeping track of the applications you have submitted with help you be more effective in your job search.",
+        "time": "10 mins",
+        "contentType": "",
+        "orderSequence": 3
+      }, {
+        "identifier": "apply-prepare",
+        "playlistId": "/career-plan/milestones/apply/prepare",
+        "title": "Prepare for interviews",
+        "url": "career-plan/apply/prepare-for-interviews",
+        "description": "Brush up on your interviewing skills with these important tips.",
+        "time": "10 mins - 2 hrs",
+        "contentType": "video",
+        "orderSequence": 4
+      }, {
+        "identifier": "apply-followup",
+        "playlistId": "/career-plan/milestones/apply/follow-up",
+        "title": "Follow up",
+        "url": "career-plan/apply/follow-up",
+        "description": "Learn why it's important to follow up after job interviews - and how to do it right.",
+        "time": "5 mins",
+        "contentType": "",
+        "orderSequence": 5
+      }, {
+        "identifier": "apply-negotiations",
+        "playlistId": "/career-plan/milestones/apply/job-offers",
+        "title": "Offers and Negotiations",
+        "url": "career-plan/apply/offers-and-negotiations",
+        "description": "What to keep in mind when deciding whether to accept a job offer.",
+        "time": "15 mins",
+        "contentType": "",
+        "orderSequence": 6
+      }]
+    }, {
+      "identifier": "milestones.career-management",
+      "title": "Advance Your Career",
+      "url": "career-plan/career-management",
+      "description": "Hard work alone is not enough. To be successful in any job you must manage your career and your professional relationships. Here are some activities to help you keep moving up the ladder.",
+      "orderSequence": 10,
+      "activities": [{
+        "identifier": "career-management-growth",
+        "playlistId": "/career-plan/milestones/career-managment/professional-growth",
+        "title": "Professional growth",
+        "url": "career-plan/career-management/professional-growth",
+        "description": "How to take charge of your own development to enhance your career.",
+        "time": "10 mins",
+        "contentType": "",
+        "orderSequence": 1
+      }, {
+        "identifier": "career-management-relationships",
+        "playlistId": "/career-plan/milestones/career-managment/building-relationships",
+        "title": "Building relationships",
+        "url": "career-plan/career-management/building-relationships",
+        "description": "Here's an in-depth look at relationship building in your workplace and industry.",
+        "time": "25 mins",
+        "contentType": "video",
+        "orderSequence": 2
+      }, {
+        "identifier": "career-management-promoted",
+        "playlistId": "/career-plan/milestones/career-managment/getting-promoted",
+        "title": "Getting promoted",
+        "url": "career-plan/career-management/getting-promoted",
+        "description": "Discover how to impress your boss and ultimately get promoted",
+        "time": "30 mins",
+        "contentType": "video",
+        "orderSequence": 3
+      }]
+    }],
+    "tools": [{
+      "identifier": "tools.careerExploration",
+      "title": "Career Exploration",
+      "url": "tools/career-exploration",
+      "orderSequence": 1
+    }, {
+      "identifier": "tools.skillBuilder",
+      "title": "Skill Builder",
+      "url": "tools/skill-builder",
+      "orderSequence": 2
+    }, {
+      "identifier": "tools.resumeBuilder",
+      "title": "Resume Builder",
+      "url": "tools/resume-builder",
+      "orderSequence": 3
+    }, {
+      "identifier": "tools.interviewPreparation",
+      "title": "Interview Prep",
+      "url": "tools/interview-preparation",
+      "orderSequence": 4
+    }, {
+      "identifier": "tools.jobsearch",
+      "title": "Job Search",
+      "url": "tools/job-search",
+      "orderSequence": 5
+    }, {
+      "identifier": "tools.military",
+      "title": "Military Hub",
+      "url": "tools/military",
+      "orderSequence": 6
+    }]
+  }

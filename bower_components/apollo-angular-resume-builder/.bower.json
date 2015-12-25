@@ -1,0 +1,67 @@
+{
+  "name": "apollo-angular-resume-builder",
+  "description": "Bare bone standalone resume builder component that can be pulled in to a project and configured for various features and themed appropriately",
+  "main": [
+    "dist/apollo-angular-resume-builder.js",
+    "dist/resume-builder-tpls.js",
+    "dist/apollo-angular-resume-builder.css",
+    "dist/assets"
+  ],
+  "version": "0.9.52",
+  "authors": [
+    "Yesh Ganta yesh.ganta@apollo.edu"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "gulp",
+    "angular",
+    "init",
+    "component",
+    "apollo-angular-resume-builder"
+  ],
+  "repository": "https://git.corp.aptimus.net/git/eng/apollo-angular-resume-builder",
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-aria": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angular-dragdrop": "~1.0.11",
+    "angular-bootstrap": "~0.14.0",
+    "apollo-angular-resume-services": "~0.1.0",
+    "angularjs-file-upload": "6.2.0",
+    "bootstrap": "~3.3.4",
+    "font-awesome": "^4.3.0",
+    "angular-busy": "git://github.com/mmaday/angular-busy#master",
+    "textAngular": "~1.4.6"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0"
+  },
+  "resolutions": {
+    "angular": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angularjs-file-upload": "6.2.0",
+    "angular-bootstrap": "~0.14.0"
+  },
+  "ignore": [
+    "bower_components",
+    "node_modules",
+    "example",
+    "src",
+    ".gitignore",
+    ".jshintrc",
+    "gulpfile.js",
+    ".editorconfig",
+    "coverage/Chrome*"
+  ],
+  "_release": "0.9.52",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.52",
+    "commit": "a0dc895727d71184928b85bdd2c60f4f6cece22e"
+  },
+  "_source": "https://git.corp.aptimus.net/git/eng/apollo-angular-resume-builder",
+  "_target": "~0.9.46",
+  "_originalSource": "apollo-angular-resume-builder"
+}

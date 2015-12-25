@@ -1,0 +1,7 @@
+<section class="four-col job-container-detail tiles-view">
+  <div class="row" ng-repeat="goalRow in careerGoals | partition : 4">
+    <div class="col" ng-repeat="goal in goalRow" ng-attr-data-goal-id="{{goal.rOnet}}">
+      <career-exp-tile career-goal="goal"></career-exp-tile>
+    </div>
+  </div>
+</section>

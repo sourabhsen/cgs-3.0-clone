@@ -1,0 +1,38 @@
+{
+  "name": "angular-apollo-recommendation-services",
+  "version": "0.0.3",
+  "authors": [
+    "Veronica Canterbury veronica.canterbury@apollo.edu"
+  ],
+  "keywords": [
+    "gulp",
+    "angular",
+    "init",
+    "component"
+  ],
+  "repository": "https://git.corp.aptimus.net/git/eng/angular-apollo-recommendation-services",
+  "main": [
+    "dist/angular-apollo-recommendation-services.js"
+  ],
+  "ignore": [
+    "src",
+    "test",
+    "coverage",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "devDependencies": {
+    "angularjs": "~1.4.0",
+    "angular-mocks": "~1.3.15"
+  },
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.3",
+    "commit": "2bf68faddc3c25e62736d9f8eba3587f0ee65e10"
+  },
+  "_source": "https://git.corp.aptimus.net/git/eng/angular-apollo-recommendation-services",
+  "_target": "~0.0.3",
+  "_originalSource": "angular-apollo-recommendation-services"
+}

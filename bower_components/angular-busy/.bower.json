@@ -1,0 +1,41 @@
+{
+  "name": "angular-busy",
+  "main": [
+    "dist/angular-busy.js",
+    "dist/angular-busy.css"
+  ],
+  "dependencies": {
+    "angular": "~1.3",
+    "angular-animate": "~1.3"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "temp",
+    "demo",
+    "lib",
+    "./angular-busy.css",
+    "./angular-busy.html",
+    "./angular-busy.js",
+    "Gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.3",
+    "jquery": "~2.1.0"
+  },
+  "homepage": "https://github.com/mmaday/angular-busy",
+  "_release": "086de0dba5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "086de0dba5a792433d10b76a7e36c4fce9fb0c2e"
+  },
+  "_source": "git://github.com/mmaday/angular-busy.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/mmaday/angular-busy"
+}

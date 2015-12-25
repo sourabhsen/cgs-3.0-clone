@@ -1,0 +1,17 @@
+<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+  <a role="button" href class="controls pull-left mini-header" ng-click="prev()" ng-show="slides.length > 1">
+    <span class="icon icon-previous">&nbsp;</span>PREVIOUS<span class="desktop-only"> QUESTION</span>
+    <!--<span class="sr-only">PREVIOUS QUESTION</span>-->
+  </a>
+  <a role="button" href class="controls pull-right mini-header" ng-click="next()" ng-show="slides.length > 1">NEXT
+    <span class="desktop-only"> QUESTION</span>
+    <span class="icon icon-next">&nbsp;</span>
+    <!--<span class="sr-only">NEXT QUESTION</span>-->
+  </a>
+
+ <div class="indicators text-center mini-header" ng-show="slides.length > 1">
+    <span> {{carousel.getCurrentIndex() + 1}} of {{ slides.length }}</span>
+  </div>
+  <div class="carousel-inner" ng-transclude></div>
+</div>
+

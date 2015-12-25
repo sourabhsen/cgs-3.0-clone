@@ -1,0 +1,109 @@
+<section ng-controller="JobApplyCtrl as jobApply">
+  <main class="eight-off-two buffer jobApply-modal">
+    <header class="one-col">
+      <div class="row divider">
+        <div class="">
+          <h3 class="no-margin" ng-show="jobApply.model.showDidApplyForm">Did you apply?</h3>
+          <h3 class="no-margin" ng-show="jobApply.model.showATSLogin">Get automatic updates for this application</h3>
+          <h3 class="no-margin" ng-show="jobApply.model.showConfirmationMessage">Track your job applications</h3>
+        </div>
+      </div>
+    </header>
+    <div>
+      <div class="one-col">
+
+        <div ng-show="jobApply.model.showDidApplyForm">
+          <div class="col">
+            <p>This job application opened up in a new window or tab. After you return from the application page, please let us know your status:</p>
+            <form name="jobApply.didApplyForm" ng-submit="didApplyPromise = jobApply.submitDidApply()" novalidate class="clearfix">
+              <div class="form-group divider">
+                <div class="radio">
+                  <label>
+                    <input type="radio" class="did-apply-option" ng-model="jobApply.model.applicationStatus" value="yes" name="applicationStatus" tabindex="0" required autofocus/> I applied for the job.
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" class="did-apply-option" ng-model="jobApply.model.applicationStatus" value="no" name="applicationStatus" tabindex="0" required /> I didn't apply for the job.
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" class="did-apply-option" ng-model="jobApply.model.applicationStatus" value="missing" name="applicationStatus" tabindex="0" required/> This job doesn't exist or no longer available.
+                  </label>
+                </div>
+                <div ng-messages="jobApply.didApplyForm.applicationStatus.$error" ng-if="jobApply.didApplyForm.$submitted || jobApply.didApplyForm.applicationStatus.$dirty" class="help-block">
+                  <p ng-message="required">Please select an option.</p>
+                </div>
+              </div>
+              <div class="pull-left">
+                <button type="submit" class="btn btn-large pull-left" id="submit" cg-busy="{promise: didApplyPromise, profile: 'inlineReplaceSmall'}" trigger-change=".did-apply-option">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div ng-show="jobApply.model.showATSLogin" class="">
+          <div class="col">
+            <div class="divider">
+              <p>Want to know if an employer has looked at your application yet? We can automatically get updates on applications submitted to select companies.</p>
+              <p class="no-margin">To get updates for this company, enter the username and password you used to apply on the company website. We will then show you these updates in the &quot;Applied Jobs&quot; list accessible from the job search page.</p>
+              <div role="alert" ng-show="jobApply.model.atsLoginError || jobApply.model.atsServiceError" class="alert alert-danger">Invalid username or password. Please try again.</div>
+            </div>
+            <form class="form-inline clearfix" name="atsLogin" role="form" ng-submit="jobApply.model.submitATSLogin()">
+              <div class="col">
+                <div class="divider">
+                  <div class="row no-margin">
+                    <div class="form-group">
+                      <label for="atsUsername" class="sr-only">Username</label>
+                      <input type="text" name="username" placeholder="username" class="form-control" ng-model="jobApply.model.username" required="required" />
+                    </div>
+                    <div class="form-group">
+                      <label for="atsPassword" class="sr-only">Password</label>
+                      <input type="password" name="password" placeholder="password" class="form-control" ng-model="jobApply.model.password" required="required" />
+                    </div>
+                    <div>
+                      <small>Note that we do not store your username and password.</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row no-margin clearfix">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-large pull-left" ng-disabled="atsLogin.$invalid || atsLogin.$pending || jobApply.model.atsPending" cg-busy="{promise: jobApply.model.atsPending, profile:'inlineReplaceSmall'}">
+                      Get Updates</button>
+                  </div>
+                  <div class="form-group pull-right">
+                    <p>
+                      <a href="" role="button" ng-click="jobApply.model.confirmAndClose()" ng-if="!!jobApply.model.showATSLogin" tabindex="1">Not now.</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div role="alert" class="alert alert-success" ng-show="jobApply.model.atsSuccess">The job has been successfully added. Please visit the application tracker to view your applied job. <a href="#" id="closePopup" class="alert-link pull-right">Close</a></div>
+          </div>
+        </div>
+
+        <div class="" ng-show="jobApply.model.showConfirmationMessage">
+          <div class="col">
+            <div class="divider">
+              <p>Each job you apply to using our job search tool will be added to your Applied Jobs list. Use this list to keep track of and organize all of your applications.</p>
+              <p class="no-margin">You can access your Applied Jobs list from the Job Search main page and from your Career Dashboard.</p>
+            </div>
+            <form role="dontshow" class="form-inline">
+              <div ng-if="!!jobApply.model.showConfirmationMessage" class="form-group">
+                <button tabindex="1" type="button" class="button" ng-click="jobApply.model.setUserConfirmationPreference()">Okay</button>
+              </div>
+              <div class="form-group pull-right">
+                <label class="hide-confirmation">
+                  <input tabindex="1" type="checkbox" name="hideConfirmationMessage" ng-model="jobApply.model.hideConfirmation" /> Don't show again
+                </label>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</section>

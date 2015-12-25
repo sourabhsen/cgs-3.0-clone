@@ -1,0 +1,39 @@
+<section>
+  <main class="buffer">
+    <form name="atsLogin" role="form" class="form-inline" ng-submit="vm.submitATSLogin(vm.atsId,vm.atsJobId,vm.atsCompanyId, vm.connectionStatus)">
+
+      <div class="row divider">
+        <div class="">
+          <h3 class="no-margin">Get automatic updates for this application</h3>
+        </div>
+      </div>
+
+      <div class="divider">
+
+        <p>Want to know if an employer has looked at your application yet? We can automatically get updates on applications submitted to select companies.</p>
+        <p>To get updates for this company, enter the username and password you used to apply on the company website. We will then show you these updates in the &quot;Applied Jobs&quot; list accessible from the job search page.</p>
+        <div role="alert" ng-show="vm.atsLoginError || vm.atsServiceError" class="alert alert-danger">Invalid username or password. Please try again.</div>
+        <div role="alert" class="alert alert-success" ng-show="vm.atsSuccess">The job has been successfully added. Please visit the application tracker to view your applied job. <a href="" role="button" class="alert-link pull-right" ng-click="$close()">Close</a>
+      </div>
+        <div class="form-group">
+          <label for="atsUsername" class="sr-only">Username</label>
+          <input id="atsUsername" type="text" name="username" placeholder="username" class="form-control" ng-model="vm.username" required="required" />
+        </div>
+        <div class="form-group">
+          <label for="atsPassword" class="sr-only">Password</label>
+          <input id="atsPassword" type="password" name="password" placeholder="password" class="form-control" ng-model="vm.password" required="required" />
+        </div>
+        <small class="clearfix">Note that we do not store your username and password.</small>
+      </div>
+
+      <div class="row no-margin">
+        <div class="pull-left">
+          <button type="submit" class="button" ng-disabled="atsLogin.$invalid || atsLogin.$pending || vm.atsPending" cg-busy="{promise: vm.atsPending, profile:'inlineReplaceSmall'}">Get Updates</button>
+        </div>
+        <div class="pull-right">
+          <a href="" role="button" ng-click="$close()">Not now.</a>
+        </div>
+      </div>
+    </form>
+  </main>
+</section>

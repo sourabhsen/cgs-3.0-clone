@@ -1,0 +1,190 @@
+#Dashboard-Container .welcome-container {
+    background-color: $brand-primary;
+}
+header h1, header .brand-text, header .breadcrumb li:last-child, .breadcrumb header li:last-child, .link, .nav-tabs li a, .milestone-sequence {
+  color: $brand-primary;
+}
+footer {
+  z-index: $zindex-header;
+  margin-top: 40px;
+}
+button, .button, .btn, .btn-primary {
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    font-size: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 2.7em;
+    line-height: 1.2em;
+    cursor: pointer;
+    text-align: center;
+    padding: 1em 0;
+    color: black;
+    border: solid black 1px;
+    background-color: $white;
+    border-radius: 0;
+    &:hover {
+      -webkit-transition-property: all;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      transition-property: all;
+      -webkit-transition-duration: 0.2s;
+      -moz-transition-duration: 0.2s;
+      -o-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      background: #61A60F !important;
+      color: white !important;
+      border: solid white 1px;
+      text-decoration: none !important;
+    }
+}
+.uoankle-container {
+    padding-top: 45px;
+    padding-bottom: 45px;
+    overflow: hidden;
+}
+.uoheader-container, .uoankle-container, .uofooter-container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.uoankle-custom-content {
+    float: left;
+    width: 66%;
+}
+.uoankle-contact-info-container {
+    float: right;
+    width: 33%;
+}
+.uoankle-contact-info {
+    float: right;
+    padding-left: 20px;
+    max-width: 100%;
+}
+.uoankle-contact-info p {
+    margin-top: 10px;
+}
+
+#uobannerandfooter-uoheader, #uobannerandfooter-uoankle, #uobannerandfooter-uofooter {
+    font-family: Quadon-Regular,Times,Georgia,"DejaVu Serif",serif;
+}
+#uobannerandfooter-uoankle {
+    background: #222;
+    color: #fff !important;
+    font-size: 16px;
+}
+.grid-3col .grid-item:nth-of-type(3n+1) {
+    clear: left;
+}
+.grid-3col .grid-item {
+    width: 32%;
+}
+.grid-item {
+    float: left;
+    width: 100%;
+    // margin-right: 2%;
+    // margin-top: 30px;
+}
+.grid-item>*:last-child {
+    margin-bottom: 0;
+}
+.grid-item>*:first-child {
+    margin-top: 0;
+}
+dl.collapsable {
+    margin: 0;
+    padding: 0;
+}
+[class*='grid-']:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+dl.collapsable dt, dl.collapsable dd {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 2.25em;
+}
+dl.collapsable dt, dl.collapsable dd {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 2.25em;
+}
+#uobannerandfooter-uoankle a, #uobannerandfooter-uofooter a {
+    color: #bbb;
+}
+i, cite, em, var, address, dfn {
+    font-style: italic;
+}
+#uobannerandfooter-uoankle [class*='socialicon-'] {
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    text-indent: -90000px;
+    background: url(components/footer/tenant/uo/social-sprite-hires.png) no-repeat 0 0;
+    background-size: auto 45px;
+    margin: 10px 5px 5px 0;
+}
+#uobannerandfooter-uoankle .socialicon-facebook {
+    background-position: 0px 0;
+}
+#uobannerandfooter-uoankle .socialicon-twitter {
+    background-position: -45px 0;
+}
+#uobannerandfooter-uoankle .socialicon-youtube {
+    background-position: -90px 0;
+}
+#uobannerandfooter-uoankle .socialicon-instagram {
+    background-position: -135px 0;
+}
+#uobannerandfooter-uoankle .socialicon-linkedin {
+    background-position: -180px 0;
+}
+#uobannerandfooter-uofooter {
+    background: #000;
+    color: #fff !important;
+    text-transform: uppercase !important;
+    font-size: 16px;
+}
+.uofooter-links-container {
+    float: left;
+    padding: 12px 0 0 0;
+    margin: 0;
+}
+.uofooter-link {
+    padding: 0 40px 0 0;
+}
+#uobannerandfooter-uofooter a {
+    color: #bbb;
+}
+.uofooter-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
+.uofooter-copyright-container {
+    float: left;
+    padding: 12px 0 0 0;
+    margin: 0;
+}
+.uofooter-logo-container img {
+    width: 53px;
+    height: 44px;
+    float: right;
+}
+#uobannerandfooter-uoheader a:hover, #uobannerandfooter-uoankle a:hover, #uobannerandfooter-uofooter a:hover {
+    color: #fdcd07;
+    text-decoration: none;
+}
